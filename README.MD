@@ -1,5 +1,5 @@
 #step-2
->在[step-1](/step-1)基础上,加入[react-router](http://www.tuicool.com/articles/iAvmyuj)
+>在[step-1](../step-1)基础上,加入[react-router](http://www.tuicool.com/articles/iAvmyuj)
 
 <h2 id="client">client</h2>
 执行`npm run build`编译client端react
