@@ -8,10 +8,13 @@ import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import Html from './helpers/Html';
+import createHistory from 'react-router/lib/createMemoryHistory';
+import {match,RouterContext} from 'react-router';
+import getRoutes from './routes';
 
 const app = new Express();
 const server = new http.Server(app);
-const targetUrl = 'http://'+config.apiHost+':'+config.apiPort;
+const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
 
 /**
  * 配置代理
@@ -34,10 +37,25 @@ app.use('/api', (req, res) => proxy.web(req, res, {target: targetUrl}));
 /**
  * 渲染页面
  */
-app.use((req,res)=>{
-    res.status(200);
-    res.send('<!doctype html>\n' +
-        ReactDOM.renderToString(<Html />));
+app.use((req, res)=> {
+
+    //创建react-router核心对象history
+    const memoryHistory = createHistory(req.originalUrl);
+    //react-router 服务器端渲染
+    match({memoryHistory, routes: getRoutes(), location: req.originalUrl}, (error, redirectLocation, renderProps)=> {
+        if (error) {
+            res.status(500).send(error.message);
+        } else if (redirectLocation) {
+            res.redirect(302,redirectLocation.pathname+redirectLocation.search);
+        } else if (renderProps) {
+            const component = <RouterContext {...renderProps}></RouterContext>
+            res.status(200).send('<!doctype html>\n' +
+                ReactDOM.renderToString(<Html component={component} />))
+        }else{
+            res.status(404).send('页面没有找到');
+        }
+    })
+
 })
 
 /**

@@ -1,2 +1,2 @@
-require('../server.bable');
+require('../server.babel');
 require('../src/server');

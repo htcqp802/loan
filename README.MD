@@ -1,15 +1,16 @@
-# 凤凰金融融资前端项目
+#step-2
+>在[step-1](/step-1)基础上,加入[react-router](http://www.tuicool.com/articles/iAvmyuj)
 
->为了能让大家清晰的了解项目,分为3个步骤
+<h2 id="client">client</h2>
+执行`npm run build`编译client端react
+<br/>
+如果页面按钮点击有效,证明client渲染成功
 
-### [step-1](../step-1)
-``git checkout -b step-1``<br/>
 
-### [step-2](../step-2)
-``git checkout -b step-2``<br/>
+<h2 id="server">server</h2>
+执行`npm run start` 启动项目
 
-### [step-3](../step-3)
-``git checkout -b step-3``<br/>
 
-### [dev](../dev)
-``git checkout -b dev``
+
+
+

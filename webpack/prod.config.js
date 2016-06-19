@@ -45,6 +45,15 @@ module.exports = {
         ]
     },
     progress: true,
+    //解析目录
+    resolve: {
+
+        modulesDirectories: [
+            'src',
+            'node_modules'
+        ],
+        extensions: ['', '.json', '.js', '.jsx']
+    },
     plugin: [
         new CleanPlugin([assetsPath, projectRootPath]),
         new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),

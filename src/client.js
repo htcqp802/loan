@@ -1,11 +1,12 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import {Router, browserHistory} from 'react-router';
+import getRoutes from './routes';
 const dest = document.getElementById('content');
 
 ReactDOM.render(
-    <div>hello,client world</div>,
+    <Router history={browserHistory} routes={getRoutes()}></Router>,
     dest
 )
 
