@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "feng-rz",
   "version": "1.0.0",
   "description": "凤凰金融-融资",
@@ -55,4 +56,15 @@
     "webpack": "^1.13.1",
     "webpack-isomorphic-tools": "^2.3.2"
   }
+=======
+  "name": "feng-loan",
+  "version": "1.0.0",
+  "description": "凤凰金融PC前端—融资",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+>>>>>>> 4f50f285ee5e69eb8f54bb6d8bdf94c980113cbc
 }
