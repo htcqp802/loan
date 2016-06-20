@@ -1,4 +1,62 @@
 {
+<<<<<<< HEAD
+  "name": "feng-rz",
+  "version": "1.0.0",
+  "description": "凤凰金融-融资",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run start-prod\"",
+    "start-prod": "better-npm-run start-prod",
+    "build": "better-npm-run build"
+  },
+  "betterScripts": {
+    "start-prod": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "HOST": "local.fengjr.inc",
+        "PORT": 8080,
+        "APIHOST": "www.fengjr.com",
+        "APIPORT": 80
+      }
+    },
+    "build": {
+      "command": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "devDependencies": {
+    "better-npm-run": "0.0.8",
+    "concurrently": "^2.1.0"
+  },
+  "dependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-react-display-name": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0",
+    "clean-webpack-plugin": "^0.1.9",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "http-proxy": "^1.14.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
+    "serve-favicon": "^2.3.0",
+    "strip-loader": "^0.1.2",
+    "webpack": "^1.13.1",
+    "webpack-isomorphic-tools": "^2.3.2"
+  }
+=======
   "name": "feng-loan",
   "version": "1.0.0",
   "description": "凤凰金融PC前端—融资",
@@ -8,4 +66,5 @@
   },
   "author": "",
   "license": "ISC"
+>>>>>>> 4f50f285ee5e69eb8f54bb6d8bdf94c980113cbc
 }
