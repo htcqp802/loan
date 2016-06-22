@@ -8,5 +8,7 @@
 ``git checkout -b step-2``<br/>
 ### [step-3](../step-3)
 ``git checkout -b step-3``<br/>
+### [step-4](../step-4)
+``git checkout -b step-4``<br/>
 ### [dev](../dev)
 ``git checkout -b dev``
