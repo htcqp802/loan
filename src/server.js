@@ -9,8 +9,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import Html from './helpers/Html';
 import createHistory from 'react-router/lib/createMemoryHistory';
-import {match,RouterContext} from 'react-router';
+import {match} from 'react-router';
 import getRoutes from './routes';
+import createStore from './redux/create';
+import {syncHistoryWithStore} from 'react-router-redux';
+import {ReduxAsyncConnect, loadOnServer} from 'redux-async-connect';
+import {Provider} from 'react-redux';
+import ApiClient from './helpers/ApiClient';
 
 const app = new Express();
 const server = new http.Server(app);
@@ -32,26 +37,47 @@ app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 //配置静态文件
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 //配置代理地址
-app.use('/api', (req, res) => proxy.web(req, res, {target: targetUrl}));
+app.use((req, res,next) =>{
+    if(req.url.indexOf('/api/v2') > -1 ){
+        proxy.web(req, res)
+    }else{
+        next();
+    }
+});
 
 /**
  * 渲染页面
  */
 app.use((req, res)=> {
 
+    const client = new ApiClient(req);
     //创建react-router核心对象history
     const memoryHistory = createHistory(req.originalUrl);
+    //创建store
+    const store = createStore(memoryHistory, client);
+    //增强history
+    const history = syncHistoryWithStore(memoryHistory, store);
+
     //react-router 服务器端渲染
-    match({memoryHistory, routes: getRoutes(), location: req.originalUrl}, (error, redirectLocation, renderProps)=> {
+    match({history, routes: getRoutes(store), location: req.originalUrl}, (error, redirectLocation, renderProps)=> {
         if (error) {
             res.status(500).send(error.message);
         } else if (redirectLocation) {
-            res.redirect(302,redirectLocation.pathname+redirectLocation.search);
+            //调用缓存
+            res.redirect(302, redirectLocation.pathname + redirectLocation.search);
         } else if (renderProps) {
-            const component = <RouterContext {...renderProps}></RouterContext>
-            res.status(200).send('<!doctype html>\n' +
-                ReactDOM.renderToString(<Html component={component} assets={webpackIsomorphicTools.assets()} />))
-        }else{
+            loadOnServer({...renderProps, store, helpers: {client}}).then(() => {
+                const component = (
+                    <Provider store={store} key="provider">
+                        <ReduxAsyncConnect {...renderProps} />
+                    </Provider>
+                );
+                res.status(200);
+                res.send('<!doctype html>\n' +
+                    ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component}
+                                                  store={store}/>));
+            });
+        } else {
             res.status(404).send('页面没有找到');
         }
     })

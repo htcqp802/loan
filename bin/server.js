@@ -2,6 +2,8 @@ require('../server.babel');
 var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
 
+console.log(process.env.NODE_PATH);
+
 //是否为client端
 global.__CLIENT__ = false;
 //是否为server端

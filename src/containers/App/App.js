@@ -1,14 +1,21 @@
-import React,{Component} from 'react';
-import {Link,IndexLink} from 'react-router';
+import React, {Component} from 'react';
+import {Link, IndexLink} from 'react-router';
+import {asyncConnect} from 'redux-async-connect';
+import {load} from 'redux/modules/test';
 
-export default class App extends Component{
+//这里是个问题,必须在顶层返回一个promise,否则服务器端不渲染,后期优化
+@asyncConnect([{
+    promise:()=> Promise.all([])
+}])
+export default class App extends Component {
     state = {
-        clicked:false
+        clicked: false
     }
-    handleClick=()=>{
-        this.setState({clicked:!this.state.clicked})
+    handleClick = ()=> {
+        this.setState({clicked: !this.state.clicked})
     }
-    render(){
+
+    render() {
         const styles = require('./App.scss');
         const cat = require('./kitten.jpg');
         return (
@@ -23,7 +30,8 @@ export default class App extends Component{
                 <div>
                     test client side:
                     <br/>
-                    <button className={styles.btn} onClick={this.handleClick}>{this.state.clicked ? "clicked" : "click me"}</button>
+                    <button className={styles.btn}
+                            onClick={this.handleClick}>{this.state.clicked ? "clicked" : "click me"}</button>
                 </div>
                 <div>
                     <img src={cat} alt=""/>

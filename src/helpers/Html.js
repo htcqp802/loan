@@ -1,13 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom/server';
+import serialize from 'serialize-javascript';
 
 export default class Html extends Component {
     static propTypes = {
         component:PropTypes.node,
-        assets:PropTypes.object
+        assets:PropTypes.object,
+        store:PropTypes.object
     }
     render() {
-        const {component,assets} = this.props;
+        const {component,assets,store} = this.props;
         const content = component ? ReactDOM.renderToString(component) : '';
         return (
             <html lang="en-us">
@@ -21,8 +23,9 @@ export default class Html extends Component {
             </head>
             <body>
                 <div id="content" dangerouslySetInnerHTML={{__html: content}}></div>
+                <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
+                <script src={assets.javascript.main}></script>
             </body>
-            <script src={assets.javascript.main} charSet="UTF-8"/>
             </html>
         )
     }

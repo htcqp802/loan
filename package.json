@@ -15,7 +15,7 @@
         "NODE_ENV": "production",
         "HOST": "local.fengjr.inc",
         "PORT": 8080,
-        "APIHOST": "www.fengjr.com",
+        "APIHOST": "test.fengjr.inc",
         "APIPORT": 80
       }
     },
