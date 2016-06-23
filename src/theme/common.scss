@@ -1,0 +1,12 @@
+:global {
+  .container {
+    width: $container-width;
+    margin: auto;
+  }
+  .left{
+    float: left;
+  }
+  .right{
+    float: right;
+  }
+}

@@ -1,0 +1,127 @@
+@import "../../theme/variables";
+
+$nav-bg:#25292c;
+$nav-height:40px;
+$head-height:80px;
+
+.nav {
+  .head{
+    height: $head-height;
+    .pullLeft {
+      float: left;
+      height: $head-height;
+      line-height: $head-height;
+      a {
+        display: inline-block;
+        .logo {
+          width: 314px;
+          height: 44px;
+          vertical-align: middle;
+        }
+      }
+    }
+    .pullRight {
+      li {
+        float: right;
+        line-height: $head-height;
+        height: $head-height;
+        padding: 0 15px;
+        &.getEnvelope {
+          a {
+            color: $orange-light;
+            .icon {
+              display: inline-block;
+              width: 13px;
+              height: 19px;
+              background-image: url("./icon_re.gif");
+              background-repeat: no-repeat;
+              position: relative;
+              top: 3px;
+              left: -5px;
+            }
+          }
+        }
+        &.getApp{
+          a{
+            position: relative;
+            .icon{
+              width: 13px;
+              height: 22px;
+              background-image: url("./icon_phone.png");
+              position: relative;
+              display: inline-block;
+              top: 6px;
+              left: -5px;
+              transition:all .2s;
+            }
+            img{
+              position: absolute;
+              display: none;
+              top: 20px;
+              right: 43px;
+            }
+          }
+          a:hover{
+            .icon{
+              background-position:0 -22px;
+            }
+            img{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  nav{
+    height: $nav-height;
+    line-height: $nav-height;
+    background-color: $nav-bg;
+    &:before,&:after{
+      content:" ";
+      display: block;
+      clear: both;
+    }
+    a{
+      color: #fff;
+      font-size: 16px;
+    }
+    ul{
+      li{
+        display: inline-block;
+        float: left;
+        position: relative;
+        .bg{
+          content:" ";
+          display: block;
+          background-color: $orange-light;
+          height: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1;
+          transition: height 0.2s ease-in;
+        }
+        a{
+          display: inline-block;
+          padding: 0 30px;
+          position: relative;
+          z-index: 2;
+        }
+        &.right{
+          float: right;
+        }
+        &:hover{
+          .bg{
+            height: $nav-height;
+          }
+        }
+        .arrow{
+
+        }
+      }
+    }
+  }
+}
