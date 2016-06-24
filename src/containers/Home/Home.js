@@ -6,6 +6,7 @@ export default class Home extends Component{
         return (
             <div className={style.home}>
                 Im Index
+
             </div>
         )
     }
