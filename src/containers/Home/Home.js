@@ -5,6 +5,7 @@ export default class Home extends Component{
         const style = require("./Home.scss");
         return (
             <div className={style.home}>
+                Im Index
             </div>
         )
     }

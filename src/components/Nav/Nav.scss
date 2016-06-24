@@ -93,7 +93,6 @@ $head-height: 80px;
         float: left;
         position: relative;
         text-align: center;
-        overflow: hidden;
         .bg {
           content: " ";
           display: block;
@@ -143,11 +142,13 @@ $head-height: 80px;
           background-color: $nav-bg;
           height: 0;
           transition: height 0.3s ease-in;
+          position: absolute;
+            overflow: hidden;
           li {
-            display: block;
             float: none;
             height: $nav-height;
             line-height: $nav-height;
+            width: 100%;
             .yellow {
               font-size: 10px;
               color: #ffc200;

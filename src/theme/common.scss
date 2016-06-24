@@ -17,4 +17,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  .clearFix{
+    &:before,&:after{
+      content: " ";
+      display: table;
+      clear: both;
+    }
+  }
 }

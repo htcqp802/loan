@@ -434,6 +434,7 @@ ul, li {
 a {
   text-decoration: none;
   color: $black-normal;
+  transition: color 0.2s, background-color 0.2s;
   &:hover {
     color: $orange-light;
   }

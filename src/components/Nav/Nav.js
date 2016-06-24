@@ -50,7 +50,7 @@ export default class Nav extends Component {
                             </ul>
                         </li>
                         <li><i className={style.bg}></i><Go main="/aboutus/jianjie">关于凤凰金融/About Us</Go></li>
-                        <li><i className={style.bg}></i><Go main="/safety">安全保障<i
+                        <li style={{width:"156px"}}><i className={style.bg}></i><Go main="/safety">安全保障<i
                             className={`${style.arrow} fa`}></i></Go>
                             <ul className={`${style.dropdown} ${style.l2}`}>
                                 <li><i className={style.bg}></i><Go main="/safety" target="_blank">安全保障措施</Go></li>
