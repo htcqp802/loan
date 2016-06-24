@@ -32,7 +32,7 @@ export default class Nav extends Component {
                 <nav>
                     <ul className={`${style.navbar} container`}>
                         <li><i className={style.bg}></i><Go main="/">首页</Go></li>
-                        <li><i className={style.bg}></i><Go main="/financing">理财<i className={`${style.arrow} fa`}></i></Go>
+                        <li style={{width:"130px"}} ><i className={style.bg}></i><Go main="/financing">理财<i className={`${style.arrow} fa`}></i></Go>
                             <ul className={`${style.dropdown} ${style.l4}`}>
                                 <li><i className={style.bg}></i><Go bx="/current" target="_blank">活期理财<span
                                     className={style.yellow}>New</span></Go></li>

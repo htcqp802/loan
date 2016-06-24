@@ -3,6 +3,7 @@ import {IndexRoute,Route} from 'react-router';
 import {App,Home,NotFound} from 'containers';
 
 
+//应该使用动态路由 按需打包 后期优化
 export default ()=>{
     return (
         <Route>

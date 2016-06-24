@@ -1,11 +1,15 @@
-import React,{Component} from 'react';
-export default class Home extends Component{
+import React, {Component} from 'react';
+import {Slider} from 'components';
 
-    render(){
+
+
+
+export default class Home extends Component {
+    render() {
         const style = require("./Home.scss");
         return (
             <div className={style.home}>
-                Im Index
+                <Slider></Slider>
             </div>
         )
     }
