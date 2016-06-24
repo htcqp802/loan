@@ -4,7 +4,7 @@ export default class Foot extends Component{
     render(){
         return (
             <div>
-                im foot
+                im footsdfsdfsd
             </div>
         )
     }
