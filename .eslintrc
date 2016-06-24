@@ -37,7 +37,10 @@
     "space-before-blocks":0,
     //prop验证
     "react/prop-types":0,
-    "space-after-keywords":0
+    "space-after-keywords":0,
+    //运算符号间空格
+    "space-infix-ops":0,
+    "no-multi-spaces":0
   },
   "plugins": [
     "react", "import"

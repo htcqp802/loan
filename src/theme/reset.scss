@@ -439,6 +439,11 @@ a {
   }
 }
 
+@font-face {
+  font-family: FontAwesome;
+  src: url('./fontawesome.woff')
+}
+
 body {
   font-size: 14px;
   font-family: "Microsoft Yahei", "PingHei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;

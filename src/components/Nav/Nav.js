@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {IndexLink} from 'react-router';
 import {Go} from 'components';
+
+
+/**
+ * 后期根据需求进行再次拆分
+ */
 export default class Nav extends Component {
     render() {
         const style = require('./Nav.scss');
@@ -25,15 +30,36 @@ export default class Nav extends Component {
                 </div>
 
                 <nav>
-                    <ul className="container">
+                    <ul className={`${style.navbar} container`}>
                         <li><i className={style.bg}></i><Go main="/">首页</Go></li>
-                        <li><i className={style.bg}></i><Go main="/financing">理财</Go><i className={style.arrow}></i></li>
-                        <li><i className={style.bg}></i><Go main="/zc">众筹</Go></li>
-                        <li><i className={style.bg}></i><Go main="/lld">融资</Go><i className={style.arrow}></i></li>
+                        <li><i className={style.bg}></i><Go main="/financing">理财<i className={`${style.arrow} fa`}></i></Go>
+                            <ul className={`${style.dropdown} ${style.l4}`}>
+                                <li><i className={style.bg}></i><Go bx="/current" target="_blank">活期理财<span
+                                    className={style.yellow}>New</span></Go></li>
+                                <li><i className={style.bg}></i><Go main="/financing" target="_blank">定期理财</Go></li>
+                                <li><i className={style.bg}></i><Go bx="/" target="_blank">保险理财</Go></li>
+                                <li><i className={style.bg}></i><Go main="/financing/list?type=newUser" target="_blank">新手专享</Go>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><i  className={style.bg} ></i><Go main="/zc">众筹</Go></li>
+                        <li><i style={{height:"40px"}} className={style.bg}></i><Go main="/lld">融资<i className={`${style.arrow} fa`}></i></Go>
+                            <ul className={`${style.dropdown} ${style.l2}`}>
+                                <li><i className={style.bg}></i><Go main="/lld/fqddetail" target="_blank">凤企贷</Go></li>
+                                <li><i className={style.bg}></i><Go main="/lld/fjddetail" target="_blank">凤加贷</Go></li>
+                            </ul>
+                        </li>
                         <li><i className={style.bg}></i><Go main="/aboutus/jianjie">关于凤凰金融/About Us</Go></li>
-                        <li><i className={style.bg}></i><Go main="/safety">安全保障</Go></li>
+                        <li><i className={style.bg}></i><Go main="/safety">安全保障<i
+                            className={`${style.arrow} fa`}></i></Go>
+                            <ul className={`${style.dropdown} ${style.l2}`}>
+                                <li><i className={style.bg}></i><Go main="/safety" target="_blank">安全保障措施</Go></li>
+                                <li><i className={style.bg}></i><Go main="/financing/jgdetail" target="_blank">保障机构介绍</Go></li>
+                            </ul>
+                        </li>
                         <li><i className={style.bg}></i><Go main="/service/jr">帮助中心</Go></li>
-                        <li className={style.right}><i className={style.bg}></i><Go mall="/" target="_blank" >积分商城</Go></li>
+                        <li className={style.right}><i className={style.bg}></i><Go mall="/" target="_blank">积分商城</Go>
+                        </li>
                     </ul>
                 </nav>
             </div>

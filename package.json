@@ -16,7 +16,7 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
-        "HOST": "local.fengjr.inc",
+        "HOST": "lld.fengjr.inc",
         "PORT": 8080,
         "APIHOST": "www.fengjr.com",
         "APIPORT": 80
@@ -27,7 +27,7 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
-        "HOST": "local.fengjr.inc",
+        "HOST": "lld.fengjr.inc",
         "PORT": 3000,
         "APIHOST": "test.fengjr.inc",
         "APIPORT": 80

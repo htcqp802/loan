@@ -1,11 +1,11 @@
 @import "../../theme/variables";
 
-$nav-bg:#25292c;
-$nav-height:40px;
-$head-height:80px;
+$nav-bg: #25292c;
+$nav-height: 40px;
+$head-height: 80px;
 
 .nav {
-  .head{
+  .head {
     height: $head-height;
     .pullLeft {
       float: left;
@@ -41,10 +41,10 @@ $head-height:80px;
             }
           }
         }
-        &.getApp{
-          a{
+        &.getApp {
+          a {
             position: relative;
-            .icon{
+            .icon {
               width: 13px;
               height: 22px;
               background-image: url("./icon_phone.png");
@@ -52,20 +52,20 @@ $head-height:80px;
               display: inline-block;
               top: 6px;
               left: -5px;
-              transition:all .2s;
+              transition: all .2s;
             }
-            img{
+            img {
               position: absolute;
               display: none;
               top: 20px;
               right: 43px;
             }
           }
-          a:hover{
-            .icon{
-              background-position:0 -22px;
+          a:hover {
+            .icon {
+              background-position: 0 -22px;
             }
-            img{
+            img {
               display: block;
             }
           }
@@ -73,26 +73,29 @@ $head-height:80px;
       }
     }
   }
-  nav{
+  nav {
     height: $nav-height;
     line-height: $nav-height;
     background-color: $nav-bg;
-    &:before,&:after{
-      content:" ";
+    &:before, &:after {
+      content: " ";
       display: block;
       clear: both;
     }
-    a{
+    a {
       color: #fff;
       font-size: 16px;
+      padding: 0 30px;
     }
-    ul{
-      li{
+    .navbar {
+      li {
         display: inline-block;
         float: left;
         position: relative;
-        .bg{
-          content:" ";
+        text-align: center;
+        overflow: hidden;
+        .bg {
+          content: " ";
           display: block;
           background-color: $orange-light;
           height: 0;
@@ -104,22 +107,53 @@ $head-height:80px;
           z-index: 1;
           transition: height 0.2s ease-in;
         }
-        a{
+        a {
           display: inline-block;
-          padding: 0 30px;
           position: relative;
           z-index: 2;
         }
-        &.right{
+        &.right {
           float: right;
         }
-        &:hover{
-          .bg{
+        &:hover {
+          & > .bg {
             height: $nav-height;
           }
+          & > .l4 {
+            height: 160px;
+          }
+          & > .l2 {
+            height: 80px;
+          }
+          .arrow {
+            transform: rotate(180deg);
+          }
         }
-        .arrow{
-
+        .arrow {
+          z-index: 2;
+          color: #fff;
+          font-size: 16px;
+          margin-left: 10px;
+          transition: all .3s ease-in;
+          &:before {
+            content: "\f107";
+          }
+        }
+        .dropdown {
+          background-color: $nav-bg;
+          height: 0;
+          transition: height 0.3s ease-in;
+          li {
+            display: block;
+            float: none;
+            height: $nav-height;
+            line-height: $nav-height;
+            .yellow {
+              font-size: 10px;
+              color: #ffc200;
+              position: absolute;
+            }
+          }
         }
       }
     }
