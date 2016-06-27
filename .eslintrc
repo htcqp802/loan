@@ -41,7 +41,8 @@
     //运算符号间空格
     "space-infix-ops":0,
     "no-multi-spaces":0,
-    "no-trailing-spaces":0
+    "no-trailing-spaces":0,
+    "react/wrap-multilines":0
   },
   "plugins": [
     "react", "import"

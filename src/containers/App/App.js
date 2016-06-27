@@ -11,8 +11,8 @@ export default class App extends Component {
         return (
             <div>
                 <Nav></Nav>
-                <HomeContent></HomeContent>
                 <div>{this.props.children}</div>
+                <HomeContent></HomeContent>
                 <Foot></Foot>
             </div>
         )
