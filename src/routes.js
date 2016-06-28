@@ -7,7 +7,7 @@ import {App,Home,NotFound} from 'containers';
 export default ()=>{
     return (
         <Route>
-            <Route path="/" component={App}>
+            <Route path="/" component={App}>   
                 <IndexRoute component={Home}></IndexRoute>
             </Route>
             <Route path="*" component={NotFound} status={404}/>
