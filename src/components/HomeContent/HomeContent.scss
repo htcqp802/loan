@@ -5,11 +5,6 @@ $nav-height: 40px;
 $head-height: 80px;
 .HomeContent{
   color:red;
-  .lld_container{
-    width:1200px !important;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin: 20px auto 0 auto;
     .lld_nav{
       margin-bottom: 10px;
     }
@@ -65,7 +60,7 @@ $head-height: 80px;
           z-index: 2;
           width:305px;
           padding-left: 38px;
-          background: url("/assets/img/lld/lld_leftbg1.png") 0 0 no-repeat;
+          background: url("./lld_leftimg1.jpg") 0 0 no-repeat;
         }
       }
       .lld_mid{
@@ -103,7 +98,7 @@ $head-height: 80px;
                 width: 68px;
                 height: 72px;
                 cursor: default;
-                background: url("/assets/img/lld/lld_minlist.png") 0 0 no-repeat;
+                background: url("./lld_minlist.png") 0 0 no-repeat;
               }
               a.changebg1{
                 background-position: 0 0;
@@ -321,7 +316,6 @@ $head-height: 80px;
         }
       }
     }
-  }
 }
 
 
