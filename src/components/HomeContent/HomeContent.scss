@@ -1,12 +1,13 @@
 @import "../../theme/variables";
 
-$nav-bg: #25292c;
-$nav-height: 40px;
-$head-height: 80px;
+p{
+  padding:0px;
+  margin:0px;
+}
 .HomeContent{
-  color:red;
     .lld_nav{
       margin-bottom: 10px;
+      margin-top: 20px;
     }
     .lld_con{
       height: 328px;
@@ -18,16 +19,18 @@ $head-height: 80px;
         top: 0;
         left: 0px;
         padding-left:38px;
-        padding-top:18px;
+        //padding-top:18px;
       }
       .lld_left{
         width:405px;
         color: #fff;
-        padding-right: 60px;
-        padding-top: 80px;
+        padding-left:0px;
+        //padding-right: 60px;
+        padding-top: 0px;
         p.lup{
           line-height: 34px;
           font-size: 20px;
+          margin:0px;
         }
         h2{
           font-size: 42px;
@@ -60,12 +63,13 @@ $head-height: 80px;
           z-index: 2;
           width:305px;
           padding-left: 38px;
-          background: url("./lld_leftimg1.jpg") 0 0 no-repeat;
+          background: url("./lld_leftbg1.png") 0 0 no-repeat;
         }
       }
       .lld_mid{
         width:720px;
         left: 406px;
+        box-sizing:border-box;
         padding-left: 126px;
         padding-top: 6px;
         p.mup{
@@ -78,7 +82,7 @@ $head-height: 80px;
             display: inline-block;
             width: 130px;
             height: 46px;
-            background: url("/assets/img/lld/lld_righttop1.png") 0 0 no-repeat;
+            background: url("./lld_righttop1.png") 0 0 no-repeat;
           }
         }
         p.mtup{
@@ -149,9 +153,12 @@ $head-height: 80px;
           padding-top:20px;
           a.but,span.but,a.but_link{
             display: inline-block;
+            margin-top:20px;
             width: 202px;
             text-align: center;
-            padding:12px 50px;
+            //padding:12px 50px;
+            text-align: center;
+            line-height: 50px;
             border-radius:4px;
             -moz-border-radius:4px;
             -webkit-border-radius:4px;

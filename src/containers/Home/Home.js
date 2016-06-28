@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-import React,{Component} from 'react';
-import {Slider,HomeContent} from 'components';
-=======
 import React,{Component,PropTypes} from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import {connect} from 'react-redux';
-import {Slider} from 'components';
+import {Slider,HomeContent} from 'components';
 import {load} from 'redux/modules/slider';
 
 @asyncConnect([{
@@ -16,7 +12,6 @@ import {load} from 'redux/modules/slider';
 @connect(
     state=>({sliders: state.slider.data})
 )
->>>>>>> origin/dev
 export default class Home extends Component{
     static propTypes = {
         sliders:PropTypes.array
