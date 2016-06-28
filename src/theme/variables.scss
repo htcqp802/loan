@@ -6,3 +6,11 @@ $black-light:#323232;
 $black-normal:#5E5E5E;
 
 $container-width:1200px;
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  line-height: 0;
+  visibility: hidden;
+}

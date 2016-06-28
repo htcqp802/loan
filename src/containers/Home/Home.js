@@ -15,7 +15,7 @@ import {load} from 'redux/modules/slider';
 export default class Home extends Component{
     static propTypes = {
         sliders:PropTypes.array
-    }
+    };
     render(){
         const style = require("./Home.scss");
         const {sliders} = this.props;
