@@ -1,3 +1,4 @@
+@import "variables";
 :global {
   .container {
     width: $container-width;
@@ -9,6 +10,7 @@
   .right {
     float: right;
   }
+
   .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -24,4 +26,9 @@
       clear: both;
     }
   }
+
+  .orange{
+    color: $orange-light;
+  }
+
 }

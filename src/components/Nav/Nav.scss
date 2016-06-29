@@ -4,7 +4,10 @@ $nav-bg: #25292c;
 $nav-height: 40px;
 $head-height: 80px;
 
+
 .nav {
+  background-color: #fff;
+  height: 120px;
   .head {
     height: $head-height;
     .pullLeft {
@@ -77,11 +80,6 @@ $head-height: 80px;
     height: $nav-height;
     line-height: $nav-height;
     background-color: $nav-bg;
-    &:before, &:after {
-      content: " ";
-      display: block;
-      clear: both;
-    }
     a {
       color: #fff;
       font-size: 16px;

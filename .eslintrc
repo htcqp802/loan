@@ -42,7 +42,15 @@
     "space-infix-ops":0,
     "no-multi-spaces":0,
     "no-trailing-spaces":0,
-    "react/wrap-multilines":0
+    "react/wrap-multilines":0,
+    //块级元素 空白行开头
+    "padded-blocks":0,
+    //变量名必须是驼峰命名
+    "camelcase":1,
+    //return 后面必须加空格
+    "space-return-throw-case":0,
+    //括号必须对齐
+    "brace-style":0
   },
   "plugins": [
     "react", "import"

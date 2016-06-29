@@ -1,7 +1,7 @@
 import React,{Component,PropTypes} from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import {connect} from 'react-redux';
-import {Slider} from 'components';
+import {Slider,HomeContent} from 'components';
 import {load} from 'redux/modules/slider';
 
 @asyncConnect([{
@@ -28,8 +28,7 @@ export default class Home extends Component{
                         })
                     }
                 </Slider>
-                Im Index
-
+                <HomeContent></HomeContent>
             </div>
         )
     }
