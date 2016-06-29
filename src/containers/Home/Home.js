@@ -28,8 +28,7 @@ export default class Home extends Component{
                         })
                     }
                 </Slider>
-                Im Index
-
+                <HomeContent></HomeContent>
             </div>
         )
     }
