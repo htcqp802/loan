@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {IndexLink} from 'react-router';
+//import {IndexLink} from 'react-router';
 import {Go} from 'components';
 
 
@@ -43,15 +43,15 @@ export default class HomeContent extends Component {
                   <div className={style.mfjd}>
                     <ul className={`${style.midlist} clearfix`}>
                       <li>
-                        <a href="javascript:;" className={style.changebg1}></a>
+                        <Go className={style.changebg1}></Go>
                         <p>最低月利率1.3%</p>
                       </li>
                       <li>
-                        <a href="javascript:;" className={style.changebg2}></a>
+                        <Go className={style.changebg2}></Go>
                         <p>最快48小时到账</p>
                       </li>
                       <li>
-                        <a href="javascript:;" className={style.changebg3}></a>
+                        <Go className={style.changebg3}></Go>
                         <p>最高可贷300万</p>
                       </li>
                     </ul>
@@ -69,9 +69,9 @@ export default class HomeContent extends Component {
               <div className={`${style.lld_con} ${style.lld_con2} container`}>
                 <div className={style.lld_left}>
                   <div className={style.posimgshow}>
-                    <a href="http://local.fengjr.inc:4000/lld/fqddetail/" target="_blank">
+                    <Go my="/lld/fqddetail/" target="_blank">
                       <img src={lldLeftimg2} />
-                    </a>
+                    </Go>
                   </div>
                   <div className={style.leftbgshow}>
                     <p className={style.lup}>&nbsp;</p>
@@ -80,27 +80,28 @@ export default class HomeContent extends Component {
                 </div>
                 <div className={style.lld_mid}>
                   <p className={`${style.mup} ${style.mtup}`}>
-                    <a href="http://local.fengjr.inc:4000/lld/fqddetail/" target="_blank"></a>
+                    <Go my="/lld/fqddetail/" target="_blank">
+                    </Go>
                   </p>
                   <div className={style.mfqd}>
                     <ul className={`${style.midlist} clearfix`}>
                       <li>
-                        <a href="javascript:;" className={style.changebg6}></a>
+                        <Go className={style.changebg6}></Go>
                         <p>最低综合成本年化11%</p>
                       </li>
                       <li>
-                        <a href="javascript:;" className={style.changebg5}></a>
+                        <Go className={style.changebg5}></Go>
                         <p>在线申请仅3步</p>
                       </li>
                       <li>
-                        <a href="javascript:;" className={style.changebg4}></a>
+                        <Go className={style.changebg4}></Go>
                         <p>灵活融资方案</p>
                       </li>
                     </ul>
                   </div>
                   <p className={style.lld_link}>
-                    <a href="http://local.fengjr.inc:4000/lld/fqddetail/" target="_blank" className={style.but}>查看详情</a>
-                    <a href="http://local.fengjr.inc:4000/lld/applyfqd/" target="_blank" className={style.but_link}>快速申请</a>
+                    <Go my="/lld/fqddetail/" className={style.but} target="_blank">查看详情</Go>
+                    <Go my="/lld/applyfqd/" className={style.but_link} target="_blank">快速申请</Go>
                   </p>
                 </div>
             </div>
@@ -113,32 +114,32 @@ export default class HomeContent extends Component {
                   <h2>融资审核金融服务机构</h2>
                   <ul className={`${style.corplist} clearfix`}>
                     <li>
-                      <a href="http://local.fengjr.inc:4000/financing/zjt" target="_blank">
+                      <Go my="/financing/zjt" target="_blank">
                         <img src={lldCcorpZjt} alt="凤凰金融"/>
                         <div className={style.imgbox} style={{opacity: 0}}></div>
                         <span className={style.detail} style={{display: 'none',opacity: 1}}>专题介绍</span>
-                      </a>
+                      </Go>
                     </li>
                     <li>
-                      <a href="http://local.fengjr.inc:4000/financing/gdyd" target="_blank">
+                      <Go my="/financing/gdyd" target="_blank">
                         <img src={lldCorpGgdyd} alt="凤凰金融"/>
                         <div className={style.imgbox_sha} style={{opacity: 0}}></div>
                         <span className={style.detail} style={{display: 'none'}}>专题介绍</span>
-                      </a>
+                      </Go>
                     </li>
                     <li>
-                      <a href="http://local.fengjr.inc:4000/financing/bxzl" target="_blank">
+                      <Go my="/financing/bxzl" target="_blank">
                         <img src={lldCorpBxzl} alt="凤凰金融"/>
                         <div className={style.imgbox_sha}></div>
                         <span className={style.detail}>专题介绍</span>
-                      </a>
+                      </Go>
                     </li>
                     <li>
-                      <a href="http://local.fengjr.inc:4000/financing/whxy" target="_blank">
+                      <Go my="/financing/whxy" target="_blank">
                         <img src={lldCorpWhxy} alt="凤凰金融"/>
                         <div className={style.imgbox_sha}></div>
                         <span className={style.detail}>专题介绍</span>
-                      </a>
+                      </Go>
                     </li>
                   </ul>
                   <p className={style.morecorp}>更多优质金融服务机构正在入驻中……</p>
