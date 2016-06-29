@@ -1,21 +1,29 @@
 @import "../../theme/variables";
 
-$nav-bg: #25292c;
-$nav-height: 40px;
-$head-height: 80px;
+p{
+  padding:0px;
+  margin:0px;
+}
+body{
+  background: #f5f5f5;
+}
+.clearfix{
+  zoom:1;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+}
 .HomeContent{
-  color:red;
-  .lld_container{
-    width:1200px !important;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin: 20px auto 0 auto;
     .lld_nav{
       margin-bottom: 10px;
+      margin-top: 20px;
     }
     .lld_con{
       height: 328px;
       margin-top: 30px;
+      background: #fff;
       position: relative;
       .lld_left,.lld_mid,.lld_right{
         position: absolute;
@@ -23,16 +31,18 @@ $head-height: 80px;
         top: 0;
         left: 0px;
         padding-left:38px;
-        padding-top:18px;
+        //padding-top:18px;
       }
       .lld_left{
         width:405px;
         color: #fff;
-        padding-right: 60px;
-        padding-top: 80px;
+        padding-left:0px;
+        //padding-right: 60px;
+        padding-top: 0px;
         p.lup{
           line-height: 34px;
           font-size: 20px;
+          margin:0px;
         }
         h2{
           font-size: 42px;
@@ -65,12 +75,13 @@ $head-height: 80px;
           z-index: 2;
           width:305px;
           padding-left: 38px;
-          background: url("/assets/img/lld/lld_leftbg1.png") 0 0 no-repeat;
+          background: url("./lld_leftbg1.png") 0 0 no-repeat;
         }
       }
       .lld_mid{
         width:720px;
         left: 406px;
+        box-sizing:border-box;
         padding-left: 126px;
         padding-top: 6px;
         p.mup{
@@ -83,13 +94,13 @@ $head-height: 80px;
             display: inline-block;
             width: 130px;
             height: 46px;
-            background: url("/assets/img/lld/lld_righttop1.png") 0 0 no-repeat;
+            background: url("./lld_righttop1.png") 0 0 no-repeat;
           }
         }
         p.mtup{
           color: #38cdb4;
           a{
-            background: url("/assets/img/lld/lld_righttop2.png") 0 0 no-repeat;
+            background: url("./lld_righttop2.png") 0 0 no-repeat;
           }
         }
         .mfjd,.mfqd{
@@ -103,7 +114,7 @@ $head-height: 80px;
                 width: 68px;
                 height: 72px;
                 cursor: default;
-                background: url("/assets/img/lld/lld_minlist.png") 0 0 no-repeat;
+                background: url("./lld_minlist.png") 0 0 no-repeat;
               }
               a.changebg1{
                 background-position: 0 0;
@@ -154,9 +165,12 @@ $head-height: 80px;
           padding-top:20px;
           a.but,span.but,a.but_link{
             display: inline-block;
+            margin-top:20px;
             width: 202px;
             text-align: center;
-            padding:12px 50px;
+            //padding:12px 50px;
+            text-align: center;
+            line-height: 50px;
             border-radius:4px;
             -moz-border-radius:4px;
             -webkit-border-radius:4px;
@@ -270,6 +284,11 @@ $head-height: 80px;
         }
       }
     }
+    .lld_con3{
+      height: 328px;
+      margin-top: 30px;
+      position: relative;
+    }
     .lld_con1{
       background: #fff;
       .lld_mid{
@@ -287,7 +306,7 @@ $head-height: 80px;
         .posimgshow{
         }
         .leftbgshow{
-          background: url("/assets/img/lld/lld_leftbg2.png") 0 0 no-repeat;
+          background: url("./lld_leftbg2.png") 0 0 no-repeat;
         }
       }
       .lld_mid{
@@ -321,7 +340,70 @@ $head-height: 80px;
         }
       }
     }
-  }
+    .lld_corp{
+      background: #e7e6e4;
+      .corp_con{
+        width:1200px !important;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0 auto;
+        padding-top: 36px;
+        padding-bottom: 50px;
+        h2{
+          background: url("./lld_corp.png") no-repeat 0 center;
+          line-height: 82px;
+          font-size:34px;
+          text-align: center;
+          color: #171314;
+        }
+        ul.corplist{
+          margin-right: -20px;
+          li{
+            float: left;
+            margin-top: 16px;
+            margin-right: 21px;
+            a{
+              position: relative;
+              display: block;
+              .imgbox_sha,span.detail{
+                position: absolute;
+                display: block;
+              }
+              .imgbox_sha{
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 4;
+                background-color: #000;
+                opacity: 0;
+                filter: alpha(opacity=0);
+              }
+              span.detail{
+                display: none;
+                width: 130px;
+                height: 40px;
+                line-height: 36px;
+                border: 2px solid #fff;
+                color: #fff;
+                top: 50%;
+                left: 50%;
+                margin-top: -20px;
+                margin-left: -65px;
+                font-size: 16px;
+                text-align: center;
+                z-index: 5;
+              }
+            }
+          }
+        }
+        p.morecorp{
+          margin-top: 30px;
+          text-align: center;
+          color: #a5a5a5;
+        }
+      }
+    }
 }
 
 
