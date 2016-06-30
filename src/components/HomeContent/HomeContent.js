@@ -78,8 +78,8 @@ export default class HomeContent extends Component {
                 </div>
                 <div className={style.lld_mid}>
                   <p className={`${style.mup} ${style.mtup}`}>
-                    <Go my="/lld/fqddetail/" target="_blank">
-                    </Go>
+                    <Link to="/fqddetail/" target="_blank">
+                    </Link>
                   </p>
                   <div className={style.mfqd}>
                     <ul className={`${style.midlist} clearfix`}>
@@ -98,8 +98,8 @@ export default class HomeContent extends Component {
                     </ul>
                   </div>
                   <p className={style.lld_link}>
-                    <Go my="/lld/fqddetail/" className={style.but} target="_blank">查看详情</Go>
-                    <Go my="/lld/applyfqd/" className={style.but_link} target="_blank">快速申请</Go>
+                    <Link to="/fqddetail/" className={style.but} target="_blank">查看详情</Link>
+                    <Link to="/applyfqd/" className={style.but_link} target="_blank">快速申请</Link>
                   </p>
                 </div>
             </div>

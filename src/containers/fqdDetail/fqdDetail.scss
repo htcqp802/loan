@@ -2,7 +2,9 @@
 .banner{
   width: 100%;
   height: 420px;
-  background: url('./applyloan_detail_banner.jpg') center center no-repeat #7abae0;
+  position: relative;
+  top: -1px;
+  background: url('./applyfqd_detail_banner.jpg') center center no-repeat #7abae0;
 
   a.btnApply{
     display: block;
@@ -35,10 +37,10 @@
       text-align: center;
     }
     .descTitle{
-      width: 574px;
+      width: 587px;
       height: 112px;
       margin: 50px auto;
-      background: url('./applyloan_detail_desc.png') center center no-repeat;
+      background: url('./applyfqd_detail_desc.png') center center no-repeat;
     }
     .descTable{
       margin: 0 auto;
@@ -65,8 +67,10 @@
             color: #666;
             text-align: left;
             line-height: 60px;
+            position: relative;
             span{
               margin-left: 25px;
+              position: absolute;
             }
             span.face{
               width: 30px;
@@ -76,7 +80,7 @@
               top:10px;
             }
             span.face01{
-              background: url('./applyloan_detail_face01.png') center center no-repeat;
+              background: url('./applyfqd_detail_face01.png') center center no-repeat;
             }
             span.face02{
               background: url('./applyloan_detail_face02.png') center center no-repeat;
@@ -100,7 +104,7 @@
       width: 430px;
       height: 77px;
       margin: 0 auto;
-      background: url('./applyloan_detail_qatitle.png') center center no-repeat;
+      background: url('./applyfqd_detail_qatitle.png') center center no-repeat;
     }
     .qaContent{
       margin-top: 40px;
@@ -116,7 +120,7 @@
       }
       .question{
         .qicon{
-          background-color: #75a8df;
+          background-color: #38cdb4;
           display: inline-block;
           color: #fff;
           position: relative;
@@ -125,7 +129,7 @@
         span.title{
           margin-left: 12px;
           font-size: 24px;
-          color: #75a8df;
+          color: #38cdb4;
 
         }
       }
@@ -138,8 +142,8 @@
           line-height: 34px;
         }
         .aicon{
-          background-color: #cedbea;
-          color: #75a8df;
+          background-color: #d9efeb;
+          color: #38cdb4;
           padding-top: 1px;
           position: absolute;
           top: 6px;
@@ -175,6 +179,12 @@
               margin-right:0;
             }
           }
+          .fqdcase01{
+            width: 971px;
+            height: 190px;
+            margin: 20px auto;
+            background: url('./applyfqd_detail_case01.png') center center no-repeat;
+          }
         }
 
       }
@@ -190,7 +200,7 @@
         display: inline-block;
         background-color: #f27421;
         text-align: center;
-        padding: 12px 50px;
+        padding: 12px 0px;
         border-radius: 4px;
         font-size: 18px;
         color: #fff;
@@ -200,19 +210,5 @@
       }
     }
   }
-  .qaicon{
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    border-radius: 2px;
-    text-align: center;
-    line-height: 16px;
-  }
-  .qicon{
-    background-color: #75a8df;
-    display: inline-block;
-    color: #fff;
-    position: relative;
-    top: -5px;
-  }
+
 }

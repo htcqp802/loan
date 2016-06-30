@@ -2,7 +2,7 @@
  * Created by dell on 2016/6/29.
  */
 import React,{Component} from 'react';
-import {Link} from 'react-router';
+import {Go} from 'components';
 
 export default class fjdDetail extends Component {
   render() {
@@ -76,7 +76,7 @@ export default class fjdDetail extends Component {
                 <div className={`${style.qaicon} ${style.aicon} `}>A</div>
                 <div className={style.answerContent}>
                   <p className={style.text1} >房产位于北京，有按揭的用户、银行办理抵押房产的用户均可申请凤加贷，适用于按揭买房、装修、留学、旅游、个体经营等所有消费或经营类用途。</p>
-                  <ul className={style.clearfix}>
+                  <ul className={`clearFix`}>
                     <li>
                       <div className={style.img} style={{background: "url(//img1.fengjr.com/public/dist/20160628172438/img/lld/applyloan_detail_case01-7f906a94.png) center center no-repeat"}}></div>
                       <p className={style.name}>案例一：</p>
