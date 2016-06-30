@@ -2,7 +2,7 @@
  * Created by dell on 2016/6/29.
  */
 import React,{Component} from 'react';
-import {Go} from 'components';
+import {Link} from 'react-router';
 
 export default class fjdDetail extends Component {
   render() {
@@ -10,7 +10,7 @@ export default class fjdDetail extends Component {
     return (
       <div>
         <div className={style.banner}>
-          <Go my="/lld/applyloan" className={style.btnApply}>立即申请</Go>
+          <Link to="/applyloan" className={style.btnApply}>立即申请</Link>
         </div>
         <div className={style.containerDesc}>
           <div className={style.containerDiv}>
@@ -144,7 +144,7 @@ export default class fjdDetail extends Component {
               </div>
             </div>
             <div className={style.footerslink} >
-              <Go className={style.btnApply} my="/lld/applyloan">立即申请</Go>
+              <Link className={style.btnApply} to="/applyloan">立即申请</Link>
             </div>
           </div>
         </div>

@@ -50,7 +50,8 @@
     //return 后面必须加空格
     "space-return-throw-case":0,
     //括号必须对齐
-    "brace-style":0
+    "brace-style":0,
+    "react/sort-comp":0
   },
   "plugins": [
     "react", "import"

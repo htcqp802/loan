@@ -36,7 +36,7 @@ export function integer(value) {
 }
 export function decimal(value) {
   if(!/^(([0-9]+)|([0-9]+\.[0-9]{1,2}))$/.test(value)){
-      return '请输入数字,最多可保留2位小数';
+      return '请输入数字,最多可保留2位小数,不可为负数';
   }
 }
 
@@ -64,6 +64,12 @@ export function match(field) {
       }
     }
   };
+}
+
+export function idCard(value) {
+  if(!/(^\d{15}$)|(^\d{14}(\d|X|x)$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(value)){
+    return '请输入正确的身份证号'
+  }
 }
 
 export function createValidator(rules) {

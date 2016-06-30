@@ -29,7 +29,7 @@
         "NODE_ENV": "development",
         "HOST": "lld.fengjr.inc",
         "PORT": 3000,
-        "APIHOST": "www.fengjr.com",
+        "APIHOST": "test.fengjr.inc",
         "APIPORT": 80
       }
     },
@@ -64,6 +64,7 @@
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",
     "concurrently": "^2.1.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "file-loader": "^0.8.5",

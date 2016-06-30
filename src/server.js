@@ -18,6 +18,8 @@ import {ReduxAsyncConnect, loadOnServer} from 'redux-async-connect';
 import {Provider} from 'react-redux';
 import ApiClient from './helpers/ApiClient';
 import SocketIo from 'socket.io';
+import cookieParser from 'cookie-parser';
+
 
 const app = new Express();
 const server = new http.Server(app);
@@ -35,6 +37,7 @@ const proxy = httpProxy.createProxyServer({
     ws: false
 });
 
+app.use(cookieParser());
 //启用文件压缩
 app.use(compression());
 //配置ico
@@ -43,6 +46,8 @@ app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 //配置代理地址
 app.use((req, res,next) =>{
+    req.headers['Authorization'] = 'Bearer '+ req.cookies.ccat;
+    console.log(req.headers);
     if(req.url.indexOf('/api/v2') > -1 ){
         proxy.web(req, res)
     }else{

@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
-import {ApplyLoanForm1} from 'components';
+import {ApplyLoanForm1,ApplyLoanForm2} from 'components';
 import {connect} from 'react-redux';
 
 @connect(
@@ -42,6 +42,7 @@ export default class ApplyLoan extends Component {
                         </div>
                         <div style={{display:step === 2 ? "block" : "none"}}>
                             <div className={style.step2}></div>
+                            <ApplyLoanForm2></ApplyLoanForm2>
                         </div>
                 </div>
             </div>

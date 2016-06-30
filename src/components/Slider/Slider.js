@@ -30,6 +30,9 @@ export default class Slider extends Component {
     stopInterval(){
         clearInterval(this.interval);
     }
+    componentWillUnmount(){
+        this.stopInterval();
+    }
     render() {
         const style = require('./Slider.scss');
         const sliders = this.props.children;

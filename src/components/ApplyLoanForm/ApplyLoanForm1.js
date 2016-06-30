@@ -1,13 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
-import form1Validation from './form1Validation';
+import {form1Validation} from './applyLoanValidation';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import  * as applyLoan from 'redux/modules/applyLoan';
 
 @reduxForm({
     form: 'applyLoan',
-    fields: ['houseAvailable', 'amount', 'lifeTime'],
+    fields: ['houseAvailable', 'moneyBorrow', 'loanPeriod'],
     validate: form1Validation
 })
 
@@ -31,7 +31,7 @@ export default class ApplyLoanForm1 extends Component {
             invalid,
             pristine,
             submitting,
-            fields:{amount, lifeTime, houseAvailable},
+            fields:{moneyBorrow, loanPeriod, houseAvailable},
             setStep
         } = this.props;
         return (
@@ -51,15 +51,17 @@ export default class ApplyLoanForm1 extends Component {
                 </tr>
                 <tr>
                     <td className="required">融资金融:</td>
-                    <td><input type="text" {...amount} className="hasUnit" placeholder="20-300"/><span className="unit">万元</span>
+                    <td><input type="text" {...moneyBorrow} className="hasUnit" placeholder="20-300"/><span
+                        className="unit">万元</span>
                     </td>
-                    {amount.error && amount.touched && <td>{amount.error}</td>}
+                    {moneyBorrow.error && moneyBorrow.touched && <td>{moneyBorrow.error}</td>}
                 </tr>
                 <tr>
                     <td className="required">融资期限:</td>
-                    <td><input type="text" {...lifeTime} className="hasUnit" placeholder="1-12"/><span className="unit">个月</span>
+                    <td><input type="text" {...loanPeriod} className="hasUnit" placeholder="1-12"/><span
+                        className="unit">个月</span>
                     </td>
-                    {lifeTime.error && lifeTime.touched && <td>{lifeTime.error}</td>}
+                    {loanPeriod.error && loanPeriod.touched && <td>{loanPeriod.error}</td>}
                 </tr>
                 <tr>
                     <td>还款方式:</td>

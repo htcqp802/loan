@@ -20,10 +20,14 @@ export default class ApiClient {
                 if (params) {
                     request.query(params);
                 }
-
                 if (__SERVER__ && req.get('cookie')) {
                     request.set('cookie', req.get('cookie'));
                 }
+                // console.log(request)
+                // if(request.get('cookie') && request.get('cookie').indexOf('ccat=') > -1){
+                //
+                //     console.log(request)
+                // }
 
                 if (data) {
                     request.send(data);
