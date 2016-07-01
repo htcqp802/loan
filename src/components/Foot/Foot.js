@@ -154,7 +154,7 @@ export default class Foot extends Component {
                                 ></a>
                             </div>
                         </div>
-                        <div style={{width:"185px",textAlign:"right"}} >
+                        <div style={{width:"180px",textAlign:"right",float:"right"}} >
                             <p>京公网安备 11010502030877号</p>
                             <p>投资有风险，购买需谨慎</p>
                         </div>

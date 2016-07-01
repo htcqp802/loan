@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Item from './Item';
+
 export default class Slider extends Component {
     static propTypes = {
         children: PropTypes.array
@@ -29,12 +30,15 @@ export default class Slider extends Component {
     stopInterval(){
         clearInterval(this.interval);
     }
+    componentWillUnmount(){
+        this.stopInterval();
+    }
     render() {
         const style = require('./Slider.scss');
         const sliders = this.props.children;
         const {width, height} = this.props;
         return (
-            <div style={{width:width,height:height}} className={style.slider}>
+            <div style={{width:width,height:height,top:-1}}  className={style.slider}>
                 <ul className={style.sliderWraper}>
                     {
                         sliders.map((item, index)=> {

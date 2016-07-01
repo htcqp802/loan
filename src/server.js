@@ -18,6 +18,8 @@ import {ReduxAsyncConnect, loadOnServer} from 'redux-async-connect';
 import {Provider} from 'react-redux';
 import ApiClient from './helpers/ApiClient';
 import SocketIo from 'socket.io';
+import cookieParser from 'cookie-parser';
+
 
 const app = new Express();
 const server = new http.Server(app);
@@ -35,6 +37,7 @@ const proxy = httpProxy.createProxyServer({
     ws: false
 });
 
+app.use(cookieParser());
 //启用文件压缩
 app.use(compression());
 //配置ico
@@ -59,6 +62,7 @@ proxy.on('error', (error, req, res) => {
     if (!res.headersSent) {
         res.writeHead(500, {'content-type': 'application/json'});
     }
+
 
     json = {error: 'proxy_error', reason: error.message};
     res.end(JSON.stringify(json));

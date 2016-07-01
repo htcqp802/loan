@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import {IndexLink} from 'react-router';
+import {Link} from 'react-router';
 import {Go} from 'components';
 
 
@@ -26,9 +26,9 @@ export default class HomeContent extends Component {
               <div className={`${style.lld_con} ${style.lld_con1} container`}>
                 <div className={style.lld_left}>
                   <div className={style.posimgshow}>
-                    <Go my="/lld/fjddetail" target="_blank">
+                    <Link to="/fjddetail" target="_blank">
                       <img src={lldLeftimg1} />
-                    </Go>
+                    </Link>
                   </div>
                   <div className={style.leftbgshow}>
                     <p className={style.lup}>率先入驻北京地区</p>
@@ -37,8 +37,8 @@ export default class HomeContent extends Component {
                 </div>
                 <div className={style.lld_mid}>
                   <p className={style.mup}>
-                    <Go my="/lld/fjddetail" target="_blank">
-                    </Go>
+                    <Link to="/fjddetail" target="_blank">
+                    </Link>
                   </p>
                   <div className={style.mfjd}>
                     <ul className={`${style.midlist} clearFix`}>
@@ -57,21 +57,19 @@ export default class HomeContent extends Component {
                     </ul>
                   </div>
                   <p className={style.lld_link} >
-                    <Go my="/lld/fjddetail" target="_blank" className={style.but}>
-                      查看详情
-                    </Go>
-                    <Go my="/lld/applyloan" target="_blank" className={style.but_link}>
+                    <Link to="/fjdDetail" className={style.but}>查看详情</Link>
+                    <Link to="/applyloan" target="_blank" className={style.but_link}>
                       快速申请
-                    </Go>
+                    </Link>
                   </p>
                 </div>
               </div>
               <div className={`${style.lld_con} ${style.lld_con2} container`}>
                 <div className={style.lld_left}>
                   <div className={style.posimgshow}>
-                    <Go my="/lld/fqddetail/" target="_blank">
+                    <Link to="/fqddetail" target="_blank">
                       <img src={lldLeftimg2} />
-                    </Go>
+                    </Link>
                   </div>
                   <div className={style.leftbgshow}>
                     <p className={style.lup}>&nbsp;</p>
@@ -80,8 +78,8 @@ export default class HomeContent extends Component {
                 </div>
                 <div className={style.lld_mid}>
                   <p className={`${style.mup} ${style.mtup}`}>
-                    <Go my="/lld/fqddetail/" target="_blank">
-                    </Go>
+                    <Link to="/fqddetail/" target="_blank">
+                    </Link>
                   </p>
                   <div className={style.mfqd}>
                     <ul className={`${style.midlist} clearFix`}>
@@ -100,8 +98,8 @@ export default class HomeContent extends Component {
                     </ul>
                   </div>
                   <p className={style.lld_link}>
-                    <Go my="/lld/fqddetail/" className={style.but} target="_blank">查看详情</Go>
-                    <Go my="/lld/applyfqd/" className={style.but_link} target="_blank">快速申请</Go>
+                    <Link to="/fqddetail/" className={style.but} target="_blank">查看详情</Link>
+                    <Link to="/applyfqd/" className={style.but_link} target="_blank">快速申请</Link>
                   </p>
                 </div>
             </div>

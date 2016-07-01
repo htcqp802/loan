@@ -4,3 +4,6 @@ export Go from './Go/Go';
 export Slider from './Slider/Slider';
 export HomeContent from './HomeContent/HomeContent';
 //暂时测试使用
+
+export ApplyLoanForm1 from './ApplyLoanForm/ApplyLoanForm1';
+export ApplyLoanForm2 from './ApplyLoanForm/ApplyLoanForm2';

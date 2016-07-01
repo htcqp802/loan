@@ -53,7 +53,7 @@ export default class Item extends Component {
             backgroundPosition:"50% 0"
         }
         return (
-            <li style={style}>
+            <li style={style} >
                 <a href={slider.href} target="_blank" title={slider.atl}>
                 </a>
             </li>
