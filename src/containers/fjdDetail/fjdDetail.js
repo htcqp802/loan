@@ -2,7 +2,8 @@
  * Created by dell on 2016/6/29.
  */
 import React,{Component} from 'react';
-import {Go} from 'components';
+import {Link} from 'react-router';
+
 
 export default class fjdDetail extends Component {
   render() {

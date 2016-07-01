@@ -17,7 +17,8 @@ module.exports = {
     context: path.resolve(__dirname, '..'),
     entry: {
         'main': [
-            './src/client.js'
+            './src/client.js',
+            './src/theme/common.scss'
         ]
     },
     output: {

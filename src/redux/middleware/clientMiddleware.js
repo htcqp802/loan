@@ -17,7 +17,10 @@ export default function clientMiddleware(client) {
           (result) => {
             next({...rest, result, type: SUCCESS})
           },
-          (error) => next({...rest, error, type: FAILURE})
+          (error) => {
+            console.log({...rest, error, type: FAILURE});
+            next({...rest, error, type: FAILURE})
+          }
       ).catch((error)=> {
         console.error('中间件错误:', error);
         next({...rest, error, type: FAILURE});

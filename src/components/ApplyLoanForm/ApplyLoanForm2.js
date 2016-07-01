@@ -4,6 +4,7 @@ import {form2Validation, rightKinds} from './applyLoanValidation';
 import  * as applyLoan from 'redux/modules/applyLoan';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import Caculate from './Caculate';
 
 @reduxForm({
     form: 'applyLoan',
@@ -20,10 +21,17 @@ import {connect} from 'react-redux';
         'owner',            //姓名
         'cardNoHouse'     //身份证
     ],
+    destroyOnUnmount:false,
     validate: form2Validation
 })
-@connect(()=> ({}),
-    dispatch=>bindActionCreators(applyLoan,dispatch)
+@connect(
+    state=> ({
+        loading: state.applyLoan.loading,
+        data: state.applyLoan.data,
+        loadError: state.applyLoan.loadError,
+        result:state.applyLoan.result
+    }),
+    dispatch=>bindActionCreators(applyLoan, dispatch)
 )
 
 export default class ApplyLoanForm2 extends Component {
@@ -33,14 +41,25 @@ export default class ApplyLoanForm2 extends Component {
         invalid: PropTypes.bool,
         pristine: PropTypes.bool,
         submitting: PropTypes.bool,
-        setStep: PropTypes.func.isRequired,
-        loadCommunity:PropTypes.func.isRequired
+        loadCommunity: PropTypes.func.isRequired,
+        loading: PropTypes.bool,
+        data: PropTypes.object,
+        loadError: PropTypes.object,
+        result:PropTypes.number,
+        handleSubmit:PropTypes.func.isRequired,
+        previousPage:PropTypes.func.isRequired
     }
 
+    state = {
+        caculateShow: false
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps)
+    }
 
     render() {
         const {
-            setStep,
             fields:{
                 rightKind,
                 communityName,
@@ -52,12 +71,16 @@ export default class ApplyLoanForm2 extends Component {
                 owner,
                 cardNoHouse
             },
+            loading,
             invalid,
             pristine,
             submitting,
-            loadCommunity
+            loadCommunity,
+            previousPage,
+            handleSubmit
         } = this.props;
-        const smallStyle = {width: 130,marginLeft:20}
+        const style = require('./ApplyLoanForm.scss');
+        const smallStyle = {width: 130, marginLeft: 20}
         return (
             <table className="form-table" style={{margin:"auto"}}>
                 <tbody>
@@ -74,8 +97,16 @@ export default class ApplyLoanForm2 extends Component {
                 <tr>
                     <td className="required">小区名称:</td>
                     <td colSpan="2" style={{position:"relative"}}>
-                        {communityName.error && communityName.touched && <span style={{fontSize:12,position:"absolute",top:-10}} className="error">{communityName.error}</span>}
-                        <input style={{width:200}} type="text" onKeyUp={event=>loadCommunity(event.target.value)} placeholder="请输入小区名称" {...communityName}/>
+                        {communityName.error && communityName.touched &&
+                        <span style={{fontSize:12,position:"absolute",top:-10}}
+                              className="error">{communityName.error}</span>}
+                        <div className={style.inputGroup}>
+                            <input style={{width:200}} type="text" onKeyUp={event=>loadCommunity(event.target.value)}
+                                   placeholder="请输入小区名称" {...communityName}/>
+                            {communityName.active && loading && <div className={style.prompt}>数据加载中 请稍后......</div>}
+
+                        </div>
+
                         <select style={smallStyle}>
                             <option value="请输入楼号">请输入楼号</option>
                         </select>
@@ -96,9 +127,16 @@ export default class ApplyLoanForm2 extends Component {
                 </tr>
                 <tr>
                     <td className="required">贷款余额:</td>
-                    <td><input type="text" className="hasUnit" {...loanBankAcc2} /><span className="unit">元</span>
+                    <td style={{position:"relative"}}>{loanBankAcc2.error && loanBankAcc2.touched &&
+                    <span style={{fontSize:12,position:"absolute",top:-10}}
+                          className="error">{loanBankAcc2.error}</span>}
+                        <input type="text" className="hasUnit"   {...loanBankAcc2} /><span className="unit">元</span>
+
                     </td>
-                    {loanBankAcc2.error && loanBankAcc2.touched && <td className="error">{loanBankAcc2.error}</td>}
+                    <td>
+                        <div className={style.caculateBtn} onClick={()=>this.setState({caculateShow:true})}></div>
+                        <Caculate show={this.state.caculateShow} close={()=>this.setState({caculateShow:false})}></Caculate>
+                    </td>
                 </tr>
                 <tr>
                     <td>使用情况:</td>
@@ -148,8 +186,9 @@ export default class ApplyLoanForm2 extends Component {
                 </tr>
                 <tr>
                     <td style={{textAlign:"center"}} colSpan="3">
-                        <button onClick={()=>setStep(1)}>上一步</button>
-                        <button style={{marginLeft:30}} disabled={invalid || pristine || submitting} onClick={()=>setStep(2)}>
+                        <button onClick={previousPage}>上一步</button>
+                        <button style={{marginLeft:30}} disabled={invalid || pristine || submitting}
+                                onClick={handleSubmit}>
                             我还能借多少
                         </button>
                     </td>

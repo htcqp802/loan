@@ -15,3 +15,12 @@ export const form2Validation = createValidator({
     loanBankAcc2:[required,decimal],
     cardNoHouse:[idCard]
 })
+
+export const caculateValidation = createValidator({
+    cAmount:[required,decimal],
+    loanTime:[required,integer],
+    payWay:[required,oneOf(['1','2','3'])],
+    cNll:[required,decimal],
+    payedYear:[required,integer],
+    payedMounth:[required,integer]
+})

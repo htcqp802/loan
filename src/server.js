@@ -46,8 +46,6 @@ app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 //配置代理地址
 app.use((req, res,next) =>{
-    req.headers['Authorization'] = 'Bearer '+ req.cookies.ccat;
-    console.log(req.headers);
     if(req.url.indexOf('/api/v2') > -1 ){
         proxy.web(req, res)
     }else{
@@ -64,6 +62,7 @@ proxy.on('error', (error, req, res) => {
     if (!res.headersSent) {
         res.writeHead(500, {'content-type': 'application/json'});
     }
+
 
     json = {error: 'proxy_error', reason: error.message};
     res.end(JSON.stringify(json));

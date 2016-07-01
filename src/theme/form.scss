@@ -5,6 +5,7 @@
     tr {
       height: 63px;
       td {
+        position: relative;
         padding-left: 20px;
         &:first-child {
           text-align: right;

@@ -1,20 +1,14 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 import {form1Validation} from './applyLoanValidation';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import  * as applyLoan from 'redux/modules/applyLoan';
 
 @reduxForm({
     form: 'applyLoan',
     fields: ['houseAvailable', 'moneyBorrow', 'loanPeriod'],
+    destroyOnUnmount:false,
     validate: form1Validation
 })
 
-@connect(
-    ()=>({}),
-    dispatch=>bindActionCreators(applyLoan, dispatch)
-)
 export default class ApplyLoanForm1 extends Component {
 
     static propTypes = {
@@ -32,7 +26,7 @@ export default class ApplyLoanForm1 extends Component {
             pristine,
             submitting,
             fields:{moneyBorrow, loanPeriod, houseAvailable},
-            setStep
+            handleSubmit
         } = this.props;
         return (
             <table className="form-table">
@@ -75,7 +69,7 @@ export default class ApplyLoanForm1 extends Component {
                 </tr>
                 <tr>
                     <td colSpan="2">
-                        <button disabled={invalid || pristine || submitting} onClick={()=>setStep(2)}>
+                        <button disabled={invalid || pristine || submitting} onClick={handleSubmit}>
                             确认以上信息去评估借款额度
                         </button>
                     </td>
