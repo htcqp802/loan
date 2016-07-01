@@ -41,7 +41,7 @@ export default class HomeContent extends Component {
                     </Go>
                   </p>
                   <div className={style.mfjd}>
-                    <ul className={`${style.midlist} clearfix`}>
+                    <ul className={`${style.midlist} clearFix`}>
                       <li>
                         <Go className={style.changebg1}></Go>
                         <p>最低月利率1.3%</p>
@@ -84,7 +84,7 @@ export default class HomeContent extends Component {
                     </Go>
                   </p>
                   <div className={style.mfqd}>
-                    <ul className={`${style.midlist} clearfix`}>
+                    <ul className={`${style.midlist} clearFix`}>
                       <li>
                         <Go className={style.changebg6}></Go>
                         <p>最低综合成本年化11%</p>
@@ -112,7 +112,7 @@ export default class HomeContent extends Component {
               <div className={style.lld_corp}>
                 <div className={style.corp_con}>
                   <h2>融资审核金融服务机构</h2>
-                  <ul className={`${style.corplist} clearfix`}>
+                  <ul className={`${style.corplist} clearFix`}>
                     <li>
                       <Go my="/financing/zjt" target="_blank">
                         <img src={lldCcorpZjt} alt="凤凰金融"/>
