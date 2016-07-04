@@ -26,6 +26,7 @@ export default class ApplyLoan extends Component {
         const {page} = this.state;
         return (
             <div className={style.applyLoan}>
+
                 <ul className={style.path}>
                     <li><Link to="/">理理贷</Link></li>
                     <li>></li>
@@ -64,7 +65,6 @@ export default class ApplyLoan extends Component {
                         <button onClick={this.previousPage}>上一步</button>
                     </div>
                 }
-
             </div>
         )
     }

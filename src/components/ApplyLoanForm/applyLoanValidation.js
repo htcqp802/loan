@@ -8,13 +8,17 @@ export const form1Validation = createValidator({
 
 
 export const rightKinds = ["SHANG_PING_FANG"];
-export const form2Validation = createValidator({
-    rightKind: [oneOf(rightKinds)],
-    communityName: [required],
-    buildArea: [required,decimal],
-    loanBankAcc2:[required,decimal],
-    cardNoHouse:[idCard]
-})
+
+export const form2Validation = (values,props)=>{
+    const errors = {};
+    Object.keys(values).forEach((index)=>{
+        if(values[index].buildArea === ''){
+            errors.values[index].buildArea = '不能为空'
+        }
+    })
+    console.log(errors)
+    return errors;
+}
 
 export const caculateValidation = createValidator({
     cAmount:[required,decimal],
