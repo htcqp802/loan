@@ -1,4 +1,4 @@
-import {createValidator, required, integer, interval, decimal,oneOf,idCard}  from 'utils/validation';
+import {createValidator, required, integer, interval, decimal, oneOf, idCard}  from 'utils/validation';
 
 export const form1Validation = createValidator({
     houseAvailable: [required],
@@ -9,22 +9,24 @@ export const form1Validation = createValidator({
 
 export const rightKinds = ["SHANG_PING_FANG"];
 
-export const form2Validation = (values,props)=>{
+
+export const form2Validation = (values)=> {
     const errors = {};
-    Object.keys(values).forEach((index)=>{
-        if(values[index].buildArea === ''){
-            errors.values[index].buildArea = '不能为空'
-        }
-    })
-    console.log(errors)
+    errors.buildings = values.buildings.map(createValidator({
+        rightKind: [oneOf(rightKinds)],
+        communityName: [required],
+        buildArea: [required, decimal],
+        loanBankAcc2: [required, decimal],
+        cardNoHouse: [idCard]
+    }))
     return errors;
 }
 
 export const caculateValidation = createValidator({
-    cAmount:[required,decimal],
-    loanTime:[required,integer],
-    payWay:[required,oneOf(['1','2','3'])],
-    cNll:[required,decimal],
-    payedYear:[required,integer],
-    payedMounth:[required,integer]
+    cAmount: [required, decimal],
+    loanTime: [required, integer],
+    payWay: [required, oneOf(['1', '2', '3'])],
+    cNll: [required, decimal],
+    payedYear: [required, integer],
+    payedMounth: [required, integer]
 })

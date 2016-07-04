@@ -80,6 +80,7 @@ export function createValidator(rules) {
             // console.log([].concat(rules[key]))
             const rule = join([].concat(rules[key]));
             const error = rule(data[key], data);
+
             if (error) {
                 errors[key] = error;
             }

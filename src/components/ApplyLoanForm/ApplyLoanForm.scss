@@ -30,3 +30,13 @@
 .addMoreBg{
   background-color: #eee;
 }
+
+.close{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: url("./lld_close.png") no-repeat center center;;
+  cursor: pointer;
+}

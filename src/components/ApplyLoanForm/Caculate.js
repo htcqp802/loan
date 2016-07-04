@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import {reduxForm} from 'redux-form';
+import {reduxForm, change} from 'redux-form';
 import {caculateValidation} from './applyLoanValidation';
-import * as applyLoanAction from 'redux/modules/applyLoan';
 import {connect} from 'react-redux';
 
 @reduxForm({
@@ -11,7 +10,7 @@ import {connect} from 'react-redux';
 })
 @connect(
     ()=>({}),
-    {...applyLoanAction}
+    {change}
 )
 export default class Caculate extends Component {
 
@@ -20,8 +19,9 @@ export default class Caculate extends Component {
         invalid: PropTypes.bool,
         pristine: PropTypes.bool,
         submitting: PropTypes.bool,
-        caculate: PropTypes.func.isRequired,
-        handleSubmit: PropTypes.func.isRequired
+        handleSubmit: PropTypes.func.isRequired,
+        change: PropTypes.func.isRequired,
+        name: PropTypes.string.isRequired
     }
 
 
@@ -34,8 +34,9 @@ export default class Caculate extends Component {
             invalid,
             pristine,
             submitting,
-            caculate,
-            handleSubmit
+            handleSubmit,
+            change,
+            name
         } = this.props;
         const inputError = (field)=>
         field.touched && field.error &&
@@ -117,7 +118,23 @@ export default class Caculate extends Component {
                                 <button disabled={submitting || invalid || pristine}
                                         onClick={handleSubmit(
                                         values=>{
-                                            caculate(values);
+                                        const {payWay, cAmount, loanTime, cNll, payedYear, payedMounth} = values;
+                                         let result;
+                                            switch (Number(payWay)) {
+                                                case 1:
+                                                    result = cAmount*10000 * (1 - (payedYear * 12 + payedMounth) / (loanTime * 12));
+                                                    break;
+                                                case 2:
+                                                    result = cAmount*10000 * (1 - (Math.pow(1 + (cNll/100) / 12, (payedYear * 12 + payedMounth)) - 1) / (Math.pow(1 + (cNll/100) / 12, loanTime * 12) - 1));
+                                                    break;
+                                                case 3:
+                                                    result = (payedYear * 12 + payedMounth) < loanTime * 12 ? cAmount*10000 : 0;
+                                                    break;
+                                                default:
+                                                    return result;
+                                            }
+                                            console.log(name)
+                                            change('applyLoan',name,result.toFixed(2));
                                             close();
                                         }
                                         )}>

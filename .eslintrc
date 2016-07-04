@@ -51,7 +51,8 @@
     "space-return-throw-case":0,
     //括号必须对齐
     "brace-style":0,
-    "react/sort-comp":0
+    "react/sort-comp":0,
+    "no-shadow":0
   },
   "plugins": [
     "react", "import"

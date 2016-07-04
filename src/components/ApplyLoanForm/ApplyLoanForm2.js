@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 import {form2Validation, rightKinds} from './applyLoanValidation';
 import  * as applyLoan from 'redux/modules/applyLoan';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Caculate from './Caculate';
 
@@ -27,11 +26,9 @@ import Caculate from './Caculate';
 @connect(
     state=> ({
         loading: state.applyLoan.loading,
-        data: state.applyLoan.data,
-        loadError: state.applyLoan.loadError,
-        result: state.applyLoan.result
+        data: state.applyLoan.data
     }),
-    dispatch=>bindActionCreators(applyLoan, dispatch)
+    {...applyLoan}
 )
 
 export default class ApplyLoanForm2 extends Component {
@@ -44,21 +41,23 @@ export default class ApplyLoanForm2 extends Component {
         loadCommunity: PropTypes.func.isRequired,
         loading: PropTypes.bool,
         data: PropTypes.object,
-        loadError: PropTypes.object,
         handleSubmit: PropTypes.func.isRequired,
         previousPage: PropTypes.func.isRequired
     }
 
     state = {
-        caculateShow: false
+        caculateShow: false,
+        inputName:''
     }
 
     componentWillMount() {
         this.props.fields.buildings.addField();
     }
-    componentWillUnmount(){
+
+    componentWillUnmount() {
         this.props.fields.buildings.removeField();
     }
+
     render() {
         const {
             fields:{
@@ -70,8 +69,7 @@ export default class ApplyLoanForm2 extends Component {
             submitting,
             loadCommunity,
             previousPage,
-            handleSubmit,
-            result
+            handleSubmit
         } = this.props;
         const style = require('./ApplyLoanForm.scss');
         const smallStyle = {width: 130, marginLeft: 20}
@@ -79,7 +77,10 @@ export default class ApplyLoanForm2 extends Component {
             <div>
                 {
                     buildings.map((building, index)=>
-                        <table key={index} className={index > 0 ? `${style.addMoreBg} form-table` : "form-table"} style={{margin:"auto"}}>
+                        <table key={index} className={index > 0 ? `${style.addMoreBg} form-table` : "form-table"}
+                               style={{margin:"20px auto",position:"relative"}}>
+                            {index > 0 &&
+                            <thead className={style.close} onClick={()=>buildings.removeField(index)}></thead>}
                             <tbody >
                             <tr>
                                 <td className="required">房屋性质：</td>
@@ -133,15 +134,17 @@ export default class ApplyLoanForm2 extends Component {
                                 <span style={{fontSize:12,position:"absolute",top:-10}}
                                       className="error">{building.loanBankAcc2.error}</span>}
                                     <input type="text" className="hasUnit"
-                                           value={result}  {...building.loanBankAcc2} /><span
+                                         {...building.loanBankAcc2} /><span
                                         className="unit">元</span>
 
                                 </td>
                                 <td>
                                     <div className={style.caculateBtn}
-                                         onClick={()=>this.setState({caculateShow:true})}></div>
+                                         onClick={()=>{
+                                         this.setState({caculateShow:true,inputName:building.loanBankAcc2.name})
+                                         }}></div>
                                     <Caculate show={this.state.caculateShow}
-                                              close={()=>this.setState({caculateShow:false})}></Caculate>
+                                              close={()=>this.setState({caculateShow:false})} name={this.state.inputName}></Caculate>
                                 </td>
                             </tr>
                             <tr>
@@ -197,12 +200,12 @@ export default class ApplyLoanForm2 extends Component {
                 }
                 <table className="form-table" style={{margin:"auto"}}>
                     <tbody>
-                    <tr>
+                    {buildings.length < 3 && <tr>
                         <td></td>
-                        <td >
+                        <td>
                             <button className={style.addMore} onClick={()=>buildings.addField()}></button>
                         </td>
-                    </tr>
+                    </tr>}
                     <tr>
                         <td style={{textAlign:"center"}} colSpan="3">
                             <button onClick={previousPage}>上一步</button>
