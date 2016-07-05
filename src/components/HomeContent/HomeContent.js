@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {Go} from 'components';
 
-
 /**
  * 后期根据需求进行再次拆分
  */
@@ -20,6 +19,7 @@ export default class HomeContent extends Component {
         const lldCorpWhxy = require('./lld_corp_whxy.jpg');
         return (
             <div className={style.HomeContent}>
+
               <div className={`${style.lld_nav} container`}>
                 <img src={lldNav} className={style.lldNav} alt="凤凰金融"/>
               </div>
@@ -114,15 +114,15 @@ export default class HomeContent extends Component {
                     <li>
                       <Go my="/financing/zjt" target="_blank">
                         <img src={lldCcorpZjt} alt="凤凰金融"/>
-                        <div className={style.imgbox} style={{opacity: 0}}></div>
-                        <span className={style.detail} style={{display: 'none',opacity: 1}}>专题介绍</span>
+                        <div className={style.imgbox_sha}></div>
+                        <span className={style.detail} >专题介绍</span>
                       </Go>
                     </li>
                     <li>
                       <Go my="/financing/gdyd" target="_blank">
                         <img src={lldCorpGgdyd} alt="凤凰金融"/>
-                        <div className={style.imgbox_sha} style={{opacity: 0}}></div>
-                        <span className={style.detail} style={{display: 'none'}}>专题介绍</span>
+                        <div className={style.imgbox_sha}></div>
+                        <span className={style.detail}>专题介绍</span>
                       </Go>
                     </li>
                     <li>
