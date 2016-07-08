@@ -36,7 +36,7 @@ export function integer(value) {
 }
 export function decimal(value) {
     if (!/^(([0-9]+)|([0-9]+\.[0-9]{1,2}))$/.test(value)) {
-        return '请输入数字,最多可保留2位小数,不可为负数';
+        return '请输入正数,可保留2位小数';
     }
 }
 
@@ -77,10 +77,8 @@ export function createValidator(rules) {
     return (data = {}) => {
         const errors = {};
         Object.keys(rules).forEach((key) => {
-            // console.log([].concat(rules[key]))
             const rule = join([].concat(rules[key]));
             const error = rule(data[key], data);
-
             if (error) {
                 errors[key] = error;
             }

@@ -7,3 +7,4 @@ export HomeContent from './HomeContent/HomeContent';
 
 export ApplyLoanForm1 from './ApplyLoanForm/ApplyLoanForm1';
 export ApplyLoanForm2 from './ApplyLoanForm/ApplyLoanForm2';
+export ApplyLoanForm3 from './ApplyLoanForm/ApplyLoanForm3';

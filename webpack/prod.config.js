@@ -18,7 +18,7 @@ module.exports = {
     entry: {
         'main': [
             './src/client.js',
-            './src/theme/common.scss'
+            './src/theme/reset.scss'
         ]
     },
     output: {

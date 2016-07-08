@@ -1,34 +1,37 @@
 import React, {Component, PropTypes} from 'react';
-import {reduxForm} from 'redux-form';
+import {reduxForm, change} from 'redux-form';
 import {form2Validation, rightKinds} from './applyLoanValidation';
 import  * as applyLoan from 'redux/modules/applyLoan';
 import {connect} from 'react-redux';
 import Caculate from './Caculate';
 
+const style = require('./ApplyLoanForm.scss');
+
 @reduxForm({
     form: 'applyLoan',
     fields: [
-        'buildings[].rightKind',       //房屋性质
-        'buildings[].communityName',   //小区名
-        'buildings[].buildingNumber',
-        'buildings[].roomNumber',
-        'buildings[].buildArea',       //面积
-        'buildings[].loanBankAcc2',   //贷款余额
-        'buildings[].useState',        //使用情况
-        'buildings[].direction',        //房屋朝向
-        'buildings[].propNo',          //产权证
-        'buildings[].owner',            //姓名
-        'buildings[].cardNoHouse'     //身份证
+        'houseInfoList[].right_kind',       //房屋性质
+        'houseInfoList[].communityName',   //小区名
+        'houseInfoList[].communityID',
+        'houseInfoList[].buildingNumber',
+        'houseInfoList[].roomNumber',
+        'houseInfoList[].build_area',       //面积
+        'houseInfoList[].loan_bank_acc2',   //贷款余额
+        'houseInfoList[].use_state',        //使用情况
+        'houseInfoList[].direction',        //房屋朝向
+        'houseInfoList[].prop_no',          //产权证
+        'houseInfoList[].owner',            //姓名
+        'houseInfoList[].card_no_house',     //身份证
+        'houseInfoList[].place',
+        'houseInfoList[].city'
     ],
     destroyOnUnmount: false,
     validate: form2Validation
 })
 @connect(
     state=> ({
-        loading: state.applyLoan.loading,
-        data: state.applyLoan.data
-    }),
-    {...applyLoan}
+        forms: state.form.applyLoan
+    })
 )
 
 export default class ApplyLoanForm2 extends Component {
@@ -38,172 +41,46 @@ export default class ApplyLoanForm2 extends Component {
         invalid: PropTypes.bool,
         pristine: PropTypes.bool,
         submitting: PropTypes.bool,
-        loadCommunity: PropTypes.func.isRequired,
-        loading: PropTypes.bool,
-        data: PropTypes.object,
         handleSubmit: PropTypes.func.isRequired,
-        previousPage: PropTypes.func.isRequired
+        previousPage: PropTypes.func.isRequired,
+
     }
 
-    state = {
-        caculateShow: false,
-        inputName:''
-    }
 
     componentWillMount() {
-        this.props.fields.buildings.addField();
-    }
-
-    componentWillUnmount() {
-        this.props.fields.buildings.removeField();
+        this.props.fields.houseInfoList.addField();
     }
 
     render() {
         const {
             fields:{
-                buildings
+                houseInfoList
             },
-            loading,
             invalid,
             pristine,
             submitting,
-            loadCommunity,
             previousPage,
             handleSubmit
         } = this.props;
-        const style = require('./ApplyLoanForm.scss');
-        const smallStyle = {width: 130, marginLeft: 20}
+
+
         return (
             <div>
                 {
-                    buildings.map((building, index)=>
-                        <table key={index} className={index > 0 ? `${style.addMoreBg} form-table` : "form-table"}
-                               style={{margin:"20px auto",position:"relative"}}>
-                            {index > 0 &&
-                            <thead className={style.close} onClick={()=>buildings.removeField(index)}></thead>}
-                            <tbody >
-                            <tr>
-                                <td className="required">房屋性质：</td>
-                                <td>
-                                    <select {...building.rightKind}>
-                                        <option value="请选择">请选择</option>
-                                        <option value={rightKinds[0]}>住宅</option>
-                                    </select>
-                                </td>
-                                {building.rightKind.error && building.rightKind.touched &&
-                                <td className="error">{building.rightKind.error}</td>}
-                            </tr>
-                            <tr>
-                                <td className="required">小区名称:</td>
-                                <td colSpan="2" style={{position:"relative"}}>
-                                    {building.communityName.error && building.communityName.touched &&
-                                    <span style={{fontSize:12,position:"absolute",top:-10}}
-                                          className="error">{building.communityName.error}</span>}
-                                    <div className={style.inputGroup}>
-                                        <input style={{width:200}} type="text"
-                                               onKeyUp={event=>loadCommunity(event.target.value)}
-                                               placeholder="请输入小区名称" {...building.communityName}/>
-                                        {building.communityName.active && loading &&
-                                        <div className={style.prompt}>数据加载中 请稍后......</div>}
-
-                                    </div>
-
-                                    <select style={smallStyle}>
-                                        <option value="请输入楼号">请输入楼号</option>
-                                    </select>
-                                    <select style={smallStyle}>
-                                        <option value="请输入门牌号">请输入门牌号</option>
-                                    </select>
-                                </td>
-                                <td>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="required">建筑面积:</td>
-                                <td><input type="text" className="hasUnit"
-                                           placeholder="98或98.8或98.88" {...building.buildArea}/><span
-                                    className="unit">m²</span>
-                                </td>
-                                {building.buildArea.error && building.buildArea.touched &&
-                                <td className="error">{building.buildArea.error}</td>}
-                            </tr>
-                            <tr>
-                                <td className="required">贷款余额:</td>
-                                <td style={{position:"relative"}}>{building.loanBankAcc2.error && building.loanBankAcc2.touched &&
-                                <span style={{fontSize:12,position:"absolute",top:-10}}
-                                      className="error">{building.loanBankAcc2.error}</span>}
-                                    <input type="text" className="hasUnit"
-                                         {...building.loanBankAcc2} /><span
-                                        className="unit">元</span>
-
-                                </td>
-                                <td>
-                                    <div className={style.caculateBtn}
-                                         onClick={()=>{
-                                         this.setState({caculateShow:true,inputName:building.loanBankAcc2.name})
-                                         }}></div>
-                                    <Caculate show={this.state.caculateShow}
-                                              close={()=>this.setState({caculateShow:false})} name={this.state.inputName}></Caculate>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>使用情况:</td>
-                                <td>
-                                    <select {...building.useState}>
-                                        <option value="请选择">请选择</option>
-                                        <option value="USE">自用</option>
-                                        <option value="LEASE">租赁</option>
-                                        <option value="VACANT">空置</option>
-                                        <option value="OTHER">其他</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>房屋朝向:</td>
-                                <td>
-                                    <select {...building.direction}>
-                                        <option value="请选择">请选择</option>
-                                        <option value="SOUTH_NORTH">南北向</option>
-                                        <option value="EAST_WEST">东西向</option>
-                                        <option value="SOUTH_DIRE">正南全阳</option>
-                                        <option value="EAST">东向</option>
-                                        <option value="WEST">西向</option>
-                                        <option value="EAST_SOUTH">东南</option>
-                                        <option value="WEST_SOUTH">西南</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>产权证号:</td>
-                                <td>
-                                    <input type="text" {...building.propNo} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>产权人姓名:</td>
-                                <td>
-                                    <input type="text" {...building.owner}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>产权人身份证:</td>
-                                <td>
-                                    <input type="text" {...building.cardNoHouse} />
-                                </td>
-                                {building.cardNoHouse.error && building.cardNoHouse.touched &&
-                                <td className="error">{building.cardNoHouse.error}</td>}
-                            </tr>
-                            </tbody>
-                        </table>
+                    houseInfoList.map((building, index)=> {
+                            return (
+                                <Forms key={index} index={index} {...building}
+                                       removeField={houseInfoList.removeField}></Forms>
+                            )
+                        }
                     )
                 }
                 <table className="form-table" style={{margin:"auto"}}>
                     <tbody>
-                    {buildings.length < 3 && <tr>
+                    {houseInfoList.length < 3 && <tr>
                         <td></td>
                         <td>
-                            <button className={style.addMore} onClick={()=>buildings.addField()}></button>
+                            <button className={style.addMore} onClick={()=>houseInfoList.addField()}></button>
                         </td>
                     </tr>}
                     <tr>
@@ -218,6 +95,235 @@ export default class ApplyLoanForm2 extends Component {
                     </tbody>
                 </table>
             </div>
+        )
+    }
+}
+
+@connect(state=>({
+    loading: state.applyLoan.loading,
+    loadError: state.applyLoan.loadError,
+    loaded: state.applyLoan.loaded,
+    BuildingList: state.applyLoan.BuildingList,
+    HouseList: state.applyLoan.HouseList,
+    ConstructionList: state.applyLoan.ConstructionList,
+    name: state.applyLoan.name,
+}), {...applyLoan, change})
+class Forms extends Component {
+
+    static propTypes = {
+        loading: PropTypes.bool,
+        loadError: PropTypes.object,
+        loaded: PropTypes.bool,
+        change: PropTypes.func.isRequired,
+        loadCommunity: PropTypes.func.isRequired,
+        loadBuildingNo: PropTypes.func.isRequired,
+        loadRoom: PropTypes.func.isRequired,
+        BuildingList: PropTypes.array,
+        HouseList: PropTypes.array,
+        ConstructionList: PropTypes.array,
+        name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    }
+
+    componentWillMount() {
+        const {change, city} = this.props;
+        city.defaultValue = 'beijing';
+        change('applyLoan', city.name, 'beijing');
+    }
+
+
+    state = {
+        caculateShow: false,
+        inputName: ''
+    }
+
+    render() {
+        const {
+            loading,
+            loadError,
+            loaded,
+            loadCommunity,
+            loadBuildingNo,
+            loadRoom,
+            removeField,
+            change,
+            ConstructionList,
+            BuildingList,
+            HouseList,
+            name,
+            right_kind,       //房屋性质
+            communityName,   //小区名
+            communityID,
+            buildingNumber,
+            roomNumber,
+            build_area,       //面积
+            loan_bank_acc2,   //贷款余额
+            use_state,        //使用情况
+            direction,        //房屋朝向
+            prop_no,          //产权证
+            owner,            //姓名
+            card_no_house,     //身份证
+            place,
+            city,
+            index
+        }=this.props;
+        const smallStyle = {width: 130, marginLeft: 20}
+        return (
+            <table className={ index > 0 ? `${style.addMoreBg} form-table` : "form-table"}
+                   style={{margin:"20px auto",position:"relative"}}>
+                { index > 0 &&
+                <thead className={style.close} onClick={()=>removeField(index)}></thead>}
+                <tbody >
+                <tr>
+                    <td className="required">房屋性质：</td>
+                    <td>
+                        <input type="hidden" {...city}/>
+                        <input type="hidden" {...place}/>
+                        <select {...right_kind}>
+                            <option value="请选择">请选择</option>
+                            <option value={rightKinds[0]}>住宅</option>
+                        </select>
+                    </td>
+                    { right_kind.error && right_kind.touched &&
+                    <td className="error">{ right_kind.error}</td>}
+                </tr>
+                <tr>
+                    <td className="required">小区名称:</td>
+                    <td colSpan="2" style={{position:"relative"}}>
+                        { communityName.error && communityName.touched &&
+                        <span style={{fontSize:12,position:"absolute",top:-10}}
+                              className="error">{ communityName.error}</span>}
+                        <div className={style.inputGroup}>
+                            <input type="hidden" {...communityID}/>
+                            <input style={{width:200}} type="text"
+                                   onKeyUp={()=>{
+                                                    loadCommunity( communityName.value, communityName.name)
+                                               }}
+                                   placeholder="请输入小区名称" {...communityName}  />
+                            {loading && name === communityName.name &&
+                            <div className={style.prompt}>数据加载中 请稍后......</div>}
+                            {loadError && !loading && !loaded &&
+                            name === communityName.name &&
+                            <div className={style.prompt}>服务器错误,请稍后再试</div>}
+                            {ConstructionList && loaded && !loading && name === communityName.name &&
+                            <ul className={style.items}>
+                                {ConstructionList.length > 0 ?
+                                    ConstructionList.map(item=>
+                                        <li key={item.ConstructionID} onClick={(event)=>{
+                                                    event.stopPropagation();
+                                                change('applyLoan', communityName.name,item.ConstructionName)
+                                                change('applyLoan', communityID.name,item.ConstructionID)
+                                                change('applyLoan',place.name,item.ConstructionName)
+                                               loadBuildingNo(item.ConstructionID, index);
+                                                }}>{item.ConstructionName}</li>)
+                                    :
+                                    <li>无结果</li>}
+                            </ul>}
+                        </div>
+
+                        <select style={smallStyle} {...buildingNumber}
+                                onChange={(event)=>{
+                                loadRoom(event.target.value.split(',')[0], index);
+                                change('applyLoan',place.name,communityName.value+event.target.value.split(',')[1])
+                                }}>
+                            <option value="请选择楼号">请选择楼号</option>
+                            {BuildingList && name === index && BuildingList.map(item=>
+                                <option key={item.BuildingID}
+                                        value={item.BuildingID+","+item.BuildingName}>{item.BuildingName}</option>
+                            )}
+                        </select>
+                        <select style={smallStyle} {...roomNumber} onChange={(event)=>{
+                            change('applyLoan',place.name,communityName.value+buildingNumber.value.split(',')[1]+event.target.value.split(',')[1])
+                        }}>
+                            <option value="请输入门牌号">请输入门牌号</option>
+                            {HouseList && name === index && HouseList.map(item=>
+                                <option key={item.HouseID}
+                                        value={item.HouseID+","+item.HouseName}>{item.HouseName}</option>
+                            )}
+                        </select>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td className="required">建筑面积:</td>
+                    <td><input type="text" className="hasUnit"
+                               placeholder="98或98.8或98.88" {...build_area}/><span
+                        className="unit">m²</span>
+                    </td>
+                    { build_area.error && build_area.touched &&
+                    <td className="error">{ build_area.error}</td>}
+                </tr>
+                <tr>
+                    <td className="required">贷款余额:</td>
+                    <td style={{position:"relative"}}>{ loan_bank_acc2.error && loan_bank_acc2.touched &&
+                    <span style={{fontSize:12,position:"absolute",top:-10}}
+                          className="error">{ loan_bank_acc2.error}</span>}
+                        <input type="text" className="hasUnit"
+                            {...loan_bank_acc2} /><span
+                            className="unit">元</span>
+
+                    </td>
+                    <td>
+                        <div className={style.caculateBtn}
+                             onClick={()=>{
+                                         this.setState({caculateShow:true,inputName: loan_bank_acc2.name})
+                                         }}></div>
+                        <Caculate show={this.state.caculateShow}
+                                  close={()=>this.setState({caculateShow:false})}
+                                  name={this.state.inputName}></Caculate>
+                    </td>
+                </tr>
+                <tr>
+                    <td>使用情况:</td>
+                    <td>
+                        <select {...use_state}>
+                            <option value="请选择">请选择</option>
+                            <option value="USE">自用</option>
+                            <option value="LEASE">租赁</option>
+                            <option value="VACANT">空置</option>
+                            <option value="OTHER">其他</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>房屋朝向:</td>
+                    <td>
+                        <select {...direction}>
+                            <option value="请选择">请选择</option>
+                            <option value="SOUTH_NORTH">南北向</option>
+                            <option value="EAST_WEST">东西向</option>
+                            <option value="SOUTH_DIRE">正南全阳</option>
+                            <option value="EAST">东向</option>
+                            <option value="WEST">西向</option>
+                            <option value="EAST_SOUTH">东南</option>
+                            <option value="WEST_SOUTH">西南</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>产权证号:</td>
+                    <td>
+                        <input type="text" {...prop_no} />
+                    </td>
+                </tr>
+                <tr>
+                    <td>产权人姓名:</td>
+                    <td>
+                        <input type="text" {...owner}/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>产权人身份证:</td>
+                    <td>
+                        <input type="text" {...card_no_house} />
+                    </td>
+                    { card_no_house.error && card_no_house.touched &&
+                    <td className="error">{ card_no_house.error}</td>}
+                </tr>
+                </tbody>
+            </table>
         )
     }
 }

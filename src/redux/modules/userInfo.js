@@ -1,8 +1,8 @@
-const LOAD = 'slider/LOAD';
-const LOAD_SUCCESS = 'slider/LOAD_SUCCESS';
-const LOAD_FAIL = 'slider/LOAD_FAIL';
+const LOAD = 'userInfo/LOAD';
+const LOAD_SUCCESS='userInfo/LOAD_SUCCESS';
+const LOAD_FAIL = 'userInfo/LOAD_FAIL';
 
-const initialState= {
+const initialState = {
     loaded:false
 }
 
@@ -10,32 +10,35 @@ export default function reducer(state=initialState,action={}) {
     switch (action.type){
         case LOAD:
             return {
-                ...state,
                 loaded:false,
                 loading:true
             }
         case LOAD_SUCCESS:
             return {
-                ...state,
                 loaded:true,
                 loading:false,
-                data:action.result
+                ...action.result
             }
         case LOAD_FAIL:
             return {
-                ...state,
                 loaded:false,
                 loading:false,
-                data:action.error
+                ...action.error
             }
         default:
             return state;
     }
 }
 
+export function isLoaded(globalState){
+    return globalState.userInfo && globalState.userInfo.loaded;
+}
+
 export function load() {
     return {
         types:[LOAD,LOAD_SUCCESS,LOAD_FAIL],
-        promise:(client)=>client.get('/api/v2/home/loanScroll')
+        promise:client=>client.get('/so/api/v2/user/MYSELF/overview?version=1.2')
     }
 }
+
+

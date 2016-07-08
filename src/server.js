@@ -47,7 +47,7 @@ app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 //配置代理地址
 app.use((req, res,next) =>{
-    if(req.url.indexOf('/api/v2') > -1 ){
+    if(req.url.indexOf('/api/v2') > -1 || req.url.indexOf('/so/api/v2') > -1 ){
         proxy.web(req, res)
     }else{
         next();
@@ -89,7 +89,7 @@ app.use((req, res)=> {
     const history = syncHistoryWithStore(memoryHistory, store);
 
     //react-router 服务器端渲染
-    match({history, routes: getRoutes(store), location: req.originalUrl}, (error, redirectLocation, renderProps)=> {
+    match({history, routes: getRoutes(store,res), location: req.originalUrl}, (error, redirectLocation, renderProps)=> {
         if (error) {
             res.status(500).send(error.message);
         } else if (redirectLocation) {

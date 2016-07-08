@@ -1,10 +1,21 @@
 import React, {Component} from 'react';
 import {asyncConnect} from 'redux-async-connect';
-import {Nav,Foot} from 'components';
+import {Nav, Foot} from 'components';
+import {load as loadInfo, isLoaded as isLoadedUesrInfo} from 'redux/modules/userInfo';
+import {load as loadAuth, isLoaded as isLoadedAuth} from 'redux/modules/auth';
 
-//这里是个问题,必须在顶层返回一个promise,否则服务器端不渲染,后期优化
 @asyncConnect([{
-    promise:()=> Promise.all([])
+    promise: ({store:{getState, dispatch}})=> {
+        const promises = [];
+        if (!isLoadedAuth(getState())) {
+            promises.push(dispatch(loadAuth()));
+        }
+        if(!isLoadedUesrInfo(getState())){
+            promises.push(dispatch(loadInfo()));
+
+        }
+        return Promise.all(promises);
+    }
 }])
 export default class App extends Component {
     render() {
