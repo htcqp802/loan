@@ -12,7 +12,6 @@ import {load as loadAuth, isLoaded as isLoadedAuth} from 'redux/modules/auth';
         }
         if(!isLoadedUesrInfo(getState())){
             promises.push(dispatch(loadInfo()));
-
         }
         return Promise.all(promises);
     }

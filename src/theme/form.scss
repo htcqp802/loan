@@ -92,7 +92,8 @@
       }
     }
     .error{
-      color:$required
+      color:$required;
+      min-width: 160px;
     }
   }
 

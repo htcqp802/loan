@@ -2,7 +2,7 @@ import React from 'react';
 import {IndexRoute, Route} from 'react-router';
 import {load as loadAuth} from 'redux/modules/auth';
 import {domains} from 'config';
-import {App, Home, NotFound, ApplyLoan, fjdDetail, fqdDetail} from 'containers';
+import {App, Home, NotFound, ApplyLoan,ApplyFQD, fjdDetail, fqdDetail} from 'containers';
 import base64url from 'base64-url';
 
 export default (store, res)=> {
@@ -29,6 +29,7 @@ export default (store, res)=> {
                 <IndexRoute component={Home}></IndexRoute>
                 <Route onEnter={requireLogin}>
                     <Route path="applyloan" component={ApplyLoan}></Route>
+                    <Route path="applyfqd" component={ApplyFQD}></Route>
                 </Route>
                 <Route path="fjdDetail" component={fjdDetail}></Route>
                 <Route path="fqdDetail" component={fqdDetail}></Route>

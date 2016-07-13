@@ -54,7 +54,9 @@
     "react/sort-comp":0,
     "no-shadow":0,
     //两行回车
-    "no-multiple-empty-lines":0
+    "no-multiple-empty-lines":0,
+    //变量名大于2个字符
+    "id-length":0
   },
   "plugins": [
     "react", "import"

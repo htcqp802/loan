@@ -7,16 +7,19 @@ export function email(value) {
     }
 }
 
-export function required(value) {
-    if (isEmpty(value)) {
-        return '此项为必填项,不允许为空';
+export function required(message) {
+    return value=>{
+        if (isEmpty(value)) {
+            return message || '此项为必填项,不允许为空';
+        }
     }
+
 }
 
-export function minLength(min) {
+export function minLength(min,message) {
     return value => {
         if (!isEmpty(value) && value.length < min) {
-            return `至少需要${min}个字符`;
+            return message || `至少需要${min}个字符`;
         }
     };
 }
@@ -40,18 +43,18 @@ export function decimal(value) {
     }
 }
 
-export function interval(min, max) {
+export function interval(min, max,message) {
     return value => {
         if (!Number(value) || Number(value) < min || Number(value) > max) {
-            return `请输入${min}-${max}中间的数值`;
+            return message || `请输入${min}-${max}间的数`;
         }
     }
 }
 
-export function oneOf(enumeration) {
+export function oneOf(enumeration,message) {
     return value => {
         if (!~enumeration.indexOf(value)) {
-            return '请选择';
+            return message || '请选择';
         }
     };
 }
@@ -60,7 +63,7 @@ export function match(field) {
     return (value, data) => {
         if (data) {
             if (value !== data[field]) {
-                return '不匹配';
+                return '两次输入不一致';
             }
         }
     };
