@@ -23,16 +23,12 @@ export default class ApplyLoanForm1 extends Component {
         fields: PropTypes.object.isRequired,
         handleSubmit: PropTypes.func.isRequired,
         invalid: PropTypes.bool.isRequired,
-        pristine: PropTypes.bool.isRequired,
-        submitting: PropTypes.bool.isRequired,
         values: PropTypes.object.isRequired
     }
 
     render() {
         const {
             invalid,
-            pristine,
-            submitting,
             fields:{receiptInfo:{moneyBorrow, loanPeriod, houseAvailable, userId, userName}},
             handleSubmit
         } = this.props;
@@ -79,7 +75,7 @@ export default class ApplyLoanForm1 extends Component {
                 </tr>
                 <tr>
                     <td colSpan="2">
-                        <button disabled={invalid || pristine || submitting} onClick={handleSubmit}>
+                        <button disabled={invalid} onClick={handleSubmit}>
                             确认以上信息去评估借款额度
                         </button>
                     </td>

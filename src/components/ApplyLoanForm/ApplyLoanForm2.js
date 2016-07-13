@@ -104,7 +104,6 @@ export default class ApplyLoanForm2 extends Component {
     loadError: state.applyLoan.loadError,
     loaded: state.applyLoan.loaded,
     BuildingList: state.applyLoan.BuildingList,
-    HouseList: state.applyLoan.HouseList,
     ConstructionList: state.applyLoan.ConstructionList,
     name: state.applyLoan.name,
 }), {...applyLoan, change})
@@ -193,7 +192,7 @@ class Forms extends Component {
                         { communityName.error && communityName.touched &&
                         <span style={{fontSize:12,position:"absolute",top:-10}}
                               className="error">{ communityName.error}</span>}
-                        <div className={style.inputGroup}>
+                        <div className={style.inputGroup} >
                             <input type="hidden" {...communityID}/>
                             <input style={{width:200}} type="text"
                                    onKeyUp={()=>{

@@ -3,7 +3,10 @@ import {Link} from 'react-router';
 import {ApplyLoanForm1, ApplyLoanForm2, ApplyLoanForm3} from 'components';
 import {connect} from 'react-redux';
 
-@connect((state)=>({user: state.auth.user}))
+@connect((state)=>({
+    user: state.auth.user,
+    HouseList: state.applyLoan.HouseList,
+}))
 export default class ApplyLoan extends Component {
     constructor(props) {
         super(props)
@@ -26,7 +29,7 @@ export default class ApplyLoan extends Component {
     render() {
         const style = require('./ApplyLoan.scss');
         const {page} = this.state;
-        const {user:{id, name, mobile}} = this.props;
+        const {user:{id, name, mobile},HouseList} = this.props;
         return (
             <div className={style.applyLoan}>
 
@@ -60,7 +63,7 @@ export default class ApplyLoan extends Component {
                     page === 2 &&
                     <div className={style.panel}>
                         <div className={style.step2}></div>
-                        <ApplyLoanForm2 onSubmit={this.nextPage} previousPage={this.previousPage}/>
+                        <ApplyLoanForm2 onSubmit={this.nextPage} HouseList={HouseList} previousPage={this.previousPage}/>
                     </div>
                 }
                 {

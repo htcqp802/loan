@@ -1,16 +1,32 @@
 import React from 'react';
 import {IndexRoute, Route} from 'react-router';
-import {load as loadAuth} from 'redux/modules/auth';
+import {load as loadAuth, isLoaded as isAuthLoaded} from 'redux/modules/auth';
 import {domains} from 'config';
-import {App, Home, NotFound, ApplyLoan,ApplyFQD, fjdDetail, fqdDetail} from 'containers';
+import {App, Home, NotFound, ApplyLoan, ApplyFQD, fjdDetail, fqdDetail} from 'containers';
 import base64url from 'base64-url';
 
 export default (store, res)=> {
     //有待优化
-    const requireLogin = (nextState, replace, cb) => {
-            store.dispatch(loadAuth()).then(()=>{
-               cb()
-            }, ()=> {
+    const requireLogin = (nextState, replace,cb) => {
+        // store.dispatch(loadAuth())
+        //     .then((result,test)=>{
+        //         console.log(result)
+        //         console.log(test)
+        //    cb()
+        // }, ()=> {
+        //     const nextUrl = nextState.location.pathname;
+        //     const redirect = `${domains.my}/login?redirect=${encodeURIComponent(base64url.encode(nextUrl))}`;
+        //     if (__SERVER__) {
+        //         res.redirect(redirect)
+        //     }
+        //     if (__CLIENT__) {
+        //         window.location.href = redirect;
+        //     }
+        // })
+
+        function checkAuth() {
+            const {auth:{user}} = store.getState();
+            if (!user) {
                 const nextUrl = nextState.location.pathname;
                 const redirect = `${domains.my}/login?redirect=${encodeURIComponent(base64url.encode(nextUrl))}`;
                 if (__SERVER__) {
@@ -19,8 +35,14 @@ export default (store, res)=> {
                 if (__CLIENT__) {
                     window.location.href = redirect;
                 }
-                cb()
-            })
+            }
+            cb();
+        }
+        if (!isAuthLoaded(store.getState())) {
+            store.dispatch(loadAuth()).then(checkAuth).catch(checkAuth);
+        } else {
+            checkAuth();
+        }
     };
 
     return (

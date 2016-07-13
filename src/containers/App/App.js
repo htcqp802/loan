@@ -21,7 +21,7 @@ export default class App extends Component {
         return (
             <div>
                 <Nav></Nav>
-                <div className="clearFix">{this.props.children}</div>
+                <div >{this.props.children}</div>
                 <Foot></Foot>
             </div>
         )
