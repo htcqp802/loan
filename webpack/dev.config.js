@@ -77,7 +77,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel?' + JSON.stringify(babelLoaderQuery), 'eslint-loader']},
+            { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['es3ify','babel?' + JSON.stringify(babelLoaderQuery), 'eslint-loader']},
             { test: /\.json$/, loader: 'json-loader' },
             { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
             { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },

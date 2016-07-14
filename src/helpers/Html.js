@@ -14,6 +14,7 @@ export default class Html extends Component {
         return (
             <html lang="en-us">
             <head>
+                <meta http-equiv="X-UA-Compatible" content="IE=EDGE"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="shortcut icon" href="/favicon.ico"/>
                 {Object.keys(assets.styles).map((style, key) =>
@@ -23,6 +24,7 @@ export default class Html extends Component {
             </head>
             <body>
                 <div id="content" dangerouslySetInnerHTML={{__html: content}}></div>
+                <script src="/ieBetter.js"></script>
                 <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
                 <script src={assets.javascript.main}></script>
             </body>

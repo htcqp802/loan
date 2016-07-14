@@ -1,4 +1,7 @@
-import 'babel-polyfill';
+require('babel-polyfill');
+require('es5-shim');
+require('es5-shim/es5-sham');
+require('console-polyfill');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './redux/create';
@@ -24,6 +27,7 @@ function initSocket() {
 }
 
 global.socket = initSocket();
+
 
 
 const component = (
