@@ -29,7 +29,6 @@ function initSocket() {
 global.socket = initSocket();
 
 
-
 const component = (
     <Router render={(props) =>
     <ReduxAsyncConnect {...props} helpers={{client}} filter={item => !item.deferred} />
