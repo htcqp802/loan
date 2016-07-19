@@ -3,7 +3,6 @@ var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
 
 
-
 //是否为client端
 global.__CLIENT__ = false;
 //是否为server端
@@ -28,5 +27,6 @@ var WebpackIsomorphicTools = require('webpack-isomorphic-tools');
 global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack/webpack-isomorphic-tools'))
     .development(__DEVELOPMENT__)
     .server(rootDir, function () {
-        require('../src/server');
+       require('../src/server');
     });
+

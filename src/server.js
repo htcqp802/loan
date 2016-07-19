@@ -4,7 +4,7 @@ import http from 'http';
 import httpProxy from 'http-proxy';
 import compression from 'compression';
 import favicon from 'serve-favicon';
-import config from './config';
+import config from 'config';
 import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
@@ -24,7 +24,7 @@ import cookieParser from 'cookie-parser';
 
 const app = new Express();
 const server = new http.Server(app);
-const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+const targetUrl = config.api.host + ':' + config.api.port;
 
 const io = new SocketIo(server);
 io.path('/ws');
@@ -119,15 +119,16 @@ app.use((req, res)=> {
 /**
  * 启动服务
  */
-const runnable = app.listen(config.port, (err) => {
+const runnable = app.listen(config.web.port, (err) => {
     if (err) {
         console.error(err);
     }
     console.info('----\n==> ✅  %s 已经启动,api地址 %s.', config.app.title, targetUrl);
-    console.info('==> 💻  node地址 http://%s:%s', config.host, config.port);
+    console.info('==> 💻  node地址 http://%s:%s', config.web.host, config.web.port);
 });
 //启用socket
 io.on('connection', (socket) => {
 });
 io.listen(runnable);
 
+module.exports = runnable;

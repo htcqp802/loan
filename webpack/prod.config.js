@@ -4,13 +4,15 @@ var strip = require('strip-loader');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanPlugin = require('clean-webpack-plugin');
-var config = require('../src/config');
+var config = require('../config/production');
 var projectRootPath = path.resolve(__dirname, '../');
 var time = new Date().getTime();
-var assetsPath = path.resolve(projectRootPath, './static/dist/'+time);
+var assetsPath = path.resolve(projectRootPath, './static/dist/'+time+'/');
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+
+
 
 module.exports = {
     //输出source map 到output目录
@@ -26,8 +28,8 @@ module.exports = {
         path: assetsPath,
         filename: '[name]-[chunkhash].js',
         //关联模块名
-        chunkFilename: '[name]-[chunkhash].js',
-        publicPath: config.publicPath+time+"/"
+        chunkFilename: '[name]-[chunkhash].js'
+        // publicPath: config.staticPrefix.static+time+"/"
     },
     module: {
         loaders: [

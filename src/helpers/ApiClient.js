@@ -1,12 +1,12 @@
 import superagent from 'superagent';
-import config from '../config';
+import config from 'config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 function formatUrl(path) {
     const adjustedPath = path[0] !== '/' ? '/' + path : path;
     if (__SERVER__) {
-        return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
+        return 'http://' + config.api.host + ':' + config.api.port + adjustedPath;
     }
     return adjustedPath;
 }
