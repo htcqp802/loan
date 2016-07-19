@@ -4,6 +4,7 @@
   "description": "凤凰金融-融资",
   "scripts": {
     "start": "better-npm-run start-prod",
+    "stop":"pm2 stop all",
     "build": "better-npm-run build",
     "watch-client": "better-npm-run watch-client",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
@@ -11,7 +12,7 @@
   },
   "betterScripts": {
     "start-prod": {
-      "command": "node ./bin/pm2.js",
+      "command": "node ./pm2.js",
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production"

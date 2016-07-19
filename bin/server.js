@@ -2,13 +2,13 @@ require('../server.babel');
 var path = require('path');
 var rootDir = path.resolve(__dirname, '..');
 
-
 //是否为client端
 global.__CLIENT__ = false;
 //是否为server端
 global.__SERVER__ = true;
 //判断运行环境
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
+
 
 
 //服务器热部署
