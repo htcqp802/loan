@@ -24,7 +24,6 @@ export default class Html extends Component {
             </head>
             <body>
                 <div id="content" dangerouslySetInnerHTML={{__html: content}}></div>
-                <script src="/ieBetter.js"></script>
                 <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
                 <script src={assets.javascript.main}></script>
             </body>

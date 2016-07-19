@@ -51,6 +51,7 @@ export default class ApplyLoanForm2 extends Component {
         this.props.fields.houseInfoList.addField();
     }
 
+
     render() {
         const {
             fields:{
@@ -129,11 +130,23 @@ class Forms extends Component {
         city.defaultValue = 'beijing';
         change('applyLoan', city.name, 'beijing');
     }
+    componentDidMount(){
+           this.clickEvent = window.addEventListener('click',()=>{
+               this.setState({showLoadBlock:false})
+           })
+    }
+    componentWillUnmount(){
+        if(this.clickEvent){
+            this.clickEvent.remove();
+        }
+
+    }
 
 
     state = {
         caculateShow: false,
-        inputName: ''
+        inputName: '',
+        showLoadBlock:false
     }
 
     render() {
@@ -198,13 +211,16 @@ class Forms extends Component {
                                    onKeyUp={()=>{
                                                     loadCommunity( communityName.value, communityName.name)
                                                }}
-                                   placeholder="请输入小区名称" {...communityName}  />
-                            {loading && name === communityName.name &&
+                                   placeholder="请输入小区名称" onClick={(e)=>{
+                                   e.stopPropagation();
+                                   this.setState({showLoadBlock:true})
+                                   }} {...communityName}  />
+                            {this.state.showLoadBlock && loading && name === communityName.name &&
                             <div className={style.prompt}>数据加载中 请稍后......</div>}
-                            {loadError && !loading && !loaded &&
+                            {this.state.showLoadBlock && loadError && !loading && !loaded &&
                             name === communityName.name &&
                             <div className={style.prompt}>服务器错误,请稍后再试</div>}
-                            {ConstructionList && loaded && !loading && name === communityName.name &&
+                            {this.state.showLoadBlock && ConstructionList && loaded && !loading && name === communityName.name &&
                             <ul className={style.items}>
                                 {ConstructionList.length > 0 ?
                                     ConstructionList.map(item=>
