@@ -1,5 +1,5 @@
 var pm2 = require('pm2');
-var config = require('config/production');
+var config = require('./config/production');
 
 pm2.connect(function(err) {
     if (err) {

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "凤凰金融-融资",
   "scripts": {
-    "start": "better-npm-run start-prod",
-    "stop":"pm2 stop all",
-    "build": "better-npm-run build",
+    "start": "NODE_ENV=production NODE_PATH=./src node ./pm2.js",
+    "stop": "pm2 stop all",
+    "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
     "watch-client": "better-npm-run watch-client",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
     "start-dev": "better-npm-run start-dev"
