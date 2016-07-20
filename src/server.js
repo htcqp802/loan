@@ -40,7 +40,7 @@ app.use(cookieParser());
 //启用文件压缩
 app.use(compression());
 //配置ico
-app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '..', 'favicon.ico')));
 //配置静态文件
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 //配置代理地址

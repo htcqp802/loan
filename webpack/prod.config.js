@@ -7,7 +7,7 @@ var CleanPlugin = require('clean-webpack-plugin');
 var config = require('../config/production');
 var projectRootPath = path.resolve(__dirname, '../');
 var time = new Date().getTime();
-var assetsPath = path.resolve(projectRootPath, './static/dist/'+time+'/');
+var assetsPath = path.resolve(projectRootPath, './dist/'+time+'/');
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));

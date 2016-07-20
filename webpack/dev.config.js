@@ -6,7 +6,7 @@ var webpack = require('webpack');
 
 var host = (process.env.HOST || 'localhost');
 var port = (+process.env.PORT + 1) || 3001;
-var assetsPath = path.resolve(__dirname, '../static/dist');
+var assetsPath = path.resolve(__dirname, '../dist');
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
