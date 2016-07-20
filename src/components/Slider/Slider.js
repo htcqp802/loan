@@ -34,7 +34,7 @@ export default class Slider extends Component {
         this.stopInterval();
     }
     render() {
-        const style = require('./Slider.scss');
+        const style = require('./Slider.less');
         const sliders = this.props.children;
         const {width, height} = this.props;
         return (

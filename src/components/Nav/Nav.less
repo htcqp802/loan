@@ -1,12 +1,12 @@
 @import "../../theme/variables";
 
-$nav-bg: #25292c;
-$nav-height: 40px;
-$head-height: 80px;
+@nav-bg: #25292c;
+@nav-height: 40px;
+@head-height: 80px;
 
 
 .dropdown {
-  background-color: $nav-bg;
+  background-color: @nav-bg;
   height: 0;
   transition: height 0.3s ease-in;
   position: absolute;
@@ -14,8 +14,8 @@ $head-height: 80px;
   z-index: 9;
   li {
     float: none;
-    height: $nav-height;
-    line-height: $nav-height;
+    height: @nav-height;
+    line-height: @nav-height;
     width: 100%;
     .yellow {
       font-size: 10px;
@@ -39,12 +39,12 @@ $head-height: 80px;
   background-color: #fff;
   height: 120px;
   .head {
-    height: $head-height;
+    height: @head-height;
 
     .pullLeft {
       float: left;
-      height: $head-height;
-      line-height: $head-height;
+      height: @head-height;
+      line-height: @head-height;
       a {
         display: inline-block;
         .logo {
@@ -57,7 +57,7 @@ $head-height: 80px;
     .pullRight {
       li {
         .photo{
-          background: url('./index_icon.png') 0 -10px no-repeat;
+          background: url('components/Nav/index_icon.png') 0 -10px no-repeat;
           width: 25px;
           height: 25px;
           vertical-align: middle;
@@ -151,17 +151,17 @@ $head-height: 80px;
 
         }
         float: right;
-        line-height: $head-height;
-        height: $head-height;
+        line-height: @head-height;
+        height: @head-height;
         padding: 0 15px;
         &.getEnvelope {
           a {
-            color: $orange-light;
+            color: @orange-light;
             .icon {
               display: inline-block;
               width: 13px;
               height: 19px;
-              background-image: url("./icon_re.gif");
+              background-image: url("components/Nav/icon_re.gif");
               background-repeat: no-repeat;
               position: relative;
               top: 3px;
@@ -175,7 +175,7 @@ $head-height: 80px;
             .icon {
               width: 13px;
               height: 22px;
-              background-image: url("./icon_phone.png");
+              background-image: url("components/Nav/icon_phone.png");
               position: relative;
               display: inline-block;
               top: 6px;
@@ -202,9 +202,9 @@ $head-height: 80px;
     }
   }
   nav {
-    height: $nav-height;
-    line-height: $nav-height;
-    background-color: $nav-bg;
+    height: @nav-height;
+    line-height: @nav-height;
+    background-color: @nav-bg;
     a {
       color: #fff;
       font-size: 16px;
@@ -227,7 +227,7 @@ $head-height: 80px;
         }
         &:hover {
           & > .bg {
-            height: $nav-height;
+            height: @nav-height;
           }
           & > .l4 {
             height: 160px;
@@ -247,7 +247,7 @@ $head-height: 80px;
   .bg {
     content: " ";
     display: block;
-    background-color: $orange-light;
+    background-color: @orange-light;
     height: 0;
     position: absolute;
     top: 0;

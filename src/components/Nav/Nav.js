@@ -12,7 +12,7 @@ export default class Nav extends Component {
 
 
     render() {
-        const style = require('./Nav.scss');
+        const style = require('./Nav.less');
         const logo = require('./logo.png');
         const ewm = require('./img_ewm.png');
         const {user, userInfo} = this.props;

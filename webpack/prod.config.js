@@ -21,21 +21,22 @@ module.exports = {
     entry: {
         'main': [
             './src/client.js',
-            './src/theme/reset.scss'
+            './src/theme/reset.less'
         ]
     },
     output: {
         path: assetsPath,
         filename: '[name]-[chunkhash].js',
         //关联模块名
-        chunkFilename: '[name]-[chunkhash].js'
-        // publicPath: config.staticPrefix.static+time+"/"
+        chunkFilename: '[name]-[chunkhash].js',
+        publicPath:config.staticPrefix.static+time+"/"
+
     },
     module: {
         loaders: [
             {test: /\.jsx?$/, exclude: /node_modules/, loaders:['es3ify',strip.loader('debug'), 'babel']},
             {test: /\.json$/, loader: 'json-loader'},
-            {test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
+            {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
             {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
             {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
             {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},

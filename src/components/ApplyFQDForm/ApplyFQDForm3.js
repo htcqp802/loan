@@ -61,8 +61,8 @@ export default class ApplyFQDForm2 extends Component {
     }
 
     render() {
-        const style = require('./ApplyFQDForm.scss');
-        const style2 = require('../../containers/ApplyFQD/ApplyFQD.scss')
+        const style = require('./ApplyFQDForm.less');
+        const style2 = require('containers/ApplyFQD/ApplyFQD.less')
         const {
             previousPage,
             fields:{

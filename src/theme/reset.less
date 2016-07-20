@@ -1,6 +1,6 @@
-@import "variables";
-@import "common";
-@import "form";
+@import "./variables";
+@import "./form";
+@import "./common";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 //
@@ -437,21 +437,21 @@ ul, li {
 
 a {
   text-decoration: none;
-  color: $black-normal;
+  color: @black-normal;
   transition: color 0.2s, background-color 0.2s;
   &:hover {
-    color: $orange-light;
+    color: @orange-light;
   }
 }
 
 @font-face {
   font-family: FontAwesome;
-  src: url('./fontawesome.woff')
+  src: url('theme/fontawesome.woff')
 }
 
 body {
   font-size: 14px;
   font-family: "Microsoft Yahei", "PingHei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
-  color: $black-normal;
+  color: @black-normal;
 }
 

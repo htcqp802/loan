@@ -65,7 +65,7 @@ export default class ApplyFQDForm2 extends Component {
     }
 
     render() {
-        const style = require('./ApplyFQDForm.scss');
+        const style = require('./ApplyFQDForm.less');
         const {
             handleSubmit,
             previousPage,

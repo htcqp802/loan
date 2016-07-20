@@ -37,7 +37,7 @@ const staticPrefix = {
 
 };
 
-settings.web.port = (process.env.PORT | 0) || 4009;
+// settings.web.port = (process.env.PORT | 0) || 4009;
 
 
 module.exports = {

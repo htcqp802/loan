@@ -7,7 +7,7 @@ import {Link} from 'react-router';
 
 export default class fjdDetail extends Component {
   render() {
-    const style = require('./fjdDetail.scss');
+    const style = require('./fjdDetail.less');
     return (
       <div>
         <div className={style.banner}>

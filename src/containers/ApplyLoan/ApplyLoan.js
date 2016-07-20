@@ -27,7 +27,7 @@ export default class ApplyLoan extends Component {
     }
 
     render() {
-        const style = require('./ApplyLoan.scss');
+        const style = require('./ApplyLoan.less');
         const {page} = this.state;
         const {user:{id, name, mobile},HouseList} = this.props;
         return (

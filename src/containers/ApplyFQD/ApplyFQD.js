@@ -46,8 +46,8 @@ export default class ApplyLoan extends Component {
     }
 
     render() {
-        const style = require('../ApplyLoan/ApplyLoan.scss');
-        const style2 = require('./ApplyFQD.scss');
+        const style = require('../ApplyLoan/ApplyLoan.less');
+        const style2 = require('./ApplyFQD.less');
         const {page,showAlert} = this.state;
         const {dataCategory,area} = this.props;
         return (

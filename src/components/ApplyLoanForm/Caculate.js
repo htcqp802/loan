@@ -27,7 +27,7 @@ export default class Caculate extends Component {
 
 
     render() {
-        const style = require('./Caculate.scss');
+        const style = require('./Caculate.less');
         const {
             close,
             show,

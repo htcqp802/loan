@@ -6,7 +6,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 function formatUrl(path) {
     const adjustedPath = path[0] !== '/' ? '/' + path : path;
     if (__SERVER__) {
-        return 'http://' + config.api.host + ':' + config.api.port + adjustedPath;
+        return config.api.host + ':' + config.api.port + adjustedPath;
     }
     return adjustedPath;
 }

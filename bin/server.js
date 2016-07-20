@@ -10,7 +10,6 @@ global.__SERVER__ = true;
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 
 
-
 //服务器热部署
 if (__DEVELOPMENT__) {
     if (!require('piping')({

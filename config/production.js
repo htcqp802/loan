@@ -5,8 +5,8 @@ const settings = {
     port: 4010
   },
   api: {
-    host: 'http://www.fengjr.inc',
-    port: 4010 // port暂时未用
+    host: 'http://test.fengjr.inc',
+    port: 80 // port暂时未用
   },
   domains: {
     "domain": "fengjr.inc",
@@ -18,7 +18,7 @@ const settings = {
   },
   system_id: 'bx',
   source: 'pc',
-  workers: 8 // 进程个数
+  workers: 4 // 进程个数
 };
 
 // CDN configuration
@@ -36,9 +36,6 @@ const staticPrefix = {
   'static': '//static.fengjr.com/public/dist/' // fallback
 
 };
-
-settings.web.port = (process.env.PORT | 0) || 4009;
-
 
 module.exports = {
   staticPrefix: staticPrefix,

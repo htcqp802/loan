@@ -129,7 +129,7 @@ export default class ApplyLoanForm3 extends Component {
     }
 
     render() {
-        const style = require('./ApplyLoanForm.scss');
+        const style = require('./ApplyLoanForm.less');
         const {
             previousPage
         } = this.props;

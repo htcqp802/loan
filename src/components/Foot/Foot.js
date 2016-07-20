@@ -3,7 +3,7 @@ import {Go} from 'components';
 
 export default class Foot extends Component {
     render() {
-        const style = require('./Foot.scss');
+        const style = require('./Foot.less');
         const wx = require('./new_weixin.png');
         const wb = require('./new_weibo.png');
         const app = require('./new_app.png');

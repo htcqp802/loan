@@ -5,7 +5,7 @@ import  * as applyLoan from 'redux/modules/applyLoan';
 import {connect} from 'react-redux';
 import Caculate from './Caculate';
 
-const style = require('./ApplyLoanForm.scss');
+const style = require('./ApplyLoanForm.less');
 
 @reduxForm({
     form: 'applyLoan',
