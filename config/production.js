@@ -1,8 +1,8 @@
 // base configuration
 const settings = {
   web: {
-    host: '0.0.0.0',
-    port: 4010
+    host: '10.255.52.82',
+    port: 5005
   },
   api: {
     host: 'http://test.fengjr.inc',
@@ -10,9 +10,9 @@ const settings = {
   },
   domains: {
     "domain": "fengjr.inc",
-    "main": "http://test3.fengjr.inc",
-    "my": "http://mytest3.fengjr.inc",
-    "pay": "http://paytest3.fengjr.inc",
+    "main": "http://test.fengjr.inc",
+    "my": "http://mytest.fengjr.inc",
+    "pay": "http://paytest.fengjr.inc",
     "bx": "http://bx.fengjr.inc",
     "mall": "http://mall.fengjr.inc"
   },
@@ -33,7 +33,7 @@ const staticPrefix = {
   font: '//font.fengjr.com/public/dist/',
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
-  'static': '//static.fengjr.com/public/dist/' // fallback
+  'static': 'http://lld.fengjr.inc/public/dist/' // fallback
 
 };
 
