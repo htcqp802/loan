@@ -4,9 +4,8 @@
   "description": "凤凰金融-融资",
   "scripts": {
     "start": "NODE_ENV=production NODE_PATH=./src node ./pm2.js",
-    "kill": "pm2 kill",
     "list": "pm2 list",
-    "stop": "pm2 stop",
+    "stop": "pm2 kill",
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
     "watch-client": "UV_THREADPOOL_SIZE=100 NODE_PATH=./src PORT=3000 node webpack/webpack-dev-server.js",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
@@ -76,7 +75,6 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.3.13",
     "babel-runtime": "^6.3.19",
-    "better-npm-run": "0.0.8",
     "clean-webpack-plugin": "^0.1.6",
     "css-loader": "^0.23.1",
     "eslint": "1.10.3",
