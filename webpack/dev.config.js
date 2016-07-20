@@ -11,11 +11,11 @@ var assetsPath = path.resolve(__dirname, '../static/dist');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
-var babelrc = fs.readFileSync('./.babelrc');
+var babelrc = fs.readFileSync('./package.json');
 var babelrcObject = {};
 
 try {
-    babelrcObject = JSON.parse(babelrc);
+    babelrcObject = JSON.parse(babelrc).babel;
 } catch (err) {
     console.error('==>     ERROR: 解析 .babelrc. 出错');
     console.error(err);
