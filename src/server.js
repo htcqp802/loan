@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom/server';
 import Html from './helpers/Html';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import {match} from 'react-router';
+import logger from 'morgan';
 import getRoutes from './routes';
 import createStore from './redux/create';
 import {syncHistoryWithStore} from 'react-router-redux';
@@ -36,13 +37,15 @@ const proxy = httpProxy.createProxyServer({
     ws: false
 });
 
+app.use(logger('dev'));
+
 app.use(cookieParser());
 //启用文件压缩
 app.use(compression());
 //配置ico
 app.use(favicon(path.join(__dirname, '..', 'favicon.ico')));
 //配置静态文件
-app.use(Express.static(path.join(__dirname, '..', 'static')));
+app.use(Express.static(path.join(__dirname, '..', 'public')));
 //配置代理地址
 app.use((req, res,next) =>{
     if(req.url.indexOf('/api/v2') > -1 || req.url.indexOf('/so/api/v2') > -1 ){

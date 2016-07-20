@@ -8,7 +8,6 @@ var config;
 
 try {
     config = JSON.parse(babelrc).babel;
-    console.log(config);
 } catch (err) {
     console.error('==>     ERROR: .babelrc. 转JSON错误');
     console.error(err);

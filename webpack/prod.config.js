@@ -7,7 +7,7 @@ var CleanPlugin = require('clean-webpack-plugin');
 var config = require('../config/production');
 var projectRootPath = path.resolve(__dirname, '../');
 var time = new Date().getTime();
-var assetsPath = path.resolve(projectRootPath, './dist/'+time+'/');
+var assetsPath = path.resolve(projectRootPath, './public/dist/'+time+'/');
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
@@ -29,7 +29,7 @@ module.exports = {
         filename: '[name]-[chunkhash].js',
         //关联模块名
         chunkFilename: '[name]-[chunkhash].js',
-        publicPath:config.staticPrefix.static+time+"/"
+        publicPath:config.staticPrefix.static+time+'/'
 
     },
     module: {

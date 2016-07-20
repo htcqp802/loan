@@ -18,7 +18,7 @@ const settings = {
   },
   system_id: 'bx',
   source: 'pc',
-  workers: 4 // 进程个数
+  workers: 8 // 进程个数
 };
 
 // CDN configuration
@@ -33,7 +33,7 @@ const staticPrefix = {
   font: '//font.fengjr.com/public/dist/',
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
-  'static': 'http://lld.fengjr.inc/public/dist/' // fallback
+  'static': 'http://10.255.52.82:5005/dist/' // fallback
 
 };
 

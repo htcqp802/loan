@@ -6,7 +6,7 @@ var webpack = require('webpack');
 
 var host = (process.env.HOST || 'localhost');
 var port = (+process.env.PORT + 1) || 3001;
-var assetsPath = path.resolve(__dirname, '../dist');
+var assetsPath = path.resolve(__dirname, '../public/dist');
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
@@ -66,7 +66,6 @@ module.exports = {
         'main': [
             'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
             './src/client.js',
-            // './src/theme/reset.scss',
             './src/theme/reset.less'
         ]
     },
