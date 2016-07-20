@@ -20,7 +20,6 @@ export default function createStore(history, client, data) {
     } else {
         finalCreateStore = applyMiddleware(...middleware)(_createStore);
     }
-    console.log(process.env.NODE_ENV)
     const reducer = require('redux/modules/reducer');
     //createStore接受3个参数 1.reducer(means to do something) 2.初始化数据(e.g. session)
     //第三个参数就是中间件,就是上面的applyMiddleware

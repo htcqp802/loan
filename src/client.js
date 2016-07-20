@@ -21,12 +21,15 @@ const dest = document.getElementById('content');
 const store = createStore(browserHistory, client, window.__data);
 const history = syncHistoryWithStore(browserHistory, store);
 
-function initSocket() {
-    const socket = io('', {path: '/ws'});
-    return socket;
-}
 
-global.socket = initSocket();
+if (__DEVELOPMENT__) {
+    function initSocket() {
+        const socket = io('', {path: '/ws'});
+        return socket;
+    }
+
+    global.socket = initSocket();
+}
 
 
 const component = (

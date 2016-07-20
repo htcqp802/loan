@@ -33,7 +33,7 @@ const staticPrefix = {
   font: '//font.fengjr.com/public/dist/',
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
-  'static': 'http://10.255.52.82:5005/dist/' // fallback
+  'static': 'http://lld.fengjr.inc/dist/' // fallback
 
 };
 
