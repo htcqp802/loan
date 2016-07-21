@@ -78,7 +78,7 @@ export default class Home extends Component{
                                 </ul>
                             </div>
                             <p className={style.lld_link} >
-                                <Link to="/fjdDetail" className={style.but}>查看详情</Link>
+                                <Link to="/fjdDetail" target="_blank" className={style.but}>查看详情</Link>
                                 <Link to="/applyloan" target="_blank" className={style.but_link}>
                                     快速申请
                                 </Link>

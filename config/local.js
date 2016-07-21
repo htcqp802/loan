@@ -1,8 +1,8 @@
 // base configuration
 const settings = {
   web: {
-    host: '0.0.0.0',
-    port: 4010
+    host: '127.0.0.1',
+    port: 5005
   },
   api: {
     host: 'http://test.fengjr.inc',

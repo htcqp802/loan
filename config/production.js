@@ -1,8 +1,8 @@
 // base configuration
 const settings = {
   web: {
-    host: '10.255.52.82',
-    // host: '127.0.0.1',
+    // host: '10.255.52.82',
+    host: '10.254.21.65',
     port: 5005
   },
   api: {
@@ -19,7 +19,7 @@ const settings = {
   },
   system_id: 'bx',
   source: 'pc',
-  workers: 8 // 进程个数
+  workers: 4 // 进程个数
 };
 
 // CDN configuration
@@ -34,8 +34,8 @@ const staticPrefix = {
   font: '//font.fengjr.com/public/dist/',
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
-  'static': 'http://lld.fengjr.inc/' // fallback
-  // 'static': 'http://'+ settings.web.host +':'+ settings.web.port +'/'
+  // 'static': 'http://lld.fengjr.inc/' // fallback
+  'static': 'http://'+ settings.web.host +':'+ settings.web.port +'/'
 };
 
 module.exports = {

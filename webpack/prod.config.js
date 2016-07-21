@@ -35,7 +35,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.jsx?$/, exclude: /node_modules/, loaders:['es3ify',strip.loader('debug'), 'babel']},
+            {test: /\.jsx?$/, exclude: /node_modules/, loaders:[strip.loader('debug'), 'babel']},
             {test: /\.json$/, loader: 'json-loader'},
             {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
             {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
@@ -44,6 +44,9 @@ module.exports = {
             {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
             {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"},
             { test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240' }
+        ],
+        postLoaders:[
+            {test: /\.jsx?$/, loaders:['es3ify']},
         ]
     },
     progress: true,
@@ -71,11 +74,11 @@ module.exports = {
         new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     }
+        // }),
         webpackIsomorphicToolsPlugin
     ]
 }

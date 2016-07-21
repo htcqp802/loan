@@ -7,8 +7,8 @@
     "list": "pm2 list",
     "stop": "pm2 kill",
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
-    "watch-client": "UV_THREADPOOL_SIZE=100 NODE_PATH=./src PORT=3000 node webpack/webpack-dev-server.js",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
+    "watch-client": "UV_THREADPOOL_SIZE=100 NODE_PATH=./src PORT=3000 node webpack/webpack-dev-server.js",
     "start-dev": "NODE_PATH=./src NODE_ENV=development node ./bin/server.js"
   },
   "dependencies": {
