@@ -21,6 +21,7 @@ module.exports = {
     entry: {
         'main': [
             './src/client.js',
+            'font-awesome-webpack!./src/theme/font-awesome.config.prod.js',
             './src/theme/reset.less'
         ]
     },
@@ -55,7 +56,7 @@ module.exports = {
         extensions: ['', '.json', '.js', '.jsx']
     },
     plugins: [
-        new CleanPlugin([assetsPath], { root: projectRootPath }),
+        new CleanPlugin([path.resolve(__dirname, '../','./public/dist/')], { root: projectRootPath }),
         new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
         new webpack.DefinePlugin({
             'process.env': {

@@ -2,6 +2,7 @@
 const settings = {
   web: {
     host: '10.255.52.82',
+    // host: '127.0.0.1',
     port: 5005
   },
   api: {
@@ -34,7 +35,7 @@ const staticPrefix = {
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
   'static': 'http://lld.fengjr.inc/dist/' // fallback
-
+  // 'static': 'http://'+ settings.web.host +':'+ settings.web.port +'/dist/'
 };
 
 module.exports = {
