@@ -5,8 +5,8 @@ var config = require('../src/config');
 var webpackConfig = require('./dev.config');
 var compiler = webpack(webpackConfig);
 
-var host = config.host || 'localhost';
-var port = (Number(config.port) + 1) || 3001;
+var host = config.web.host;
+var port = config.web.port+1;
 
 var serverOptions = {
     contentBase: 'http://' + host + ':' + port,
@@ -29,6 +29,6 @@ app.listen(port, function onAppListening(err) {
     if (err) {
         console.error(err);
     } else {
-        console.info('==> 🚧  Webpack 开发环境正在监听端口: %s', port);
+        console.info('==> 🚧  静态文件地址为 http://%s:%s', host,port);
     }
 });

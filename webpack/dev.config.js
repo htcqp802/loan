@@ -4,8 +4,10 @@ var fs = require("fs");
 var path = require("path");
 var webpack = require('webpack');
 
-var host = (process.env.HOST || 'localhost');
-var port = (+process.env.PORT + 1) || 3001;
+var config = require('../config/local');
+
+var host = config.web.host;
+var port = config.web.port+1;
 var assetsPath = path.resolve(__dirname, '../dist');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');

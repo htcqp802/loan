@@ -1,7 +1,7 @@
 // base configuration
 const settings = {
   web: {
-    host: '127.0.0.1',
+    host: '10.254.21.65',
     port: 5005
   },
   api: {
@@ -33,7 +33,7 @@ const staticPrefix = {
   font: '//font.fengjr.com/public/dist/',
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
-  'static': 'http://'+ settings.web.host +':'+ settings.web.api +'dist/' // fallback
+  'static': 'http://'+ settings.web.host +':'+ (settings.web.api+1) +'dist/' // fallback
 
 };
 
