@@ -40,7 +40,7 @@ app.use(compression());
 //配置ico
 app.use(favicon(path.join(__dirname, '..', 'favicon.ico')));
 //配置静态文件
-app.use(Express.static(path.join(__dirname, '..', 'public')));
+app.use(Express.static(path.join(__dirname, '..', 'dist')));
 //配置代理地址
 app.use((req, res, next) => {
     if (req.url.indexOf('/api/v2') > -1 || req.url.indexOf('/so/api/v2') > -1) {

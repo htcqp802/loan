@@ -7,7 +7,7 @@ var CleanPlugin = require('clean-webpack-plugin');
 var config = require('../config/production');
 var projectRootPath = path.resolve(__dirname, '../');
 var time = new Date().getTime();
-var assetsPath = path.resolve(projectRootPath, './public/dist/'+time+'/');
+var assetsPath = path.resolve(projectRootPath, './dist/');
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
@@ -26,7 +26,7 @@ module.exports = {
         ]
     },
     output: {
-        path: assetsPath,
+        path: assetsPath+'/'+time+'/',
         filename: '[name]-[chunkhash].js',
         //关联模块名
         chunkFilename: '[name]-[chunkhash].js',
@@ -56,7 +56,7 @@ module.exports = {
         extensions: ['', '.json', '.js', '.jsx']
     },
     plugins: [
-        new CleanPlugin([path.resolve(__dirname, '../','./public/dist/')], { root: projectRootPath }),
+        new CleanPlugin([assetsPath], { root: projectRootPath }),
         new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
         new webpack.DefinePlugin({
             'process.env': {

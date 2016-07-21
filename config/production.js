@@ -34,8 +34,8 @@ const staticPrefix = {
   font: '//font.fengjr.com/public/dist/',
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
-  'static': 'http://lld.fengjr.inc/dist/' // fallback
-  // 'static': 'http://'+ settings.web.host +':'+ settings.web.port +'/dist/'
+  'static': 'http://lld.fengjr.inc/' // fallback
+  // 'static': 'http://'+ settings.web.host +':'+ settings.web.port +'/'
 };
 
 module.exports = {
