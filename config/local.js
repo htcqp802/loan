@@ -1,7 +1,7 @@
 // base configuration
 const settings = {
   web: {
-    host: '10.254.21.65',
+    host: '127.0.0.1',
     port: 5005
   },
   api: {

@@ -17,7 +17,9 @@ export default class Item extends Component {
         this.intervals = [];
     }
     componentWillReceiveProps(nextProps) {
-        this.intervals.forEach(clearInterval);
+        this.intervals.forEach((item)=>{
+            clearInterval(item);
+        });
         if (nextProps.show) {
            const interval1 = setInterval(()=> {
                 if (this.state.opacity < 1) {

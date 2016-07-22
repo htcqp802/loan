@@ -74,11 +74,11 @@ module.exports = {
         new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false
-        //     }
-        // }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         webpackIsomorphicToolsPlugin
     ]
 }

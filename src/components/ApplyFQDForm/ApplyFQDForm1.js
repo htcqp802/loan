@@ -27,7 +27,7 @@ export default class ApplyFQDForm1 extends Component {
     }
     
     componentWillMount(){
-        const {dataFQD,initializeWithKey} = this.props;
+        const {dataFQD,initializeWithKey,user} = this.props;
         if(dataFQD && dataFQD.data){
            const _dataFQD = dataFQD.data
             const initialValues = filter(fields,_dataFQD);
@@ -35,6 +35,11 @@ export default class ApplyFQDForm1 extends Component {
                 ...initialValues,
                 moneyBorrow:(initialValues.moneyBorrow/10000).toFixed(2)
             });
+        }else{
+            initializeWithKey('applyFQD','1',{
+                id:0,
+                userId:user.id
+            })
         }
     }
 
@@ -42,7 +47,7 @@ export default class ApplyFQDForm1 extends Component {
         const errorPrompt = (field)=>(<td className="error">{field.error && field.touched ? field.error:""}</td>);
         const {
             handleSubmit,
-            fields:{id, userId, areaCode, moneyBorrow, loanPeriod, purpose},
+            fields:{areaCode, moneyBorrow, loanPeriod, purpose},
             area,
             invalid,
             submitting
@@ -50,8 +55,6 @@ export default class ApplyFQDForm1 extends Component {
 
         return (
             <div>
-                <input type="hidden" {...id}/>
-                <input type="hidden" {...userId}/>
                 <table className="form-table" style={{margin:'auto'}}>
                     <tbody>
                     <tr>

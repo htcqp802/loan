@@ -56,7 +56,8 @@
     //两行回车
     "no-multiple-empty-lines":0,
     //变量名大于2个字符
-    "id-length":0
+    "id-length":0,
+    "no-inner-declarations":0
   },
   "plugins": [
     "react", "import"
