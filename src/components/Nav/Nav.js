@@ -45,8 +45,8 @@ export default class Nav extends Component {
                         <li><i  className={style.bg} ></i><Go main="/zc">众筹</Go></li>
                         <li><i style={{height:"40px"}} className={style.bg}></i><Link to="/">融资<i className={`${style.arrow} fa`}></i></Link>
                             <ul className={`${style.dropdown} ${style.l2}`}>
-                                <li><i className={style.bg}></i><Go main="/lld/fqddetail" target="_blank">凤企贷</Go></li>
-                                <li><i className={style.bg}></i><Link to="/fjdDetail">凤加贷</Link></li>
+                                <li><i className={style.bg}></i><Link to="/fqddetail" target="_blank">凤企贷</Link></li>
+                                <li><i className={style.bg}></i><Link to="/fjdDetail" target="_blank">凤加贷</Link></li>
                             </ul>
                         </li>
                         <li><i className={style.bg}></i><Go main="/aboutus/jianjie">关于凤凰金融/About Us</Go></li>
