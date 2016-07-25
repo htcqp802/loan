@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import Menu from 'antd/lib/menu';
 import Icon from 'antd/lib/icon';
+import Affix from 'antd/lib/Affix';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 export default class Nav extends Component {
     render() {
         return (
-            <Menu mode="horizontal">
+            <Menu mode="horizontal" className="container">
                 <Menu.Item key="mail">
                     <Icon type="mail"/>导航一
-                </Menu.Item>
-                <Menu.Item key="app" disabled>
-                    <Icon type="appstore"/>导航二
                 </Menu.Item>
                 <SubMenu title={<span><Icon type="setting" />导航 - 子菜单</span>}>
                     <MenuItemGroup title="分组1">

@@ -29,13 +29,13 @@ module.exports = function (content) {
     // if(config.preAntdCustomizations){
     //     start += addImportReturnDependency(this,config,'preAntdCustomizations');
     // }
-    start += '@import "'+ path.join(relativePathToAntdLess,'style/core/index.less') +'";\n';
+    start += '@import "'+ path.join(relativePathToAntdLess,'style/core/iconfont.less') +'";\n';
     source = start + partials.filter(function(partial){
             return config.styles[partial];
         }).map(function (partial) {
             return '@import "'+ path.join(relativePathToAntdLess,partial,'style/index.less') +'";'
         }).join('\n');
-    
+
     //替换默认样式
     if (config.mainLess) {
         source += '\n' + addImportReturnDependency(this, config, 'mainLess');
