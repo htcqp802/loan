@@ -24,6 +24,23 @@ module.exports = {
             extension: 'svg',
             parser: WebpackIsomorphicToolsPlugin.url_loader_parser
         },
+        antd:{
+            extension: 'js',
+            include: ['./src/theme/antd.config.js'],
+            filter: function(module, regex, options, log) {
+                function is_antd_style(name) {
+                    return name.indexOf('./src/theme/antd.config.js') >= 0;
+                }
+                if (options.development) {
+                    return is_antd_style(module.name) && WebpackIsomorphicToolsPlugin.style_loader_filter(module, regex, options, log);
+                }
+                // no need for it in production mode
+            },
+            // in development mode there's webpack "style-loader",
+            // so the module.name is not equal to module.name
+            path: WebpackIsomorphicToolsPlugin.style_loader_path_extractor,
+            parser: WebpackIsomorphicToolsPlugin.css_loader_parser
+        },
         style_modules: {
             extensions: ['less'],
             filter: function(module, regex, options, log) {

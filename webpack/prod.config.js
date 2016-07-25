@@ -22,6 +22,7 @@ module.exports = {
         'main': [
             './src/client.js',
             'font-awesome-webpack!./src/theme/font-awesome.config.prod.js',
+            './src/theme/antd-less-loader!./src/theme/antd.config.prod.js',
             './src/theme/reset.less'
         ]
     },

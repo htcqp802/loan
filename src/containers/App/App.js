@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {asyncConnect} from 'redux-async-connect';
-import {Nav,Foot} from 'components';
+import {Nav} from 'components';
 import {load as loadInfo, isLoaded as isLoadedUesrInfo} from 'redux/modules/userInfo';
 import {load as loadAuth, isLoaded as isLoadedAuth} from 'redux/modules/auth';
 
@@ -22,7 +22,6 @@ export default class App extends Component {
             <div>
                 <Nav></Nav>
                 <div >{this.props.children}</div>
-                <Foot></Foot>
             </div>
         )
     }
