@@ -21,8 +21,8 @@ module.exports = {
     entry: {
         'main': [
             './src/client.js',
-            'font-awesome-webpack!./src/theme/font-awesome.config.prod.js',
-            './src/theme/antd-less-loader!./src/theme/antd.config.prod.js',
+            'font-awesome-webpack!./src/theme/font-awesome.config.js',
+            './src/theme/antd-less-loader!./src/theme/antd.config.js',
             './src/theme/reset.less'
         ]
     },

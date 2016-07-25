@@ -16,10 +16,9 @@ export default class Go extends Component {
 
     componentWillMount() {
         let url;
-        let redir_url = encodeURIComponent(Base64.toBase64(window.location.href));
         for (const key in this.props) {
             if (domains[key]) {
-                url = domains[key] + this.props[key]+"?redirect="+redir_url;
+                url = domains[key] + this.props[key];
             }
         }
         this.setState({to: url});

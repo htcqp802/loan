@@ -1,8 +1,8 @@
 // base configuration
 const settings = {
   web: {
-    host: '10.255.52.82',
-    // host: '10.254.21.65',
+    host: '10.255.52.82', //服务器
+    // host: '10.254.21.65',     //本地
     port: 5005
   },
   api: {
