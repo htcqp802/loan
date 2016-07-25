@@ -1,7 +1,6 @@
-@import "variables";
-@import "common";
-@import "form";
-
+@import "./variables";
+@import "./form";
+@import "./common";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 //
@@ -266,7 +265,6 @@ textarea {
 // Address `overflow` set to `hidden` in IE 8/9/10/11.
 //
 
-
 button {
   overflow: visible;
 }
@@ -297,7 +295,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button; // 2
   cursor: pointer; // 3
-  &:focus{
+  &:focus {
     outline: 0;
   }
 }
@@ -438,21 +436,17 @@ ul, li {
 
 a {
   text-decoration: none;
-  color: $black-normal;
+  color: @black-normal;
   transition: color 0.2s, background-color 0.2s;
   &:hover {
-    color: $orange-light;
+    color: @orange-light;
   }
 }
 
-@font-face {
-  font-family: FontAwesome;
-  src: url('./fontawesome.woff')
-}
 
 body {
   font-size: 14px;
   font-family: "Microsoft Yahei", "PingHei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
-  color: $black-normal;
+  color: @black-normal;
 }
 

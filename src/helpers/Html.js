@@ -14,6 +14,7 @@ export default class Html extends Component {
         return (
             <html lang="en-us">
             <head>
+                <meta httpEquiv="X-UA-Compatible" content="IE=EDGE"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="shortcut icon" href="/favicon.ico"/>
                 {Object.keys(assets.styles).map((style, key) =>

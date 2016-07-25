@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 @reduxForm({
     form: 'caculate',
     fields: ['cAmount', 'loanTime', 'payWay', 'cNll', 'payedYear', 'payedMounth'],
+    destroyOnUnmount: false,
     validate: caculateValidation
 })
 @connect(
@@ -26,7 +27,7 @@ export default class Caculate extends Component {
 
 
     render() {
-        const style = require('./Caculate.scss');
+        const style = require('./Caculate.less');
         const {
             close,
             show,
@@ -133,7 +134,6 @@ export default class Caculate extends Component {
                                                 default:
                                                     return result;
                                             }
-                                            console.log(name)
                                             change('applyLoan',name,result.toFixed(2));
                                             close();
                                         }

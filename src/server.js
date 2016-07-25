@@ -1,10 +1,9 @@
-
 import Express from 'express';
 import http from 'http';
 import httpProxy from 'http-proxy';
 import compression from 'compression';
 import favicon from 'serve-favicon';
-import config from './config';
+import config from 'config';
 import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
@@ -21,13 +20,10 @@ import SocketIo from 'socket.io';
 import cookieParser from 'cookie-parser';
 
 
-
 const app = new Express();
 const server = new http.Server(app);
-const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+const targetUrl = config.api.host + ':' + config.api.port;
 
-const io = new SocketIo(server);
-io.path('/ws');
 
 /**
  * 配置代理
@@ -42,14 +38,14 @@ app.use(cookieParser());
 //启用文件压缩
 app.use(compression());
 //配置ico
-app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '..', 'favicon.ico')));
 //配置静态文件
-app.use(Express.static(path.join(__dirname, '..', 'static')));
+app.use(Express.static(path.join(__dirname, '..', 'dist')));
 //配置代理地址
-app.use((req, res,next) =>{
-    if(req.url.indexOf('/api/v2') > -1 ){
+app.use((req, res, next) => {
+    if (req.url.indexOf('/api/v2') > -1 || req.url.indexOf('/so/api/v2') > -1) {
         proxy.web(req, res)
-    }else{
+    } else {
         next();
     }
 });
@@ -75,7 +71,7 @@ proxy.on('error', (error, req, res) => {
  */
 app.use((req, res)=> {
 
-    if(__DEVELOPMENT__){
+    if (__DEVELOPMENT__) {
         webpackIsomorphicTools.refresh();
     }
 
@@ -89,7 +85,11 @@ app.use((req, res)=> {
     const history = syncHistoryWithStore(memoryHistory, store);
 
     //react-router 服务器端渲染
-    match({history, routes: getRoutes(store), location: req.originalUrl}, (error, redirectLocation, renderProps)=> {
+    match({
+        history,
+        routes: getRoutes(store, res),
+        location: req.originalUrl
+    }, (error, redirectLocation, renderProps)=> {
         if (error) {
             res.status(500).send(error.message);
         } else if (redirectLocation) {
@@ -115,19 +115,23 @@ app.use((req, res)=> {
 });
 
 
-
 /**
  * 启动服务
  */
-const runnable = app.listen(config.port, (err) => {
+const runnable = app.listen(config.web.port, (err) => {
     if (err) {
         console.error(err);
     }
     console.info('----\n==> ✅  %s 已经启动,api地址 %s.', config.app.title, targetUrl);
-    console.info('==> 💻  node地址 http://%s:%s', config.host, config.port);
+    console.info('==> 💻  node地址 http://%s:%s', config.web.host, config.web.port);
 });
+if (__DEVELOPMENT__) {
+    const io = new SocketIo(server);
+    io.path('/ws');
 //启用socket
-io.on('connection', (socket) => {
-});
-io.listen(runnable);
+    io.on('connection', (socket) => {
+    });
+    io.listen(runnable);
+
+}
 

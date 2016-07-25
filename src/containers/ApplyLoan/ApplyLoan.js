@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import {ApplyLoanForm1, ApplyLoanForm2} from 'components';
+import {ApplyLoanForm1, ApplyLoanForm2, ApplyLoanForm3} from 'components';
+import {connect} from 'react-redux';
 
+@connect((state)=>({
+    user: state.auth.user,
+    HouseList: state.applyLoan.HouseList,
+}))
 export default class ApplyLoan extends Component {
     constructor(props) {
         super(props)
@@ -22,8 +27,9 @@ export default class ApplyLoan extends Component {
     }
 
     render() {
-        const style = require('./ApplyLoan.scss');
+        const style = require('./ApplyLoan.less');
         const {page} = this.state;
+        const {user:{id, name, mobile},HouseList} = this.props;
         return (
             <div className={style.applyLoan}>
 
@@ -48,7 +54,8 @@ export default class ApplyLoan extends Component {
                                 <span className={style.second}>房屋产权人全部满足18-58岁</span>
                                 <span className={style.third}>一抵为银行且房贷逾期不超过1次</span>
                             </div>
-                            <ApplyLoanForm1 onSubmit={this.nextPage}/>
+                            <ApplyLoanForm1 onSubmit={this.nextPage}
+                                            initialValues={{receiptInfo:{userName:name,userId:id,phone:mobile},userInfo:{cust_name:name},otherInfo:{rate:'1.3%-2%'}}}/>
                         </div>
                     </div>
                 }
@@ -56,13 +63,14 @@ export default class ApplyLoan extends Component {
                     page === 2 &&
                     <div className={style.panel}>
                         <div className={style.step2}></div>
-                        <ApplyLoanForm2 onSubmit={this.nextPage} previousPage={this.previousPage}/>
+                        <ApplyLoanForm2 onSubmit={this.nextPage} HouseList={HouseList} previousPage={this.previousPage}/>
                     </div>
                 }
                 {
                     page === 3 &&
-                    <div>
-                        <button onClick={this.previousPage}>上一步</button>
+                    <div className={style.panel}>
+                        <div className={style.step3}></div>
+                        <ApplyLoanForm3 previousPage={this.previousPage}></ApplyLoanForm3>
                     </div>
                 }
             </div>

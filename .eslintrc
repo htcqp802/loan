@@ -46,13 +46,18 @@
     //块级元素 空白行开头
     "padded-blocks":0,
     //变量名必须是驼峰命名
-    "camelcase":1,
+    "camelcase":0,
     //return 后面必须加空格
     "space-return-throw-case":0,
     //括号必须对齐
     "brace-style":0,
     "react/sort-comp":0,
-    "no-shadow":0
+    "no-shadow":0,
+    //两行回车
+    "no-multiple-empty-lines":0,
+    //变量名大于2个字符
+    "id-length":0,
+    "no-inner-declarations":0
   },
   "plugins": [
     "react", "import"

@@ -1,6 +1,6 @@
 @import "../../theme/variables";
 
-$border: #e6e6e6;
+@border: #e6e6e6;
 
 body{
   background-color: #f0f0f0;
@@ -10,6 +10,7 @@ body{
   width: 1000px;
   margin: auto;
   .path {
+    width:300px;
     li {
       display: inline-block;
       padding: 0 5px;
@@ -20,17 +21,21 @@ body{
     }
   }
   .panel {
-    border: 1px solid $border;
+    border: 1px solid @border;
     background-color: #fff;
     padding-bottom: 50px;
     margin-bottom: 50px;
     .step1 {
       height: 110px;
-      background: url("./lld_step.png") no-repeat center 0 #fafafa;
+      background: url("containers/ApplyLoan/lld_step.png") no-repeat center 0 #fafafa;
     }
     .step2{
       height: 110px;
-      background: url("./lld_step.png") no-repeat center -110px #fafafa;
+      background: url("containers/ApplyLoan/lld_step.png") no-repeat center -110px #fafafa;
+    }
+    .step3{
+      height: 110px;
+      background: url("containers/ApplyLoan/lld_step.png") no-repeat center -220px #fafafa;
     }
     .content{
       padding:0 122px;
@@ -40,7 +45,7 @@ body{
         padding-top: 30px;
       }
       .navCondition{
-        background: url("./nav_condition.jpg") no-repeat 0 0;
+        background: url("containers/ApplyLoan/nav_condition.jpg") no-repeat 0 0;
         padding-top: 88px;
         span{
           display: inline-block;
@@ -66,5 +71,5 @@ body{
   text-align: center;
 }
 .orange{
-  color: $orange-light;
+  color: @orange-light;
 }
