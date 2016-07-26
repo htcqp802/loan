@@ -67,10 +67,10 @@ module.exports = {
     entry: {
         'main': [
             'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
-            './src/theme/reset.less',
+            './src/client.js',
             'font-awesome-webpack!./src/theme/font-awesome.config.js',
             './src/theme/antd-less-loader!./src/theme/antd.config.js',
-            './src/client.js'
+            './src/theme/reset.less',
         ]
     },
     output: {

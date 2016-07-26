@@ -8,8 +8,8 @@ export default class Slider extends Component {
 
     static defaultProps = {
         height: 320,
-        width: '100%',
-        tickTime: 3000
+        minWidth: 1200,
+        tickTime: 5000
     }
 
     state = {

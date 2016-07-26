@@ -13,7 +13,6 @@ var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
 
-
 module.exports = {
     //输出source map 到output目录
     devtool: 'source-map',
@@ -22,32 +21,35 @@ module.exports = {
         'main': [
             './src/client.js',
             'font-awesome-webpack!./src/theme/font-awesome.config.js',
-            './src/theme/antd-less-loader!./src/theme/antd.config.js',
+            './src/theme/antd-less-loader!./src/theme/antd.config.prod.js',
             './src/theme/reset.less'
         ]
     },
     output: {
-        path: assetsPath+'/'+time+'/',
+        path: assetsPath + '/' + time + '/',
         filename: '[name]-[chunkhash].js',
         //关联模块名
         chunkFilename: '[name]-[chunkhash].js',
-        publicPath:config.staticPrefix.static+time+'/'
+        publicPath: config.staticPrefix.static + time + '/'
 
     },
     module: {
         loaders: [
-            {test: /\.jsx?$/, exclude: /node_modules/, loaders:[strip.loader('debug'), 'babel']},
+            {test: /\.jsx?$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel']},
             {test: /\.json$/, loader: 'json-loader'},
-            {test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
+            {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
+            },
             {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
             {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff"},
             {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},
             {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
             {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"},
-            { test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240' }
+            {test: webpackIsomorphicToolsPlugin.regular_expression('images'), loader: 'url-loader?limit=10240'}
         ],
-        postLoaders:[
-            {test: /\.jsx?$/, loaders:['es3ify']},
+        postLoaders: [
+            {test: /\.jsx?$/, loaders: ['es3ify']},
         ]
     },
     progress: true,
@@ -60,7 +62,7 @@ module.exports = {
         extensions: ['', '.json', '.js', '.jsx']
     },
     plugins: [
-        new CleanPlugin([assetsPath], { root: projectRootPath }),
+        new CleanPlugin([assetsPath], {root: projectRootPath}),
         new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
         new webpack.DefinePlugin({
             'process.env': {

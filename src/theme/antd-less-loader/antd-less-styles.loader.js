@@ -41,6 +41,5 @@ module.exports = function (content) {
         source += '\n' + addImportReturnDependency(this, config, 'mainLess');
     }
     source = source.replace(/\\/g, '/');
-    console.log(source)
     return source;
 }

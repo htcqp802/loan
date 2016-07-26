@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "凤凰金融-融资",
   "scripts": {
-    "start": "NODE_ENV=production NODE_PATH=./src node ./pm2.js && pm2 logs",
+    "start": "NODE_ENV=production NODE_PATH=./src node ./pm2.js",
     "list": "pm2 list",
     "stop": "pm2 kill",
     "logs": "pm2 logs",
