@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Menu from 'antd/lib/menu';
-import Affix from 'antd/lib/Affix';
+import Affix from 'antd/lib/affix';
 import {Go} from 'components';
 import {connect} from 'react-redux';
 
