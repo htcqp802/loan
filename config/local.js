@@ -14,7 +14,8 @@ const settings = {
     "my": "http://mytest3.fengjr.inc",
     "pay": "http://paytest3.fengjr.inc",
     "bx": "http://bx.fengjr.inc",
-    "mall": "http://mall.fengjr.inc"
+    "mall": "http://mall.fengjr.inc",
+    "lld":"http://local.fengjr.inc"
   },
   system_id: 'bx',
   source: 'pc',

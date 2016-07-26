@@ -3,6 +3,8 @@ import Menu from 'antd/lib/menu';
 import Affix from 'antd/lib/affix';
 import {Go} from 'components';
 import {connect} from 'react-redux';
+import {domains} from 'config';
+import base64url from 'base64-url';
 
 const SubMenu = Menu.SubMenu;
 const MenuItem = Menu.Item;
@@ -38,7 +40,7 @@ export default class Nav extends Component {
                         <Menu mode="horizontal" className="nav-head">
                             {!user &&
                             <MenuItem>
-                                <Go my="/login">立即登录</Go>
+                                <Go my={"/login?redirect="+encodeURIComponent(base64url.encode(domains.lld))}>立即登录</Go>
                             </MenuItem>}
                             {!user &&
                             <MenuItem>

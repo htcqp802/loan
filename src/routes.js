@@ -18,7 +18,7 @@ export default (store, res)=> {
         function checkAuth() {
             const {auth:{user}} = store.getState();
             if (!user) {
-                const nextUrl = nextState.location.pathname;
+                const nextUrl = `${domains.lld}/${nextState.location.pathname}`;
                 const redirect = `${domains.my}/login?redirect=${encodeURIComponent(base64url.encode(nextUrl))}`;
                 if (__SERVER__) {
                     res.redirect(redirect)
