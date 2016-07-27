@@ -9,6 +9,10 @@ import base64url from 'base64-url';
 const SubMenu = Menu.SubMenu;
 const MenuItem = Menu.Item;
 
+/**
+ * note: item的个数要一直不能跟着状态变化
+ */
+
 @connect(state=>({
     user: state.auth.user,
     userInfo: state.userInfo.data
@@ -22,10 +26,13 @@ export default class Nav extends Component {
         const imgWechat = require('./top_bar_weixing.jpg')
 
         const {user, userInfo} = this.props;
+
+        //我的账号价格
         const mumbers = (obj)=>
         obj > 0 &&
         <span className="right-info">{obj.toFixed(2)}元</span>;
 
+        //我的账号条数
         const numbers = (obj, text) =>
         obj > 0 &&
         <span className="right-info-orange"><span className="num">{obj}</span>{text ? text : '待使用'}</span>
@@ -38,24 +45,15 @@ export default class Nav extends Component {
                             客服电话：400 076 1166
                         </div>
                         <Menu mode="horizontal" className="nav-head">
-                            {!user &&
                             <MenuItem>
-                                <Go my={"/login?redirect="+encodeURIComponent(base64url.encode(domains.lld))}>立即登录</Go>
-                            </MenuItem>}
-                            {!user &&
-                            <MenuItem>
-                                <Go my="/register">快速注册</Go>
+                                {user ? <Go style={{borderRight:0,paddingRight:0}} my="/account">{user.loginName}</Go>
+                                    :
+                                    <Go my={"/login?redirect="+encodeURIComponent(base64url.encode(domains.lld))}>立即登录</Go>
+                                }
                             </MenuItem>
-                            }
-                            {user &&
                             <MenuItem>
-                                <Go style={{borderRight:0,paddingRight:0}} my="/account">{user.loginName}</Go>
-                            </MenuItem>}
-                            {user &&
-                            <MenuItem>
-                                <Go main="/logout">退出</Go>
+                                {user ? <Go main="/logout">退出</Go> : <Go my="/register">快速注册</Go>}
                             </MenuItem>
-                            }
                             <SubMenu key="safety"
                                      title={<Go main="/safety">安全保障 <i className="fa fa-angle-down"></i></Go>}>
                                 <MenuItem>
@@ -83,8 +81,8 @@ export default class Nav extends Component {
                                     <span className="fa fa-weibo"></span>
                                 </a>
                             </MenuItem>
-                            <SubMenu  className="sub-menu-img"
-                                title={<a style={{padding:'0 10px',borderRight:0}}><span className="fa fa-wechat"></span></a>}>
+                            <SubMenu className="sub-menu-img"
+                                     title={<a style={{padding:'0 10px',borderRight:0}}><span className="fa fa-wechat"></span></a>}>
                                 <MenuItem>
                                     <div>
                                         <img src={imgWechat} alt=""/>
@@ -126,86 +124,84 @@ export default class Nav extends Component {
                                 <MenuItem>
                                     <Go mall="/">积分商城</Go>
                                 </MenuItem>
-                                {!user &&
-                                <MenuItem style={{paddingRight:0}}>
-                                    <Go my="/register" className={_style.redEnvelopeBtn}><i
-                                        className={_style.redEnvelopeIcon}></i><span>注册领红包</span></Go>
-                                </MenuItem>
+                                {user ?
+                                    <SubMenu key="myAccount" className="menu-btn"
+                                             title={<Go my="/account"><i className="fa fa-circle"></i><img src={imgUer} alt=""/><span>我的账户</span><i className="fa fa-angle-down"></i></Go>}>
+                                        <MenuItem key="account">
+                                            <Go my="/account">
+                                                <span>资产总览</span>
+                                                {mumbers(userInfo.totalAsset)}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="currentbx">
+                                            <Go my="/account/currentbx">
+                                                <span>活期理财</span>
+                                                {mumbers(userInfo.aztec.asset)}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="invest">
+                                            <Go my="/account/invest">
+                                                <span>定期理财</span>
+                                                {mumbers(userInfo.regular.asset)}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="bx">
+                                            <Go my="/account/bx">
+                                                <span>保险理财</span>
+                                                {mumbers(userInfo.insurance.asset)}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="zc">
+                                            <Go my="/account/zc">
+                                                <span>我的众筹</span>
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="jifen">
+                                            <Go my="/account/jifen">
+                                                <span>我的积分</span>
+                                                {mumbers(userInfo.point.points)}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="bonus">
+                                            <Go my="/account/bonus">
+                                                <span>我的红包</span>
+                                                {numbers(userInfo.count.availableCouponCount)}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="jiaxi">
+                                            <Go my="/account/jiaxi">
+                                                <span>我的加息券</span>
+                                                {numbers(userInfo.count.interestTicketCount)}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="invite">
+                                            <Go my="/account/invite">
+                                                <span>邀请好友</span>
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="cardVoucher">
+                                            <Go my="/account/cardVoucher">
+                                                <span>兑换卡卷</span>
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="message">
+                                            <Go my="/account/message">
+                                                <span>站内消息</span>
+                                                {numbers(userInfo.count.unreadMsgCount, '条未读')}
+                                            </Go>
+                                        </MenuItem>
+                                        <MenuItem key="logout" className="last">
+                                            <Go main="/logout">
+                                                安全退出
+                                            </Go>
+                                        </MenuItem>
+                                    </SubMenu>
+                                    :
+                                    <MenuItem style={{paddingRight:0}}>
+                                        <Go my="/register" className={_style.redEnvelopeBtn}><i
+                                            className={_style.redEnvelopeIcon}></i><span>注册领红包</span></Go>
+                                    </MenuItem>
                                 }
-                                {user &&
-                                <SubMenu key="myAccount" className="menu-btn"
-                                         title={<Go my="/account"><i className="fa fa-circle"></i><img src={imgUer} alt=""/><span>我的账户</span><i className="fa fa-angle-down"></i></Go>}>
-                                    <MenuItem key="account">
-                                        <Go my="/account">
-                                            <span>资产总览</span>
-                                            {mumbers(userInfo.totalAsset)}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="currentbx">
-                                        <Go my="/account/currentbx">
-                                            <span>活期理财</span>
-                                            {mumbers(userInfo.aztec.asset)}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="invest">
-                                        <Go my="/account/invest">
-                                            <span>定期理财</span>
-                                            {mumbers(userInfo.regular.asset)}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="bx">
-                                        <Go my="/account/bx">
-                                            <span>保险理财</span>
-                                            {mumbers(userInfo.insurance.asset)}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="zc">
-                                        <Go my="/account/zc">
-                                            <span>我的众筹</span>
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="jifen">
-                                        <Go my="/account/jifen">
-                                            <span>我的积分</span>
-                                            {mumbers(userInfo.point.points)}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="bonus">
-                                        <Go my="/account/bonus">
-                                            <span>我的红包</span>
-                                            {numbers(userInfo.count.availableCouponCount)}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="jiaxi">
-                                        <Go my="/account/jiaxi">
-                                            <span>我的加息券</span>
-                                            {numbers(userInfo.count.interestTicketCount)}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="invite">
-                                        <Go my="/account/invite">
-                                            <span>邀请好友</span>
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="cardVoucher">
-                                        <Go my="/account/cardVoucher">
-                                            <span>兑换卡卷</span>
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="message">
-                                        <Go my="/account/message">
-                                            <span>站内消息</span>
-                                            {numbers(userInfo.count.unreadMsgCount, '条未读')}
-                                        </Go>
-                                    </MenuItem>
-                                    <MenuItem key="logout" className="last">
-                                        <Go main="/logout">
-                                            安全退出
-                                        </Go>
-                                    </MenuItem>
-                                </SubMenu>
-                                }
-
                             </Menu>
                         </div>
                     </div>
