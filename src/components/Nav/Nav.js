@@ -94,7 +94,7 @@ export default class Nav extends Component {
                     </div>
                 </div>
                 <Affix >
-                    <div className={_style.NavBody}>
+                    <div className={`affix-item ${_style.NavBody}`}>
                         <div className="container">
                             <div className={_style.logo}>
                                 <Go main="/">
@@ -110,7 +110,7 @@ export default class Nav extends Component {
                                     <Go main="/financing/list?type=newUser">新手区</Go>
                                 </MenuItem>
                                 <MenuItem>
-                                    <Go main="/financing/list?type=newUser">新手区</Go>
+                                    <Go main="/financing">定期理财</Go>
                                 </MenuItem>
                                 <MenuItem>
                                     <Go main="/current">活期理财</Go>
