@@ -19,13 +19,22 @@ require('console-polyfill');
  //
  // import getRoutes from './routes';
  **/
+
+
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 const createStore = require('./redux/create');
 const ApiClient = require('./helpers/ApiClient');
 const Provider = require('react-redux').Provider;
 const Router = require('react-router').Router;
-const browserHistory = require('react-router').hashHistory;
+let browserHistory;
+if ('pushState' in window.history) {
+    browserHistory = require('react-router').browserHistory;
+} else {
+    browserHistory = require('react-router').hashHistory;
+}
+
 const syncHistoryWithStore = require('react-router-redux').syncHistoryWithStore;
 const ReduxAsyncConnect = require('redux-async-connect').ReduxAsyncConnect;
 const useScroll = require('scroll-behavior').useStandardScroll;
@@ -68,7 +77,7 @@ ReactDOM.render(
 if (process.env.NODE_ENV !== 'production') {
     window.React = React;
     if (!dest || !dest.firstChild || !dest.firstChild.attributes || !dest.firstChild.attributes['data-react-checksum']) {
-        console.error('服务端渲染失败');
+        console.error('两端结构差异');
     }
 }
 if (__DEVTOOLS__ && !window.devToolsExtension) {
@@ -83,3 +92,5 @@ if (__DEVTOOLS__ && !window.devToolsExtension) {
         dest
     );
 }
+
+
