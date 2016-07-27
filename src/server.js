@@ -78,7 +78,6 @@ app.use((req, res)=> {
     //挂在请求方法
     const client = new ApiClient(req);
     //创建react-router核心对象history
-    console.log(req)
     const memoryHistory = createHistory(req.originalUrl);
     //创建store
     const store = createStore(memoryHistory, client);
