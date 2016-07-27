@@ -1,8 +1,8 @@
 // base configuration
 const settings = {
   web: {
-    host: '10.255.52.82', //服务器
-    // host: '10.254.21.65',     //本地
+    // host: '10.255.52.82', //服务器
+    host: '10.254.21.65',     //本地
     port: 5005
   },
   api: {
@@ -35,8 +35,8 @@ const staticPrefix = {
   font: '//font.fengjr.com/public/dist/',
   js: '//js.fengjr.com/public/dist/',
   css: '//css.fengjr.com/public/dist/',
-  'static': 'http://lld.fengjr.inc/' // fallback
-  // 'static': 'http://'+ settings.web.host +':'+ settings.web.port +'/'
+  // 'static': 'http://lld.fengjr.inc/' // fallback
+  'static': 'http://lldlocal.fengjr.inc:'+ settings.web.port +'/'
 };
 
 module.exports = {

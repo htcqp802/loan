@@ -34,12 +34,13 @@ export default class ApplyFQDForm1 extends Component {
             initializeWithKey('applyFQD','1',{
                 ...initialValues,
                 moneyBorrow:(initialValues.moneyBorrow/10000).toFixed(2)
-            });
+            },fields);
         }else{
+        
             initializeWithKey('applyFQD','1',{
                 id:0,
                 userId:user.id
-            })
+            },fields)
         }
     }
 
@@ -60,7 +61,7 @@ export default class ApplyFQDForm1 extends Component {
                     <tr>
                         <td className="required">融资企业位于</td>
                         <td>
-                            <select {...areaCode}>
+                            <select  {...areaCode}>
                                 <option value="请选择">请选择</option>
                                 {area && area.map((item,index)=><option key={index}
                                                                 value={item.areaCode}>{item.areaName}</option>)}

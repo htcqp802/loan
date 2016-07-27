@@ -47,7 +47,7 @@ export default class Home extends Component{
                     <div className={`${style.lld_con} ${style.lld_con1} container`}>
                         <div className={style.lld_left}>
                             <div className={style.posimgshow}>
-                                <Link to="/fjddetail" target="_blank">
+                                <Link to="/fjddetail" >
                                     <img src={lldLeftimg1} />
                                 </Link>
                             </div>
@@ -58,7 +58,7 @@ export default class Home extends Component{
                         </div>
                         <div className={style.lld_mid}>
                             <p className={style.mup}>
-                                <Link to="/fjddetail" target="_blank">
+                                <Link to="/fjddetail" >
                                 </Link>
                             </p>
                             <div className={style.mfjd}>
@@ -78,8 +78,8 @@ export default class Home extends Component{
                                 </ul>
                             </div>
                             <p className={style.lld_link} >
-                                <Link to="/fjdDetail" target="_blank" className={style.but}>查看详情</Link>
-                                <Link to="/applyloan" target="_blank" className={style.but_link}>
+                                <Link to="/fjdDetail"  className={style.but}>查看详情</Link>
+                                <Link to="/applyloan"  className={style.but_link}>
                                     快速申请
                                 </Link>
                             </p>
@@ -88,7 +88,7 @@ export default class Home extends Component{
                     <div className={`${style.lld_con} ${style.lld_con2} container`}>
                         <div className={style.lld_left}>
                             <div className={style.posimgshow}>
-                                <Link to="/fqddetail" target="_blank">
+                                <Link to="/fqddetail" >
                                     <img src={lldLeftimg2} />
                                 </Link>
                             </div>
@@ -99,7 +99,7 @@ export default class Home extends Component{
                         </div>
                         <div className={style.lld_mid}>
                             <p className={`${style.mup} ${style.mtup}`}>
-                                <Link to="/fqddetail/" target="_blank">
+                                <Link to="/fqddetail" >
                                 </Link>
                             </p>
                             <div className={style.mfqd}>
@@ -119,8 +119,8 @@ export default class Home extends Component{
                                 </ul>
                             </div>
                             <p className={style.lld_link}>
-                                <Link to="/fqddetail/" className={style.but} target="_blank">查看详情</Link>
-                                <Link to="/applyfqd/" className={style.but_link} target="_blank">快速申请</Link>
+                                <Link to="/fqddetail" className={style.but} >查看详情</Link>
+                                <Link to="/applyfqd" className={style.but_link} >快速申请</Link>
                             </p>
                         </div>
                     </div>
