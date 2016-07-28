@@ -20,7 +20,7 @@ const settings = {
   },
   system_id: 'bx',
   source: 'pc',
-  workers: 4 // 进程个数
+  workers: 8 // 进程个数
 };
 
 // CDN configuration

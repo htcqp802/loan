@@ -60,7 +60,7 @@ export default class ApplyFQDForm2 extends Component {
     componentWillMount() {
         const {dataFQD, initializeWithKey} = this.props;
         if (dataFQD && dataFQD.data) {
-            initializeWithKey('applyFQD', '2', filter(fields, dataFQD.data))
+            initializeWithKey('applyFQD', '2', filter(fields, dataFQD.data),fields)
         }
     }
 
@@ -253,6 +253,7 @@ export default class ApplyFQDForm2 extends Component {
                             <p className={style.botom}>
                                 还有信息没填好先
                                 <a onClick={()=>{
+                                console.log(formValues);
                                 hold(formValues,'save').then(result=>{
                                 if(result.status === 'S'){closeAlter(true);
                                 }})

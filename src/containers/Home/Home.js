@@ -24,7 +24,6 @@ export default class Home extends Component{
         const lldLeftimg1 = require('./lld_leftimg1.jpg');
         const lldLeftimg2 = require('./lld_leftimg2.jpg');
         const lldMore = require('./lld_more.jpg');
-
         const lldCcorpZjt = require('./lld_corp_zjt.jpg');
         const lldCorpGgdyd = require('./lld_corp_gdyd.jpg');
         const lldCorpBxzl = require('./lld_corp_bxzl.jpg');

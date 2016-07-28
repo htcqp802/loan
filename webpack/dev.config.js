@@ -60,6 +60,7 @@ reactTransform[1].transforms.push({
     locals: ['module']
 });
 
+
 //同生产环境类似,只是加入了客户端热部署
 module.exports = {
     devtool: 'inline-source-map',
@@ -80,6 +81,7 @@ module.exports = {
         publicPath: 'http://' + host + ':' + port + '/'
     },
     module: {
+        
         loaders: [
             { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['babel?' + JSON.stringify(babelLoaderQuery), 'eslint-loader']},
             { test: /\.json$/, loader: 'json-loader' },

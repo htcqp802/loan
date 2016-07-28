@@ -56,7 +56,7 @@ export default class ApplyFQDForm2 extends Component {
                 debtInOneYear:formatMoney(_data.debtInOneYear),
                 assetWithdraw:formatMoney(_data.assetWithdraw),
                 inventory:formatMoney(_data.inventory),
-            })
+            },fields)
         }
     }
 
