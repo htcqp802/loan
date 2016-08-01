@@ -27,6 +27,27 @@ export default class Nav extends Component {
 
         const {user, userInfo} = this.props;
 
+        const weixinStyle = {
+            height: 5,
+            float: 'left',
+            width: 30,
+            left: 71,
+            top: -1
+        }
+        const appStyle = {
+            height: 5,
+            float: 'left',
+            width: 91,
+            left: 10,
+            top: -1
+        }
+        const jgStyle = {
+            left: 1,
+            width: 100,
+            borderRight: 0
+        }
+
+
         //我的账号价格
         const mumbers = (obj)=>
         obj > 0 &&
@@ -45,6 +66,7 @@ export default class Nav extends Component {
                             客服电话：400 076 1166
                         </div>
                         <Menu mode="horizontal" className="nav-head">
+
                             <MenuItem>
                                 {user ? <Go style={{borderRight:0,paddingRight:0}} my="/account">{user.loginName}</Go>
                                     :
@@ -56,6 +78,7 @@ export default class Nav extends Component {
                             </MenuItem>
                             <SubMenu key="safety"
                                      title={<Go main="/safety">安全保障 <i className="fa fa-angle-down"></i></Go>}>
+                                <MenuItem className="hidebar" style={jgStyle}></MenuItem>
                                 <MenuItem>
                                     <Go main="/safety">安全保障措施</Go>
                                 </MenuItem>
@@ -70,8 +93,9 @@ export default class Nav extends Component {
                                 <Go main="/service/jr">帮助中心</Go>
                             </MenuItem>
                             <SubMenu className="sub-menu-img" title={<Go main="/specialTopic/fengapp">下载APP</Go>}>
+                                <MenuItem className="hidebar" style={appStyle}></MenuItem>
                                 <MenuItem>
-                                    <img src={imgApp} alt=""/>
+                                    <img src={imgApp} alt="" style={{marginTop:5}}/>
                                     <span>凤凰金融APP</span>
                                 </MenuItem>
                             </SubMenu>
@@ -83,9 +107,10 @@ export default class Nav extends Component {
                             </MenuItem>
                             <SubMenu className="sub-menu-img"
                                      title={<a style={{padding:'0 10px',borderRight:0}}><span className="fa fa-wechat"></span></a>}>
-                                <MenuItem>
+                                <MenuItem className="hidebar" style={weixinStyle}></MenuItem>
+                                <MenuItem style={{right:-1}}>
                                     <div>
-                                        <img src={imgWechat} alt=""/>
+                                        <img src={imgWechat} style={{marginTop:5}} alt=""/>
                                         凤凰金融微信
                                     </div>
                                 </MenuItem>
@@ -127,6 +152,7 @@ export default class Nav extends Component {
                                 {user ?
                                     <SubMenu key="myAccount" className="menu-btn"
                                              title={<Go my="/account"><i className="fa fa-circle"></i><img src={imgUer} alt=""/><span>我的账户</span><i className="fa fa-angle-down"></i></Go>}>
+                                        <MenuItem className="hidebar"></MenuItem>
                                         <MenuItem key="account">
                                             <Go my="/account">
                                                 <span>资产总览</span>

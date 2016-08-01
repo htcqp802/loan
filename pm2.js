@@ -19,7 +19,6 @@ pm2.connect(function(err) {
         pm2.list();
         pm2.disconnect();   // Disconnect from PM2
         if (err) console.log(err)
-        console.log('pm2 started')
     });
 });
 
