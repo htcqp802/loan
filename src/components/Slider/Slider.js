@@ -38,7 +38,7 @@ export default class Slider extends Component {
         const sliders = this.props.children;
         const {width, height} = this.props;
         return (
-            <div style={{width:width,height:height,top:-1}}  className={style.slider}>
+            <div style={{width:width,height:height,top:-1,background:'url('+ require('./lld_banner_default.jpg') +')'}}  className={style.slider}>
                 <ul className={style.sliderWraper}>
                     {
                         sliders.map((item, index)=> {
