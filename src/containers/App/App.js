@@ -21,7 +21,7 @@ export default class App extends Component {
         return (
             <div>
                 <Nav></Nav>
-                <div >{this.props.children}</div>
+                <div style={{backgroundColor: "#f5f5f5"}}>{this.props.children}</div>
                 <Foot></Foot>
             </div>
         )
