@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import {Go} from 'components';
 
 export default class Foot extends Component {
@@ -18,18 +19,18 @@ export default class Foot extends Component {
                                     <Go
                                         main="/aboutus/jianjie" rel="nofollow"
                                         target="_blank">
-                                        凤凰金融
+                                        平台实力
                                     </Go>
                                 </p>
                                 <p>
-                                    <Go main="/aboutus/jianjie#section4" rel="nofollow"
+                                    <Go main="/aboutus/honour" rel="nofollow"
                                         target="_blank">
-                                        股东实力
+                                        社会荣誉
                                     </Go>
                                 </p>
                                 <p>
-                                    <Go main="/aboutus/honour" rel="nofollow" target="_blank">
-                                        社会荣誉
+                                    <Go main="/cms/media" rel="nofollow" target="_blank">
+                                        媒体报道
                                     </Go>
                                 </p>
                                 <p>
@@ -56,9 +57,9 @@ export default class Foot extends Component {
                                     </Go>
                                 </p>
                                 <p>
-                                    <Go main="/lld" rel="nofollow" target="_blank">
+                                    <Link to="/" rel="nofollow">
                                         融资
-                                    </Go>
+                                    </Link>
                                 </p>
                                 <p>
                                     <Go mall="/" rel="nofollow" target="_blank">
