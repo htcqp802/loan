@@ -48,6 +48,7 @@ export default class ApplyLoan extends Component {
     render() {
         const style = require('../ApplyLoan/ApplyLoan.less');
         const style2 = require('./ApplyFQD.less');
+        const bg = {backgroundImage:'url('+ require('./lld_step1.png') +')'};
         const {page,showAlert} = this.state;
         const {dataCategory,area} = this.props;
         return (
@@ -69,14 +70,14 @@ export default class ApplyLoan extends Component {
                 <ul className={style.path}>
                     <li><Link to="/">理理贷</Link></li>
                     <li>></li>
-                    <li><Link to="/fqddetail">凤加贷</Link></li>
+                    <li><Link to="/fqddetail">凤企贷</Link></li>
                     <li>></li>
                     <li>借款申请</li>
                 </ul>
                 {
                     page === 1 &&
                     <div className={style.panel}>
-                        <div className={style.step1}></div>
+                        <div className={style.step1} style={bg}></div>
                         <div className={style.content}>
                             <div className={style.title+" "+style.center}>欢迎您选择<span
                                 className={style.orange}>凤企贷</span>，让我们先了解一下您的需求吧！
@@ -88,14 +89,14 @@ export default class ApplyLoan extends Component {
                 {
                     page === 2 &&
                     <div className={style.panel}>
-                        <div className={style.step2}></div>
+                        <div className={style.step2} style={bg}></div>
                         <ApplyFQDForm2 formKey="2" dataCategory={dataCategory} onSubmit={this.nextPage} closeAlter={this.closeAlter} previousPage={this.previousPage}></ApplyFQDForm2>
                     </div>
                 }
                 {
                     page === 3 &&
                     <div className={style.panel}>
-                        <div className={style.step3}></div>
+                        <div className={style.step3} style={bg}></div>
                         <ApplyFQDForm3 formKey="3" previousPage={this.previousPage} closeAlter={this.closeAlter}></ApplyFQDForm3>
                     </div>
                 }
