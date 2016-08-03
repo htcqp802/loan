@@ -106,6 +106,7 @@ export default class ApplyLoanForm2 extends Component {
     loaded: state.applyLoan.loaded,
     BuildingList: state.applyLoan.BuildingList,
     ConstructionList: state.applyLoan.ConstructionList,
+    HouseList:state.applyLoan.HouseList,
     name: state.applyLoan.name,
 }), {...applyLoan, change})
 class Forms extends Component {
@@ -240,7 +241,8 @@ class Forms extends Component {
                                 onChange={(event)=>{
                                 loadRoom(event.target.value.split(',')[0], index);
                                 change('applyLoan',place.name,communityName.value+event.target.value.split(',')[1])
-                                }}>
+                                buildingNumber.onChange(event.target.value);
+                                }} >
                             <option value="请选择楼号">请选择楼号</option>
                             {BuildingList && name === index && BuildingList.map(item=>
                                 <option key={item.BuildingID}
@@ -249,6 +251,7 @@ class Forms extends Component {
                         </select>
                         <select style={smallStyle} {...roomNumber} onChange={(event)=>{
                             change('applyLoan',place.name,communityName.value+buildingNumber.value.split(',')[1]+event.target.value.split(',')[1])
+                            roomNumber.onChange(event.target.value);
                         }}>
                             <option value="请输入门牌号">请输入门牌号</option>
                             {HouseList && name === index && HouseList.map(item=>

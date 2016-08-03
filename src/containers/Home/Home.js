@@ -132,28 +132,28 @@ export default class Home extends Component{
                             <h2>融资审核金融服务机构</h2>
                             <ul className={`${style.corplist} clearFix`}>
                                 <li>
-                                    <Go my="/financing/zjt" target="_blank">
+                                    <Go main="/financing/zjt" target="_blank">
                                         <img src={lldCcorpZjt} alt="凤凰金融"/>
                                         <div className={style.imgbox_sha}></div>
                                         <span className={style.detail} >专题介绍</span>
                                     </Go>
                                 </li>
                                 <li>
-                                    <Go my="/financing/gdyd" target="_blank">
+                                    <Go main="/financing/gdyd" target="_blank">
                                         <img src={lldCorpGgdyd} alt="凤凰金融"/>
                                         <div className={style.imgbox_sha}></div>
                                         <span className={style.detail}>专题介绍</span>
                                     </Go>
                                 </li>
                                 <li>
-                                    <Go my="/financing/bxzl" target="_blank">
+                                    <Go main="/financing/bxzl" target="_blank">
                                         <img src={lldCorpBxzl} alt="凤凰金融"/>
                                         <div className={style.imgbox_sha}></div>
                                         <span className={style.detail}>专题介绍</span>
                                     </Go>
                                 </li>
                                 <li>
-                                    <Go my="/financing/whxy" target="_blank">
+                                    <Go main="/financing/whxy" target="_blank">
                                         <img src={lldCorpWhxy} alt="凤凰金融"/>
                                         <div className={style.imgbox_sha}></div>
                                         <span className={style.detail}>专题介绍</span>

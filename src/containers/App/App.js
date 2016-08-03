@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {asyncConnect} from 'redux-async-connect';
-import {Nav,Foot} from 'components';
+import {Nav,Foot,ToolLeft} from 'components';
 import {load as loadInfo, isLoaded as isLoadedUesrInfo} from 'redux/modules/userInfo';
 import {load as loadAuth, isLoaded as isLoadedAuth} from 'redux/modules/auth';
 
@@ -21,6 +21,7 @@ export default class App extends Component {
         return (
             <div>
                 <Nav></Nav>
+                <ToolLeft></ToolLeft>
                 <div style={{backgroundColor: "#f5f5f5"}}>{this.props.children}</div>
                 <Foot></Foot>
             </div>

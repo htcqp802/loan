@@ -138,7 +138,7 @@ export default class Nav extends Component {
                                     <Go main="/financing">定期理财</Go>
                                 </MenuItem>
                                 <MenuItem>
-                                    <Go main="/current">活期理财</Go>
+                                    <Go bx="/current">活期理财</Go>
                                 </MenuItem>
                                 <MenuItem>
                                     <Go bx="/">保险理财</Go>
