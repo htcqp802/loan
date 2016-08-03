@@ -34,11 +34,6 @@ export default class Foot extends Component {
                                     </Go>
                                 </p>
                                 <p>
-                                    <Go main="/cms/media" rel="nofollow" target="_blank">
-                                        媒体报道
-                                    </Go>
-                                </p>
-                                <p>
                                     <Go main="/aboutus/contactus" target="_blank">
                                         联系我们
                                     </Go>
