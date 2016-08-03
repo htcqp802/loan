@@ -18,7 +18,9 @@ import {reduxForm, getValues} from 'redux-form'
     destroyOnUnmount: false
 })
 
-@connect((state)=>({myForm: getValues(state.form.applyLoan)}),
+@connect((state)=>({
+        myForm: state.form.applyLoan
+    }),
     {caculateResult, submit})
 export default class ApplyLoanForm3 extends Component {
     static propTypes = {
@@ -40,18 +42,19 @@ export default class ApplyLoanForm3 extends Component {
         yearsOfPersonalIncome: '',
         yearsOfFamilyIncome: '',
         maritalStatus: '',
-        showAlert:false
+        showAlert: false
     }
 
 
     componentWillMount() {
         const houseInfoList = this.props.myForm.houseInfoList;
+
         houseInfoList.map(item=> {
             const params = {
-                constructionID: item.communityID,
-                buildingID: item.buildingNumber.split(',')[0],
-                houseID: item.roomNumber.split(',')[0],
-                buildArea: item.build_area
+                constructionID: item.communityID.value,
+                buildingID: item.buildingNumber.value.split(',')[0],
+                houseID: item.roomNumber.value.split(',')[0],
+                buildArea: item.build_area.value
             }
             this.props.caculateResult(params).then(result=> {
                 if (result.status === 'S') {
@@ -76,7 +79,7 @@ export default class ApplyLoanForm3 extends Component {
 
 
     handleSubmit() {
-        
+
         let finalString = '';
         const {companyRelationship, consumptiveDiscrube, yearsOfWorking, yearsOfPersonalIncome, yearsOfFamilyIncome, maritalStatus} = this.state;
         if (this.state.type === 1) {
@@ -86,8 +89,8 @@ export default class ApplyLoanForm3 extends Component {
         } else if (this.state.type === 3) {
             finalString = `其它：\n描述：${this.refs.describe.value}`
         }
-        console.log(maritalStatus);
-        const {myForm, submit} = this.props;
+        const {submit} = this.props;
+        const myForm = getValues(this.props.myForm);
 
         const _form = {
             ...myForm,
@@ -95,10 +98,12 @@ export default class ApplyLoanForm3 extends Component {
                 ...myForm.receiptInfo,
                 moneyBorrow: myForm.receiptInfo.moneyBorrow * 10000
             },
-            houseInfoList: myForm.houseInfoList.map(houseInfo=> {
+            houseInfoList: this.props.myForm.houseInfoList.map(houseInfo=> {
                 Object.keys(houseInfo).forEach(key=>{
                     if(typeof houseInfo[key] === 'object'){
-                        houseInfo[key] = "";
+                        houseInfo[key] = houseInfo[key].value || ""
+                    }else{
+                        delete houseInfo[key]
                     }
                 })
                 return {
@@ -119,10 +124,9 @@ export default class ApplyLoanForm3 extends Component {
             }
 
         }
-        console.log(_form)
-        submit(_form).then(result=>{
-            if(result.status === 'S'){
-                this.setState({showAlert:true})
+        submit(_form).then(result=> {
+            if (result.status === 'S') {
+                this.setState({showAlert: true})
             }
         })
 
@@ -133,14 +137,15 @@ export default class ApplyLoanForm3 extends Component {
         const {
             previousPage
         } = this.props;
-        const {type,showAlert} = this.state;
+        const {type, showAlert} = this.state;
         return (
             <div className={style.form3}>
                 <div className={style.shadow} style={{display:showAlert?'block':'none'}}></div>
                 <div className={style.alert} style={{display:showAlert?'block':'none'}}>
                     <div className={style.head}>
                         <p>提交成功</p>
-                        <div className={style.close} onClick={()=>this.setState({showAlert:!this.state.showAlert})}></div>
+                        <div className={style.close}
+                             onClick={()=>this.setState({showAlert:!this.state.showAlert})}></div>
                     </div>
                     <div className={style.content}>
                         <div className={style.success}></div>
@@ -183,9 +188,12 @@ export default class ApplyLoanForm3 extends Component {
                     <tr>
                         <td>借款人与公司关系:</td>
                         <td>
-                            <input type="radio" onClick={()=>this.setState({companyRelationship:'法人'})} name="companyRelationship" value="法人"/>法人
-                            <input type="radio" onClick={()=>this.setState({companyRelationship:'实际控制人'})} name="companyRelationship" value="实际控制人"/>实际控制人
-                            <input type="radio" onClick={()=>this.setState({companyRelationship:'股东'})} name="companyRelationship" value="股东"/>股东
+                            <input type="radio" onClick={()=>this.setState({companyRelationship:'法人'})}
+                                   name="companyRelationship" value="法人"/>法人
+                            <input type="radio" onClick={()=>this.setState({companyRelationship:'实际控制人'})}
+                                   name="companyRelationship" value="实际控制人"/>实际控制人
+                            <input type="radio" onClick={()=>this.setState({companyRelationship:'股东'})}
+                                   name="companyRelationship" value="股东"/>股东
                         </td>
                     </tr>
                     }
@@ -198,37 +206,51 @@ export default class ApplyLoanForm3 extends Component {
                     {type === 2 && <tr>
                         <td>工作年限:</td>
                         <td>
-                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'1年-3年'})} name="yearsOfWorking" value="1年-3年"/>1年-3年
-                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'3年-5年'})} name="yearsOfWorking" value="3年-5年"/>3年-5年
-                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'5年-10年'})} name="yearsOfWorking" value="5年-10年"/>5年-10年
-                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'10年以上'})} name="yearsOfWorking" value="10年以上"/>10年以上
+                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'1年-3年'})}
+                                   name="yearsOfWorking" value="1年-3年"/>1年-3年
+                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'3年-5年'})}
+                                   name="yearsOfWorking" value="3年-5年"/>3年-5年
+                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'5年-10年'})}
+                                   name="yearsOfWorking" value="5年-10年"/>5年-10年
+                            <input type="radio" onClick={()=>this.setState({yearsOfWorking:'10年以上'})}
+                                   name="yearsOfWorking" value="10年以上"/>10年以上
                         </td>
                     </tr>}
 
                     {type === 2 && <tr>
                         <td>个人年收入:</td>
                         <td>
-                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'5万以下'})} name="yearsOfPersonalIncome" value="5万以下"/>5万以下
-                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'5-10万'})} name="yearsOfPersonalIncome" value="5-10万"/>5-10万
-                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'10-30万'})} name="yearsOfPersonalIncome"
+                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'5万以下'})}
+                                   name="yearsOfPersonalIncome" value="5万以下"/>5万以下
+                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'5-10万'})}
+                                   name="yearsOfPersonalIncome" value="5-10万"/>5-10万
+                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'10-30万'})}
+                                   name="yearsOfPersonalIncome"
                                    value="10-30万"/>10-30万
-                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'30万以上'})} name="yearsOfPersonalIncome" value="30万以上"/>30万以上
+                            <input type="radio" onClick={()=>this.setState({yearsOfPersonalIncome:'30万以上'})}
+                                   name="yearsOfPersonalIncome" value="30万以上"/>30万以上
                         </td>
                     </tr>}
                     {type === 2 && <tr>
                         <td>家庭年收入:</td>
                         <td>
-                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'10万以下'})} name="yearsOfFamilyIncome" value="10万以下"/>10万以下
-                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'10-30万'})} name="yearsOfFamilyIncome" value="10-30万"/>10-30万
-                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'30-50万'})} name="yearsOfFamilyIncome" value="30-50万"/>30-50万
-                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'50万以上'})} name="yearsOfFamilyIncome" value="50万以上"/>50万以上
+                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'10万以下'})}
+                                   name="yearsOfFamilyIncome" value="10万以下"/>10万以下
+                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'10-30万'})}
+                                   name="yearsOfFamilyIncome" value="10-30万"/>10-30万
+                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'30-50万'})}
+                                   name="yearsOfFamilyIncome" value="30-50万"/>30-50万
+                            <input type="radio" onClick={()=>this.setState({yearsOfFamilyIncome:'50万以上'})}
+                                   name="yearsOfFamilyIncome" value="50万以上"/>50万以上
                         </td>
                     </tr>}
                     {type === 2 && <tr>
                         <td>婚姻状况:</td>
                         <td>
-                            <input type="radio" onClick={()=>this.setState({maritalStatus:'单身'})} name="maritalStatus" value="单身"/>单身
-                            <input type="radio" onClick={()=>this.setState({maritalStatus:'已婚'})} name="maritalStatus" value="已婚"/>已婚
+                            <input type="radio" onClick={()=>this.setState({maritalStatus:'单身'})} name="maritalStatus"
+                                   value="单身"/>单身
+                            <input type="radio" onClick={()=>this.setState({maritalStatus:'已婚'})} name="maritalStatus"
+                                   value="已婚"/>已婚
                         </td>
                     </tr>}
 
