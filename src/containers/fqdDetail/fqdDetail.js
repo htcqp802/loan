@@ -5,12 +5,14 @@
 import React,{Component} from 'react';
 //import {Go} from 'components';
 import {Link} from 'react-router';
+import Helmet from 'react-helmet';
 
 export default class fjdDetail extends Component {
   render() {
     const style = require('./fqdDetail.less');
     return (
       <div>
+        <Helmet title="凤凰金融-凤企贷详情" />
         <div className={style.banner}>
           <Link to="/applyfqd" className={style.btnApply}>立即申请</Link>
         </div>

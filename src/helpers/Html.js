@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom/server';
 import serialize from 'serialize-javascript';
+import Helmet from 'react-helmet';
 
 export default class Html extends Component {
     static propTypes = {
@@ -11,9 +12,12 @@ export default class Html extends Component {
     render() {
         const {component,assets,store} = this.props;
         const content = component ? ReactDOM.renderToString(component) : '';
+        const head = Helmet.rewind();
         return (
             <html lang="en-us">
             <head>
+                {head.title.toComponent()}
+                {head.meta.toComponent()}
                 <meta httpEquiv="X-UA-Compatible" content="IE=EDGE"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="shortcut icon" href="/favicon.ico"/>

@@ -4,7 +4,7 @@ import {asyncConnect} from 'redux-async-connect';
 import {connect} from 'react-redux';
 import {loadAreaCode,loadFQD,loadCategory} from 'redux/modules/applyFQD';
 import {ApplyFQDForm1, ApplyFQDForm2, ApplyFQDForm3,Go} from 'components';
-
+import Helmet from 'react-helmet';
 
 
 @asyncConnect([{
@@ -53,6 +53,7 @@ export default class ApplyLoan extends Component {
         const {dataCategory,area} = this.props;
         return (
             <div className={style.applyLoan}>
+                <Helmet title="凤凰金融-融资申请" />
                 <div className={style2.shadow} style={{display:showAlert?'block':'none'}}></div>
                 <div className={style2.alert} style={{display:showAlert?'block':'none'}}>
                     <div className={style2.head}>
