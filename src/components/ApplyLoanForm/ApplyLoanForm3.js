@@ -42,7 +42,8 @@ export default class ApplyLoanForm3 extends Component {
         yearsOfPersonalIncome: '',
         yearsOfFamilyIncome: '',
         maritalStatus: '',
-        showAlert: false
+        showAlert: false,
+        submtting:false
     }
 
 
@@ -125,6 +126,7 @@ export default class ApplyLoanForm3 extends Component {
 
         }
         submit(_form).then(result=> {
+            this.setState({submtting:false});
             if (result.status === 'S') {
                 this.setState({showAlert: true})
             }
@@ -262,7 +264,10 @@ export default class ApplyLoanForm3 extends Component {
                     <tr>
                         <td colSpan="2">
                             <button onClick={previousPage}>上一步</button>
-                            <button style={{marginLeft:20}} onClick={this.handleSubmit.bind(this)}>提交申请
+                            <button disabled={this.state.submtting} style={{marginLeft:20}} onClick={()=>{
+                            this.setState({submtting:true});
+                            this.handleSubmit()
+                            }}>{this.state.submtting ? '提交中...' : '提交申请'}
                             </button>
                         </td>
                         <td>
