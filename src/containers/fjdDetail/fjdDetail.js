@@ -3,7 +3,6 @@
  */
 import React,{Component} from 'react';
 import {Link} from 'react-router';
-import Helmet from 'react-helmet';
 
 
 export default class fjdDetail extends Component {
@@ -11,7 +10,6 @@ export default class fjdDetail extends Component {
     const style = require('./fjdDetail.less');
     return (
       <div>
-        <Helmet title="凤凰金融-凤加贷详情" />
         <div className={style.banner}>
           <Link to="/applyloan" className={style.btnApply}>立即申请</Link>
         </div>

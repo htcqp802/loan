@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {ApplyLoanForm1, ApplyLoanForm2, ApplyLoanForm3} from 'components';
 import {connect} from 'react-redux';
-import  Helmet from 'react-helmet';
 
 @connect((state)=>({
     user: state.auth.user,
@@ -33,7 +32,6 @@ export default class ApplyLoan extends Component {
         const {user:{id, name, mobile},HouseList} = this.props;
         return (
             <div className={style.applyLoan}>
-                <Helmet title="凤凰金融-融资申请" />
                 <ul className={style.path}>
                     <li><Link to="/">理理贷</Link></li>
                     <li>></li>
