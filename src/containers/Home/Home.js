@@ -6,6 +6,7 @@ import {load} from 'redux/modules/slider';
 import {Link} from 'react-router';
 import {Go} from 'components';
 
+
 @asyncConnect([{
     promise:({store:{dispatch}})=>{
         return dispatch(load());
