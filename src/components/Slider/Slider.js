@@ -40,8 +40,8 @@ export default class Slider extends Component {
         return (
             <div style={{width:width,height:height,top:-1,background:'url('+ require('./lld_banner_default.jpg') +')'}}  className={style.slider}>
                 <ul className={style.sliderWraper}>
-                    {
-                        sliders.map((item, index)=> {
+                    {Array.isArray(sliders) &&
+                    sliders.map((item, index)=> {
                             const slider = item.props;
                             return <Item slider={slider} width="100%" height={height}
                                          opacity={index === 0 ? 1 : 0} show={this.state.active === index}
@@ -50,7 +50,7 @@ export default class Slider extends Component {
                     }
                 </ul>
                 <ul className={style.sliderPoint}>
-                    {
+                    {Array.isArray(sliders) &&
                         sliders.map((item, index)=> {
                             return <li key={index} className={this.state.active === index ? style.active : ""}><a
                                 onClick={()=>{

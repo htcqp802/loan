@@ -27,7 +27,7 @@ const fields = [
     formValues: getValues(state.form.applyFQD),
     dataFQD: state.applyFQD.dataFQD
 }), {hold, initializeWithKey})
-export default class ApplyFQDForm2 extends Component {
+export default class ApplyFQDForm3 extends Component {
 
     static propTypes = {
         previousPage: PropTypes.func.isRequired,
@@ -38,25 +38,26 @@ export default class ApplyFQDForm2 extends Component {
     }
 
     state = {
-        showAlert: false
+        showAlert: false,
+        submitting: false
     }
 
     componentWillMount() {
-        const formatMoney = (money)=>money?(money/10000).toFixed(2):"";
+        const formatMoney = (money)=>money ? (money / 10000).toFixed(2) : "";
         const {dataFQD, initializeWithKey} = this.props;
-        const _data = filter(fields, dataFQD.data);
         if (dataFQD && dataFQD.data) {
+            const _data = filter(fields, dataFQD.data);
             initializeWithKey('applyFQD', '3', {
                 ..._data,
-                currentAsset:formatMoney(_data.currentAsset),
-                currentDebt:formatMoney(_data.currentDebt),
-                lastYearSalesIncome:formatMoney(_data.lastYearSalesIncome),
-                thisYearIncome:formatMoney(_data.thisYearIncome),
-                lastYearProfit:formatMoney(_data.lastYearProfit),
-                debtInOneYear:formatMoney(_data.debtInOneYear),
-                assetWithdraw:formatMoney(_data.assetWithdraw),
-                inventory:formatMoney(_data.inventory),
-            },fields)
+                currentAsset: formatMoney(_data.currentAsset),
+                currentDebt: formatMoney(_data.currentDebt),
+                lastYearSalesIncome: formatMoney(_data.lastYearSalesIncome),
+                thisYearIncome: formatMoney(_data.thisYearIncome),
+                lastYearProfit: formatMoney(_data.lastYearProfit),
+                debtInOneYear: formatMoney(_data.debtInOneYear),
+                assetWithdraw: formatMoney(_data.assetWithdraw),
+                inventory: formatMoney(_data.inventory),
+            }, fields)
         }
     }
 
@@ -212,11 +213,13 @@ export default class ApplyFQDForm2 extends Component {
                     <tr>
                         <td colSpan="2">
                             <button onClick={previousPage}>上一步</button>
-                            <button style={{marginLeft:20}} disabled={invalid} onClick={()=>{
+                            <button style={{marginLeft:20}} disabled={invalid || this.state.submitting} onClick={()=>{
+                            this.setSate({submitting:true})
                                 hold(formValues,'submit').then(()=>{
+                                this.setState({submitting:false})
                                     this.setState({showAlert:true})
                                 })
-                            }}>提交申请
+                            }}>{this.state.submitting ? '提交中...' : '提交申请'}
                             </button>
                             <p className={style.botom}>
                                 还有信息没填好先

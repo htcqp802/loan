@@ -32,7 +32,7 @@ export default class Home extends Component{
         return (
             <div>
                 <Slider>
-                    {
+                    {Array.isArray(sliders) && 
                         sliders.map((slider,key)=>{
                             return <item key={key} href={slider.imageUrl} atl={slider.title} src={slider.uri}></item>
                         })

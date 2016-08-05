@@ -132,13 +132,21 @@ class Forms extends Component {
         change('applyLoan', city.name, 'beijing');
     }
     componentDidMount(){
-           this.clickEvent = window.addEventListener('click',()=>{
-               this.setState({showLoadBlock:false})
-           })
+        if(window.addEventListener){
+            window.addEventListener('click',this.setBlock)
+        }else if(window.attachEvent){
+            window.attachEvent('onclick',this.setBlock);
+        }
+
+    }
+    setBlock=()=>{
+            this.setState({showLoadBlock:false})
     }
     componentWillUnmount(){
-        if(this.clickEvent){
-            this.clickEvent.remove();
+        if(window.removeEventListener){
+            window.removeEventListener('click',this.setBlock);
+        }else if(window.detachEvent){
+            window.detachEvent('onclick',this.setBlock);
         }
 
     }

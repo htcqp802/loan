@@ -10,7 +10,7 @@ module.exports = Object.assign({
         title: '凤凰金融-融资-借款服务专区-凤凰卫视集团旗下智能金融理财平台',
         description: '凤凰卫视集团成员，国家队金融机构股东，央行下属互联网金融协会首批会员。数百亿投资额0逾期、0违约，100%投资用户获得预期收益。用户资金第三方托管，保障资金安全。',
         head: {
-            titleTemplate: 'React Redux Example: %s',
+            // titleTemplate: 'React Redux Example: %s',
             meta: [
                 {
                     name: 'description',
