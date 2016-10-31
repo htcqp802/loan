@@ -6,6 +6,7 @@ webpack-assets.json
 webpack-stats.json
 npm-debug.log
 .DS_Store
+<<<<<<< HEAD
 logs/
 # Logs
 logs
@@ -44,3 +45,6 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+=======
+logs/
+>>>>>>> d2acfccc01073d49bf1256b7cb76debbbbfea63b
